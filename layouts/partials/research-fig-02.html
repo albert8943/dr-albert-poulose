@@ -1,0 +1,49 @@
+<figure class="research-figure pillar-figure" aria-labelledby="fig-02-caption">
+  <svg class="research-figure-svg" viewBox="0 0 640 250" role="img" aria-label="Time-domain simulation generates reference trajectories. A physics-informed neural network learns those trajectories and is reused for transient stability assessment screening and critical clearing time search.">
+    <defs>
+      <style>
+        .fg-box { fill: #f8fafc; stroke: #0d6e7a; stroke-width: 1.6; }
+        .fg-box-2 { fill: #f8fafc; stroke: #2a6f97; stroke-width: 1.6; }
+        .fg-box-3 { fill: #f8fafc; stroke: #5c7c5a; stroke-width: 1.6; }
+        .fg-arr { stroke: #1a2332; stroke-width: 1.6; fill: none; marker-end: url(#arr); }
+        .fg-title { font-family: Georgia, "Times New Roman", serif; font-size: 14px; font-weight: 700; fill: #1a2332; text-anchor: middle; }
+        .fg-h { font-family: system-ui, sans-serif; font-size: 13px; font-weight: 700; fill: #1a2332; text-anchor: middle; }
+        .fg-s { font-family: system-ui, sans-serif; font-size: 11px; fill: #5a6578; text-anchor: middle; }
+      </style>
+      <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#1a2332"/>
+      </marker>
+    </defs>
+    <text class="fg-title" x="320" y="24">One trajectory model, two assessment tasks</text>
+
+    <rect class="fg-box" x="24" y="56" width="170" height="120" rx="8"/>
+    <text class="fg-h" x="109" y="92">Time-domain</text>
+    <text class="fg-h" x="109" y="110">simulation</text>
+    <text class="fg-s" x="109" y="136">ANDES / EMT reference</text>
+    <text class="fg-s" x="109" y="154">Accurate, expensive to repeat</text>
+
+    <line class="fg-arr" x1="204" y1="116" x2="248" y2="116"/>
+
+    <rect class="fg-box-2" x="256" y="56" width="170" height="120" rx="8"/>
+    <text class="fg-h" x="341" y="92">Physics-informed</text>
+    <text class="fg-h" x="341" y="110">neural network</text>
+    <text class="fg-s" x="341" y="136">Predicts rotor-angle δ(t)</text>
+    <text class="fg-s" x="341" y="154">Respects swing physics</text>
+
+    <line class="fg-arr" x1="436" y1="96" x2="478" y2="78"/>
+    <line class="fg-arr" x1="436" y1="136" x2="478" y2="154"/>
+
+    <rect class="fg-box-3" x="486" y="48" width="130" height="64" rx="8"/>
+    <text class="fg-h" x="551" y="76">TSA screen</text>
+    <text class="fg-s" x="551" y="96">Nominal clearing</text>
+
+    <rect class="fg-box-3" x="486" y="128" width="130" height="64" rx="8"/>
+    <text class="fg-h" x="551" y="156">CCT search</text>
+    <text class="fg-s" x="551" y="176">Binary search on t_cl</text>
+
+    <text class="fg-s" x="320" y="214">Same trained checkpoint. Better trajectories help screening; they do not automatically give protection-grade CCT.</text>
+  </svg>
+  <figcaption id="fig-02-caption" class="research-figure-caption">
+    Scientific AI here is a surrogate for post-fault trajectories, not a classifier that only says stable or unstable. Time-domain simulation remains the teacher. The physics-informed neural network (PINN) is queried many times for planning-oriented TSA and CCT studies when repeating full simulation would be too slow.
+  </figcaption>
+</figure>

@@ -1,0 +1,112 @@
+- year: 2026
+  items:
+    - type: journal
+      pillars: ["01", "02", "03"]
+      authors: "A. Poulose and S. Kim"
+      title: "Unified Physics-Informed Trajectory Surrogate for Transient Stability Assessment and Critical Clearing Time Estimation on a Single-Machine Infinite-Bus Benchmark"
+      venue: "IEEE Access, vol. 14, pp. 122177–122196"
+      doi: "10.1109/ACCESS.2026.3718419"
+      url: "https://doi.org/10.1109/ACCESS.2026.3718419"
+      abstract: >-
+        Time-domain simulation remains the reference for transient stability assessment (TSA) and critical clearing time (CCT) analysis, but it becomes expensive when post-fault trajectories must be screened repeatedly or clearing margins explored iteratively. This paper investigates whether a single physics-informed neural network (PINN) can serve as a unified surrogate for both tasks on a single-machine infinite-bus (SMIB) benchmark. The proposed model is conditioned on time-varying electrical power, initial conditions, and machine parameters, and predicts rotor-angle trajectories. The predicted trajectories are evaluated against open-source ANDES simulator generated SMIB reference trajectories and compared to a width-matched standard neural network baseline, with checkpoint selection based only on mean per-scenario rotor-angle RMSE on the validation split. The same persistence-based angle criterion is used for both nominal-clearing TSA and surrogate-assisted CCT estimation by binary search, rather than a terminal-only horizon snapshot or direct reuse of the ANDES peak-angle primary rule on the predicted rotor-angle trajectory, so that one trained checkpoint serves both tasks without a separate CCT regressor. On the held-out test split, the PINN improves mean per-scenario rotor-angle R² from 0.796 to 0.875 and reduces RMSE from 0.424 to 0.242 rad, while also showing lower cross-seed dispersion and smaller post hoc swing-equation residuals than the baseline. At the validation-selected persistence window of 0.05 s, both models achieve 100% nominal-screening accuracy, but CCT mean absolute errors remain about 0.19 s and 0.20 s for the PINN and the baseline, respectively, and increase with wider persistence windows. These results support physics-informed trajectory surrogates for planning-oriented screening and comparative margin studies in the SMIB setting, while also showing that improved trajectory fidelity alone does not yield protection-grade CCT estimation.
+      keywords: "Physics-informed neural networks, Transient stability assessment, Critical clearing time, Surrogate modeling, Single-machine infinite-bus systems, Power-system dynamics, Time-domain simulation"
+
+- year: 2025
+  items:
+    - type: conference
+      pillars: ["02"]
+      authors: "A. Poulose and S. Kim"
+      title: "A Technical Briefing on Machine Learning for Transient Stability Assessment in Power Systems"
+      venue: "2025 International Conference on Advanced Information Technology (ADINTECH), Phnom Penh, Cambodia"
+      doi: ""
+      url: "https://www.dbpia.co.kr/Journal/articleDetail?nodeId=NODE12333641"
+      slides: "/files/publications/adintech-2025-slides.pdf"
+      abstract: >-
+        The increasing integration of renewable energy sources (RES) poses significant challenges to maintaining transient stability in modern power systems. Traditional time-domain simulations, though accurate, are computationally intensive and impractical for real-time assessment. Recent machine learning (ML) techniques offer faster alternatives by learning system behavior from historical or simulated data. However, most existing ML models focus solely on binary classification, predicting whether the system is stable or unstable, without providing quantitative indicators necessary for risk-informed operational decisions. This paper presents a structured technical briefing on the role of emerging ML techniques in enhancing transient stability assessment (TSA). It categorizes state-of-the-art approaches into classification-based and regression-based models, with an emphasis on recent advances, including physics-informed neural networks (PINNs), uncertainty-aware models, and spatiotemporal learning using graph-based architectures. Furthermore, it discusses the challenges of data scarcity, model generalization, and interpretability, and outlines future pathways toward trustworthy, real-time TSA solutions for resilient power systems.
+      keywords: "Transient Stability Assessment, Power System Stability, Machine Learning, Deep Learning, Physics-Informed Neural Networks, Convolutional Neural Networks, Graph Neural Networks, Stability Margin Prediction, Bayesian Uncertainty Quantification"
+    - type: thesis
+      pillars: ["01"]
+      authors: "A. Poulose"
+      title: "Multifaceted Transient Stability Analysis of Power Systems: A Study of Synchronizing Torque in Conventional Systems and Energy Functions in Renewable Connected Systems"
+      venue: "Ph.D. Thesis, Kyungpook National University"
+      doi: ""
+      url: "https://dcollection.knu.ac.kr/srch/srchDetail/000000108267"
+      slides: "/files/publications/phd-defense-slides.pdf"
+      abstract: >-
+        This thesis studies transient stability of power systems in two complementary settings. For conventional multimachine systems, a model-based transient stability index is developed from synchronizing-torque contributions among generators, interpreted through electromechanical oscillation modes. For renewable-connected systems, Lyapunov-based transient energy functions are used for direct transient stability assessment of grid-forming and grid-following voltage source converters, including critical clearing time estimation. The work is validated with time-domain simulation on standard test systems and converter-connected case studies.
+
+- year: 2024
+  items:
+    - type: journal
+      pillars: ["01"]
+      authors: "A. Poulose and S. Kim"
+      title: "Direct Transient Stability Assessment of Grid-Connected Voltage Source Converters: A Transient Energy Functions Perspective"
+      venue: "IEEE Access, vol. 12, pp. 133545–133556"
+      doi: "10.1109/ACCESS.2024.3450316"
+      url: "https://doi.org/10.1109/ACCESS.2024.3450316"
+      abstract: >-
+        The integration of renewable energy sources (RES) into the grid predominantly utilizes voltage source converters (VSC) with a grid-following (GFL) connection strategy. This approach, however, often faces instability issues in low-inertia grid regions. To enhance grid resilience in renewable-dominated power systems, grid-forming (GFM) connection strategies have been introduced, with the virtual synchronous machine (VSM) technique based on GFM control being particularly prevalent. Consequently, transient stability investigations of power systems employing both GFL and GFM connection techniques have gained increasing relevance. This paper proposes an innovative fast direct transient stability analysis (DTSA) approach that leverages Lyapunov's direct method to assess the transient stability of a GFM with VSM control technique, incorporating the influence of parallel-connected VSC with GFL control strategy. The proposed DTSA approach models the GFL as a current source with parallel internal reactance and the GFM as a voltage source with series internal reactance. Detailed analytical derivations of the DTSA approach using transient energy functions, along with the DTSA criterion for the interconnected system, are presented to determine the critical clearing time (CCT) of the GFM-employed VSC. Furthermore, Matlab/Simulink-based electromagnetic transient (EMT) time-domain (t-d) simulation responses are utilized to validate the accuracy and computational effectiveness of the proposed fast DTSA approach. In addition, the proposed DTSA approach offers considerable benefits for efficiently assessing and managing power systems that heavily rely on RES in terms of operational planning and contingency management.
+      keywords: "direct transient stability, grid-forming, grid-following, Lyapunov functions, power system stability, transient stability, transient energy functions, renewable penetrated systems, voltage source converters"
+
+- year: 2023
+  items:
+    - type: journal
+      pillars: ["01"]
+      authors: "A. Poulose and S. Kim"
+      title: "Transient Stability Analysis and Enhancement Techniques of Renewable-Rich Power Grids"
+      venue: "Energies, vol. 16, no. 5, p. 2495"
+      doi: "10.3390/en16052495"
+      url: "https://www.mdpi.com/1996-1073/16/5/2495"
+      abstract: >-
+        New techniques and approaches are constantly being introduced to analyze and enhance the transient stability of renewable energy-source-dominated power systems. This review article extensively discusses recent papers that have proposed novel and innovative techniques for analyzing and enhancing the renewable source-dominated power system's transient stability. The inherent low-inertia characteristics of renewable energy sources combined with fast-acting power electronic devices pose new challenges in power systems. Different stability concerns exist for grid-following and subsequent grid-forming converter/inverter connections to power grids; hence, distinct solutions for enhancing the transient stability have been devised for each. Moreover, the fundamental concepts and characteristics of converter/inverter topologies are briefly discussed in this study. Recent discussions and reviews of analysis and enhancement techniques in transient stability could lead to new ways to solve problems in power systems that rely primarily on renewable energy sources.
+      keywords: "power system stability; transient stability; transient stability analysis; transient stability enhancement; synchronizing torque; grid-following; grid-forming; low inertia; current-source converters; voltage-source converters"
+
+- year: 2022
+  items:
+    - type: journal
+      pillars: ["01"]
+      authors: "A. Poulose and S. Kim"
+      title: "Synchronizing Torque-Based Transient Stability Index of a Multimachine Interconnected Power System"
+      venue: "Energies, vol. 15, no. 9, p. 3432"
+      doi: "10.3390/en15093432"
+      url: "https://www.mdpi.com/1996-1073/15/9/3432"
+      abstract: >-
+        Newly developed tools and techniques are continuously established to analyze and monitor power systems' transient stability limits. In this paper, a model-based transient stability index for each generator is proposed from the synchronizing torque contributions of all other connected generators in a multi-machine interconnected power system. It is a new interpretation of the generator's synchronizing torque coefficient (STC) in terms of electromechanical oscillation modes to consider the synchronizing torque interactions among generators. Thus, the system operator can continuously monitor the system's available secured transient stability limit in terms of synchronizing torque more accurately, which is helpful for planning and operation studies due to the modal based index. Furthermore, the popular transient stability indicator critical clearing time (CCT), and the traditionally determined synchronizing torque values without other generator contributions, are calculated to verify and compare the performance of the proposed transient stability index. The simulations and test result discussions are performed over a western system coordinating council (WSCC) 9-bus and an extensive New England 68-bus large power test system cases. The open-source power system analysis toolbox (PSAT) on the MATLAB/Simulink environment is used to develop, simulate, validate and compare the proposed transient stability index.
+      keywords: "power system stability; transient stability analysis; model-based analysis; stability margin; synchronizing torque; synchronizing torque coefficient; power system dynamics; electromechanical oscillations; rotor angle stability"
+
+- year: 2019
+  items:
+    - type: conference
+      pillars: ["other"]
+      authors: "A. Poulose and R. Kumar P."
+      title: "Super-Twisting Algorithm Based Load Frequency Control of a Two-Area Interconnected Power System"
+      venue: "20th International Conference on Intelligent System Application to Power Systems (ISAP), New Delhi, India"
+      doi: "10.1109/ISAP48318.2019.9065992"
+      url: "https://doi.org/10.1109/ISAP48318.2019.9065992"
+      slides: "/files/publications/isap-2019-slides.pdf"
+      abstract: >-
+        Maintaining the stability of a power system using appropriate controller is considered as one of the most challenging task of a power system engineer. This paper proposes the application of Super-Twisting algorithm based controller, for the load frequency control (LFC) of two area interconnected power system with nonlinearities and disturbances. Even though the presence of nonlinearities such as governor dead band (GDB) and generation rate constraint (GRC), the proposed controller regulates the frequency error, tie-line power error and area control error (ACE) to zero much faster than the popular Integral controller even in the presence of disturbance. For the purpose of analysis and comparing, Matlab/Simulink software tool is used.
+      keywords: "Control systems; frequency control; power system stability; load frequency control; sliding mode control; higher order sliding mode control; super-twisting controller"
+    - type: conference
+      pillars: ["other"]
+      authors: "A. Poulose and R. Kumar P."
+      title: "Performance Analysis of Load Frequency Control for a Two-Area Interconnected Power System Using Twisting Control"
+      venue: "International Conference on Intelligent Computing and Control Systems (ICICCS), Madurai, India"
+      doi: ""
+      url: ""
+      pdf: "/files/publications/iciccs-2019-paper.pdf"
+      slides: "/files/publications/iciccs-2019-slides.pdf"
+      abstract: >-
+        The control of load frequency is an important power system area. This paper proposes a higher order sliding mode (HOSM) controller for load frequency control (LFC) of two area thermal interconnected power system with nonlinearities. The proposed second order sliding mode controller (SMC) utilizes a twisting algorithm. When a disturbance occurs on system, twisting SMC will maintain the frequency error, tie-line power error and area control error within limit. The performance of twisting SMC is also compared with the traditional integral controller.
+      keywords: "load frequency controller, higher order sliding mode controller, automatic generation controller, sliding mode controller, twisting algorithm"
+    - type: thesis
+      pillars: ["other"]
+      authors: "A. Poulose"
+      title: "Higher-order Sliding Mode Based Load Frequency Control for a Two-area Interconnected Power System"
+      venue: "M.Tech Thesis, APJ Abdul Kalam Technological University"
+      doi: ""
+      url: ""
+      pdf: "/files/publications/mtech-thesis.pdf"
+      slides: "/files/publications/mtech-defense-slides.pdf"
+      abstract: >-
+        This thesis develops higher-order sliding-mode controllers, including twisting and super-twisting algorithms, for load frequency control of a two-area interconnected power system. The study considers nonlinearities such as governor dead band and generation rate constraint, and compares the proposed controllers with a conventional integral controller using MATLAB/Simulink simulations of frequency error, tie-line power error, and area control error.

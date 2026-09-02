@@ -1,0 +1,54 @@
+{{ $nested := and . (index . "nested") }}
+<div class="research-story">
+  {{- if $nested -}}
+  <h3>{{ site.Params.researchStabilityTitle }}</h3>
+  {{- else -}}
+  <h2>{{ site.Params.researchStabilityTitle }}</h2>
+  {{- end -}}
+  <p>{{ site.Params.researchStabilityIntro }}</p>
+
+  <figure class="research-figure" aria-labelledby="fig-classification-caption">
+    <img class="research-figure-img" src="{{ "images/research/stability-classification.png" | relURL }}" width="960" height="540" alt="IEEE/CIGRE classification of power system stability: rotor-angle, voltage, and frequency stability from 2004, extended in 2020 with converter-driven and resonance stability. Transient stability under rotor-angle stability is highlighted.">
+    <figcaption id="fig-classification-caption" class="research-figure-caption">
+      Power system stability classification (IEEE/CIGRE Task Force). Dynamic security in my work maps mainly to <strong>rotor-angle stability</strong> and its <strong>transient</strong> branch, extended in converter-dominated grids by <strong>converter-driven stability</strong>.
+      Source:
+      <a href="https://doi.org/10.1109/TPWRS.2020.3041774" target="_blank" rel="noopener noreferrer">Hatziargyriou et al., IEEE Trans. Power Syst., 2021</a>
+      (revision of the 2004 framework:
+      <a href="https://doi.org/10.1109/TPWRS.2004.825981" target="_blank" rel="noopener noreferrer">Kundur et al., IEEE Trans. Power Syst., 2004</a>).
+    </figcaption>
+  </figure>
+</div>
+
+<div class="research-story">
+  {{- if $nested -}}
+  <h3>{{ site.Params.researchTsaTitle }}</h3>
+  {{- else -}}
+  <h2>{{ site.Params.researchTsaTitle }}</h2>
+  {{- end -}}
+  <div class="research-tsa-def">
+    <p><strong>Transient stability</strong> is the ability of the power system to maintain <strong>synchronism</strong> when subjected to a <strong>severe transient disturbance</strong>. The response involves <strong>large excursions of generator rotor angles</strong> and depends on both the <strong>initial operating state</strong> and the <strong>severity of the disturbance</strong>.</p>
+  </div>
+
+  <div class="research-tsa-grid">
+    <figure class="research-figure research-tsa-figure" aria-labelledby="fig-tsa-cases-caption">
+      <img class="research-figure-img" src="{{ "images/research/transient-stability-cases.png" | relURL }}" width="640" height="480" alt="Rotor angle versus time for three transient stability cases: damped oscillation to a new steady state, first-swing loss of synchronism, and growing oscillations leading to instability.">
+      <figcaption id="fig-tsa-cases-caption" class="research-figure-caption">
+        Rotor-angle response to a transient disturbance.
+      </figcaption>
+    </figure>
+
+    <ol class="research-case-list">
+      <li><strong>Case 1 (stable).</strong> The rotor angle rises to a maximum, then falls and oscillates with decreasing amplitude until a new steady state is reached.</li>
+      <li><strong>Case 2 (first-swing instability).</strong> The rotor angle keeps increasing until synchronism is lost, often from insufficient synchronizing torque.</li>
+      <li><strong>Case 3 (oscillatory instability).</strong> The first swing looks stable, but growing oscillations later drive the system toward instability.</li>
+    </ol>
+  </div>
+
+  <p class="research-callout-note">{{ site.Params.researchTsaNote }}</p>
+  <p class="research-definition-source">
+  Source:
+  <a href="https://doi.org/10.1109/TPWRS.2004.825981" target="_blank" rel="noopener noreferrer">Kundur et al., IEEE Trans. Power Syst., 2004</a>;
+  <a href="https://doi.org/10.1109/TPWRS.2020.3041774" target="_blank" rel="noopener noreferrer">Hatziargyriou et al., IEEE Trans. Power Syst., 2021</a>;
+  <a href="https://www.taylorfrancis.com/chapters/edit/10.4324/b12113-10/power-system-stability-prabha-kundur" target="_blank" rel="noopener noreferrer">Kundur, <em>Power System Stability and Control</em></a>.
+  </p>
+</div>

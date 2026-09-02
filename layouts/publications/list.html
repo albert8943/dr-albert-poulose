@@ -1,0 +1,71 @@
+{{ define "main" }}
+<section class="page-header">
+  <div class="container">
+    <h1>{{ .Title }}</h1>
+    <p class="page-lead">Journal articles, conference papers, and theses, listed by year. Filter by research theme. IEEE papers use the DOI link; if IEEE Xplore shows &ldquo;Unusual traffic (Error 418)&rdquo;, try again in a normal browser, use your university library access, or open the Scholar link.</p>
+  </div>
+</section>
+
+<section class="page-content">
+  <div class="container content-narrow">
+    <div class="pub-filters" role="group" aria-label="Filter publications by research pillar">
+      <button type="button" class="pub-filter active" data-filter="all">All</button>
+      <button type="button" class="pub-filter" data-filter="01">01 Stability</button>
+      <button type="button" class="pub-filter" data-filter="02">02 Scientific AI</button>
+      <button type="button" class="pub-filter" data-filter="03">03 Digital Twins</button>
+      <button type="button" class="pub-filter" data-filter="other">Other</button>
+    </div>
+
+    {{ range site.Data.publications }}
+    <div class="pub-section" data-year-section>
+      <h2 class="pub-section-title">{{ .year }}</h2>
+      {{ range .items }}
+      <article class="pub-card" data-pillars="{{ delimit .pillars " " }}">
+        {{ if .pillars }}
+        <div class="pub-card-meta">
+          {{ range .pillars }}
+          {{ if eq . "01" }}
+          <span class="pub-chip pub-chip-01"><span class="pub-chip-num">01</span><span class="pub-chip-label">Stability</span></span>
+          {{ else if eq . "02" }}
+          <span class="pub-chip pub-chip-02"><span class="pub-chip-num">02</span><span class="pub-chip-label">Scientific AI</span></span>
+          {{ else if eq . "03" }}
+          <span class="pub-chip pub-chip-03"><span class="pub-chip-num">03</span><span class="pub-chip-label">Digital Twins</span></span>
+          {{ else }}
+          <span class="pub-chip pub-chip-other"><span class="pub-chip-label">Other</span></span>
+          {{ end }}
+          {{ end }}
+        </div>
+        {{ end }}
+        <p class="pub-authors">{{ .authors }}</p>
+        <h3 class="pub-title">{{ .title }}</h3>
+        <p class="pub-venue"><em>{{ .venue }}</em></p>
+        {{ if .abstract }}
+        <details class="pub-abstract">
+          <summary>Abstract</summary>
+          <p>{{ .abstract }}</p>
+          {{ if .keywords }}
+          <p class="pub-keywords"><strong>Keywords:</strong> {{ .keywords }}</p>
+          {{ end }}
+        </details>
+        {{ end }}
+        <div class="pub-links">
+          {{ if .doi }}
+          <a class="btn btn-sm" href="https://doi.org/{{ .doi }}" target="_blank" rel="noopener noreferrer">DOI</a>
+          <a class="btn btn-sm btn-outline" href="https://scholar.google.com/scholar?q={{ .doi | urlquery }}" target="_blank" rel="noopener noreferrer">Scholar</a>
+          {{ else if .url }}
+          <a class="btn btn-sm" href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ if eq .type "thesis" }}Thesis{{ else }}Link{{ end }}</a>
+          {{ end }}
+          {{ if .pdf }}
+          <a class="btn btn-sm btn-outline" href="{{ strings.TrimPrefix "/" .pdf | relURL }}" target="_blank" rel="noopener noreferrer">{{ if eq .type "thesis" }}Thesis PDF{{ else }}PDF{{ end }}</a>
+          {{ end }}
+          {{ if .slides }}
+          <a class="btn btn-sm btn-outline" href="{{ strings.TrimPrefix "/" .slides | relURL }}" target="_blank" rel="noopener noreferrer">Slides</a>
+          {{ end }}
+        </div>
+      </article>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

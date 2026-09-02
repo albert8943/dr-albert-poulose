@@ -1,0 +1,43 @@
+<figure class="research-figure pillar-figure" aria-labelledby="fig-01-caption">
+  <svg class="research-figure-svg" viewBox="0 0 640 250" role="img" aria-label="Grid-following converter modelled as a current source and grid-forming converter modelled as a voltage source behind reactance, both connected to the same grid.">
+    <defs>
+      <style>
+        .fg-box { fill: #f8fafc; stroke: #0d6e7a; stroke-width: 1.6; }
+        .fg-box-alt { fill: #f8fafc; stroke: #2a6f97; stroke-width: 1.6; }
+        .fg-line { stroke: #1a2332; stroke-width: 1.6; fill: none; }
+        .fg-title { font-family: Georgia, "Times New Roman", serif; font-size: 14px; font-weight: 700; fill: #1a2332; text-anchor: middle; }
+        .fg-h { font-family: system-ui, sans-serif; font-size: 13px; font-weight: 700; fill: #1a2332; text-anchor: middle; }
+        .fg-s { font-family: system-ui, sans-serif; font-size: 11px; fill: #5a6578; text-anchor: middle; }
+        .fg-bus { fill: #1a2332; }
+      </style>
+    </defs>
+    <text class="fg-title" x="320" y="24">Two converter problems, one security question</text>
+
+    <rect class="fg-box" x="28" y="46" width="270" height="168" rx="8"/>
+    <text class="fg-h" x="163" y="72">Grid-following (GFL)</text>
+    <text class="fg-s" x="163" y="90">Current source into a weak or strong grid</text>
+    <circle cx="90" cy="148" r="22" fill="none" stroke="#0d6e7a" stroke-width="2"/>
+    <text class="fg-h" x="90" y="153" font-size="12">I</text>
+    <line class="fg-line" x1="112" y1="148" x2="210" y2="148"/>
+    <rect class="fg-bus" x="210" y="128" width="10" height="40"/>
+    <text class="fg-s" x="215" y="188">Grid</text>
+    <text class="fg-s" x="163" y="198">Often limited in low-inertia regions</text>
+
+    <rect class="fg-box-alt" x="342" y="46" width="270" height="168" rx="8"/>
+    <text class="fg-h" x="477" y="72">Grid-forming (GFM)</text>
+    <text class="fg-s" x="477" y="90">Virtual synchronous machine (VSM)</text>
+    <text class="fg-s" x="477" y="106">Voltage source behind reactance</text>
+    <circle cx="400" cy="148" r="22" fill="none" stroke="#2a6f97" stroke-width="2"/>
+    <text class="fg-h" x="400" y="153" font-size="11">E, δ</text>
+    <line class="fg-line" x1="422" y1="148" x2="470" y2="148"/>
+    <text class="fg-s" x="446" y="140">X</text>
+    <line class="fg-line" x1="454" y1="138" x2="454" y2="158"/>
+    <line class="fg-line" x1="470" y1="148" x2="524" y2="148"/>
+    <rect class="fg-bus" x="524" y="128" width="10" height="40"/>
+    <text class="fg-s" x="529" y="188">Grid</text>
+    <text class="fg-s" x="477" y="198">Energy-function CCT of the GFM unit</text>
+  </svg>
+  <figcaption id="fig-01-caption" class="research-figure-caption">
+    Conventional machines are assessed with synchronizing torque among generators. Converter-connected plants are not the same device: GFL and GFM need different models. Direct energy functions give a CCT for the GFM unit when a GFL converter is in parallel, without waiting for a long time-domain sweep.
+  </figcaption>
+</figure>

@@ -1,0 +1,35 @@
+{{ define "main" }}
+<section class="page-header">
+  <div class="container">
+    <h1>{{ .Title }}</h1>
+  </div>
+</section>
+
+<section class="page-content">
+  <div class="container content-narrow">
+    <div class="contact-grid">
+      <div class="contact-block">
+        <h2>Email</h2>
+        <p><a href="mailto:{{ site.Params.email }}">{{ site.Params.email }}</a></p>
+        <p><a href="mailto:{{ site.Params.emailKnu }}">{{ site.Params.emailKnu }}</a> (KNU)</p>
+      </div>
+      <div class="contact-block">
+        <h2>Phone</h2>
+        <p>South Korea: {{ site.Params.phoneKr }}</p>
+        <p>India: {{ site.Params.phoneIn }}</p>
+      </div>
+      <div class="contact-block">
+        <h2>Current Address</h2>
+        <p>{{ site.Params.currentAddress }}</p>
+      </div>
+      <div class="contact-block">
+        <h2>Home Address</h2>
+        <p>{{ site.Params.homeAddress }}</p>
+      </div>
+    </div>
+    <div class="contact-social">
+      {{ partial "social-links.html" . }}
+    </div>
+  </div>
+</section>
+{{ end }}

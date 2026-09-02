@@ -1,0 +1,49 @@
+{{- $entries := slice -}}
+
+{{- $homeText := printf "%s %s %s" site.Params.bioIntro site.Params.bioCurrent (delimit site.Params.researchInterests " ") -}}
+{{- $entries = $entries | append (dict "title" site.Params.name "url" site.Home.RelPermalink "section" "Home" "text" $homeText) -}}
+
+{{- range where site.RegularPages "Section" "!=" "search" -}}
+  {{- $text := "" -}}
+  {{- if eq .Section "research" -}}
+    {{- $text = printf "%s %s %s %s" site.Params.researchProblem site.Params.researchHow site.Params.researchDefinition site.Params.researchMarginIntro -}}
+  {{- else if eq .Section "contact" -}}
+    {{- $text = printf "%s %s %s" site.Params.email site.Params.emailKnu site.Params.currentAddress -}}
+  {{- end -}}
+  {{- $entries = $entries | append (dict "title" .Title "url" .RelPermalink "section" (humanize .Section) "text" $text) -}}
+{{- end -}}
+
+{{- range hugo.Data.research_pillars -}}
+  {{- $entries = $entries | append (dict "title" .title "url" (relURL "research/") "section" "Research" "text" (printf "%s %s" .description .body)) -}}
+{{- end -}}
+
+{{- range hugo.Data.publications -}}
+  {{- range .items -}}
+    {{- $text := printf "%s %s %s %s" (.authors | default "") (.venue | default "") (.abstract | default "") (.keywords | default "") -}}
+    {{- $entries = $entries | append (dict "title" .title "url" (relURL "publications/") "section" "Publications" "text" $text) -}}
+  {{- end -}}
+{{- end -}}
+
+{{- range hugo.Data.teaching -}}
+  {{- range .items -}}
+    {{- $text := printf "%s %s %s %s" (.code | default "") (.institution | default "") (.period | default "") (delimit (.focus | default slice) " ") -}}
+    {{- $entries = $entries | append (dict "title" .title "url" (relURL "teaching/") "section" "Teaching" "text" $text) -}}
+  {{- end -}}
+{{- end -}}
+
+{{- range hugo.Data.timeline.professional -}}
+  {{- $text := printf "%s %s %s" (.period | default "") (.institution | default "") (delimit (.highlights | default slice) " ") -}}
+  {{- $entries = $entries | append (dict "title" .role "url" (relURL "education/") "section" "Education & Work" "text" $text) -}}
+{{- end -}}
+
+{{- range hugo.Data.timeline.early_career -}}
+  {{- $text := printf "%s %s" (.period | default "") (.institution | default "") -}}
+  {{- $entries = $entries | append (dict "title" .role "url" (relURL "education/") "section" "Education & Work" "text" $text) -}}
+{{- end -}}
+
+{{- range hugo.Data.timeline.school -}}
+  {{- $text := printf "%s %s" (.period | default "") (.institution | default "") -}}
+  {{- $entries = $entries | append (dict "title" .role "url" (relURL "education/") "section" "Education & Work" "text" $text) -}}
+{{- end -}}
+
+<script type="application/json" id="site-search-index">{{ $entries | jsonify }}</script>

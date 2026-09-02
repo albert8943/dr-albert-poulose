@@ -1,0 +1,51 @@
+{{ define "main" }}
+<section class="page-header">
+  <div class="container">
+    <h1>{{ .Title }}</h1>
+  </div>
+</section>
+
+<section class="page-content">
+  <div class="container content-narrow">
+    <h2 class="timeline-tier-title">Professional</h2>
+    <div class="timeline">
+      {{ range site.Data.timeline.professional }}
+      <article class="timeline-card">
+        <time class="timeline-period">{{ .period }}</time>
+        <h3>{{ .role }}</h3>
+        <p class="timeline-institution">{{ .institution }}</p>
+        {{ if .highlights }}
+        <ul>
+          {{ range .highlights }}<li>{{ . }}</li>{{ end }}
+        </ul>
+        {{ end }}
+      </article>
+      {{ end }}
+    </div>
+
+    <h2 class="timeline-tier-title">Early Career</h2>
+    <div class="timeline timeline-compact">
+      {{ range site.Data.timeline.early_career }}
+      <article class="timeline-card timeline-card-compact">
+        <time class="timeline-period">{{ .period }}</time>
+        <h3>{{ .role }}</h3>
+        <p class="timeline-institution">{{ .institution }}</p>
+      </article>
+      {{ end }}
+    </div>
+
+    <details class="timeline-accordion">
+      <summary>Earlier education</summary>
+      <div class="timeline timeline-compact">
+        {{ range site.Data.timeline.school }}
+        <article class="timeline-card timeline-card-compact">
+          <time class="timeline-period">{{ .period }}</time>
+          <h3>{{ .role }}</h3>
+          <p class="timeline-institution">{{ .institution }}</p>
+        </article>
+        {{ end }}
+      </div>
+    </details>
+  </div>
+</section>
+{{ end }}

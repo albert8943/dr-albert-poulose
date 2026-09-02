@@ -1,0 +1,101 @@
+baseURL = 'https://albert8943.github.io/dr-albert-poulose/'
+locale = 'en-us'
+defaultContentLanguage = 'en'
+title = 'Albert Poulose, Ph.D.'
+disableKinds = ['taxonomy', 'term']
+
+[params]
+  name = 'Albert Poulose, Ph.D.'
+  role = 'Postdoctoral Researcher'
+  affiliation = 'Microgrid Research Center & Dept. of Electrical Engineering'
+  university = 'Kyungpook National University, Daegu, South Korea'
+  email = 'albertpoulosepalatty@gmail.com'
+  emailKnu = 'albertpoulosepalatty@knu.ac.kr'
+  phoneKr = '+82-10-4389-0577'
+  phoneIn = '+91-89437-70577'
+  currentAddress = 'Microgrid Research Center, School of Electronic and Electrical Engineering, Kyungpook National University, 80 Daehak-ro, Buk-gu, Daegu 41566, Republic of Korea'
+  homeAddress = 'Palatty House, Manjapra P.O., Angamaly, Ernakulam District, Kerala, India, PIN 683581'
+  scholar = 'https://scholar.google.com/citations?user=OXkq2SUAAAAJ&hl=en'
+  orcid = 'https://orcid.org/0000-0002-6138-7857'
+  scopus = 'https://www.scopus.com/authid/detail.uri?authorId=57216694893'
+  linkedin = 'https://www.linkedin.com/in/albert-poulose'
+  github = 'https://github.com/albert8943'
+  githubPinn = 'https://github.com/albert8943/unified-physics-informed-neural-surrogate-smib-tsa-cct-benchmark'
+  formspreeId = 'xrpgqqdl'
+  bioIntro = 'I work on dynamic security of converter-dominated power systems—whether the grid stays stable after a fault and whether margins such as critical clearing time (CCT) remain adequate.'
+  bioCurrent = 'I pursue this through stability theory for grid-forming (GFM) and grid-following (GFL) converters, physics-informed surrogates for transient stability assessment (TSA) and CCT screening, and grid digital twins.'
+  researchInterests = [
+    'Dynamic security and transient stability of converter-dominated grids',
+    'Stability theory for GFM and GFL converters',
+    'Physics-informed AI for TSA and CCT screening',
+    'Grid digital twins for online security assessment',
+  ]
+  researchProblemTitle = 'Research overview'
+  researchProblem = 'As solar, wind, and power-electronics converters replace conventional plants, grids have less inertia and more converter interactions. After a short circuit or a similar disturbance, machines and converters can lose synchronism, or the remaining stability margin can become too small. The question I aim at is operational: in the present operating condition, will the grid stay stable after a credible disturbance, and is a margin such as critical clearing time (CCT) still adequate? That question is the dynamic security of converter-dominated power systems.'
+  researchCurrentEmphasisTitle = 'Current emphasis'
+  researchCurrentEmphasis = 'My published work is strongest in rotor-angle transient security and converter-driven behaviour today. Transient stability analysis (TSA) and critical clearing time (CCT) are the assessment tools I use most in that setting. The three-part programme below also develops stability theory, scientific AI, and grid digital twins for the same dynamic-security question.'
+  researchHowTitle = 'How I work on it'
+  researchHow = 'I do not treat dynamic security as a single method. I work on it through three overlapping parts, shown in the figure. Each part is explained below. None of the three is the whole programme. They share one centre: keeping converter-dominated grids stable after faults and other disturbances.'
+  researchDefinitionTitle = 'Dynamic security'
+  researchDefinition = 'In power systems, dynamic security is the ability of the grid, in its present operating condition, to remain stable after credible disturbances such as short circuits. It is assessed by checking whether generators and converters keep synchronism and whether a stability margin (for example CCT) remains adequate.'
+  researchAssessmentTitle = 'Assessment concepts'
+  researchAssessmentIntro = 'For readers who want the technical background: how dynamic security maps to IEEE/CIGRE stability classification, transient stability analysis (TSA), and operational margins such as CCT.'
+  researchStabilityTitle = 'Where this sits in power system stability'
+  researchStabilityIntro = 'In the IEEE/CIGRE framework, transient rotor-angle behaviour after a fault belongs under rotor-angle stability. The 2020 revision adds converter-driven and resonance stability. These categories help place TSA and CCT—the main assessment tools in my current work—within the wider stability picture.'
+  researchTsaTitle = 'Transient stability and margins (current focus)'
+  researchTsaNote = 'The study period is usually about 3 to 5 seconds in classical multimachine TSA, although it may extend to about 10 seconds for very large systems with dominant interarea modes. With converters, the critical post-fault interval is often shorter, and assessment may need to include converter-driven phenomena (Hatziargyri et al., 2021) as well as rotor-angle behaviour.'
+  researchMarginTitle = 'Critical clearing time (CCT) as a security margin'
+  researchMarginIntro = 'TSA asks whether synchronism is kept after a disturbance. In operations, we also need a margin: how long can a fault remain before stability is lost? CCT is one such measure.'
+
+[services]
+  # Add your GA4 measurement ID from https://analytics.google.com/ (format: G-XXXXXXXXXX)
+  [services.googleAnalytics]
+    id = 'G-4EYTLYNMVE'
+
+[privacy]
+  [privacy.googleAnalytics]
+    disable = false
+    respectDoNotTrack = true
+
+[menu]
+  [[menu.main]]
+    name = 'Home'
+    url = '/'
+    weight = 1
+  [[menu.main]]
+    name = 'Research'
+    url = '/research/'
+    weight = 2
+  [[menu.main]]
+    name = 'Publications'
+    url = '/publications/'
+    weight = 3
+  [[menu.main]]
+    name = 'Teaching'
+    url = '/teaching/'
+    weight = 4
+  [[menu.main]]
+    name = 'Education & Work'
+    url = '/education/'
+    weight = 5
+  [[menu.main]]
+    name = 'Gallery'
+    url = '/gallery/'
+    weight = 6
+  [[menu.main]]
+    name = 'Contact'
+    url = '/contact/'
+    weight = 7
+  [[menu.main]]
+    name = 'CV'
+    url = '/cv/'
+    weight = 8
+  [[menu.main]]
+    name = 'Search'
+    url = '/search/'
+    weight = 9
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

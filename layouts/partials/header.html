@@ -1,0 +1,20 @@
+<header class="site-header">
+  <div class="container nav">
+    <a class="site-name" href="{{ site.Home.RelPermalink }}">{{ site.Params.name }}</a>
+    <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false">&#9776;</button>
+    <nav class="nav-links">
+      {{ $current := .RelPermalink }}
+      {{ $home := site.Home.RelPermalink }}
+      {{ range site.Menus.main }}
+        {{ $menuURL := .URL | relURL }}
+        {{ $active := false }}
+        {{ if or (eq .URL "/") (eq $menuURL $home) }}
+          {{ $active = eq $current $home }}
+        {{ else }}
+          {{ $active = hasPrefix $current $menuURL }}
+        {{ end }}
+        <a href="{{ $menuURL }}"{{ if $active }} class="active"{{ end }}>{{ .Name }}</a>
+      {{ end }}
+    </nav>
+  </div>
+</header>

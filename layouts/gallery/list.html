@@ -1,0 +1,25 @@
+{{ define "main" }}
+<section class="page-header">
+  <div class="container">
+    <h1>{{ .Title }}</h1>
+  </div>
+</section>
+
+<section class="page-content gallery-page">
+  <div class="container">
+    {{ range site.Data.gallery }}
+    <div class="gallery-section">
+      <h2>{{ .title }}</h2>
+      <div class="gallery-grid">
+        {{ range .items }}
+        <figure class="gallery-item">
+          <img src="{{ strings.TrimPrefix "/" .image | relURL }}" alt="{{ .alt }}" loading="lazy">
+          <figcaption>{{ .caption }}</figcaption>
+        </figure>
+        {{ end }}
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

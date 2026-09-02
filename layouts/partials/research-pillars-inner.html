@@ -1,0 +1,51 @@
+{{ range site.Data.research_pillars }}
+<div class="research-pillar" id="{{ .id }}">
+  <div class="pillar-heading">
+    <div class="pillar-number">{{ .number }}</div>
+    <div class="pillar-title">
+      <h2>{{ .title }}</h2>
+      {{ if .description }}
+      <p class="pillar-tagline">{{ .description }}</p>
+      {{ end }}
+      {{ if .overlaps }}
+      <ul class="pillar-overlaps">
+        {{ range .overlaps }}
+        <li>{{ . }}</li>
+        {{ end }}
+      </ul>
+      {{ end }}
+    </div>
+  </div>
+  {{ if .body }}
+  <p class="pillar-body">{{ .body }}</p>
+  {{ end }}
+  {{ if .figure }}
+  {{ partial .figure . }}
+  {{ end }}
+  {{ if .projects }}
+  <h3 class="pillar-work-heading">Selected projects</h3>
+  <div class="pillar-projects" data-project-filter-group>
+    <div class="project-filters pub-filters" role="group" aria-label="Filter projects by status">
+      <button type="button" class="project-filter pub-filter active" data-filter="all">All</button>
+      <button type="button" class="project-filter pub-filter" data-filter="done">Done</button>
+      <button type="button" class="project-filter pub-filter" data-filter="in_progress">In progress</button>
+      <button type="button" class="project-filter pub-filter" data-filter="planned">Planned</button>
+    </div>
+    <div class="project-grid">
+      {{ range .projects }}
+      <div class="project-card project-card-static project-card-{{ .status }}" data-status="{{ .status }}">
+        <div class="project-content">
+          <span class="project-status-badge project-status-{{ .status }}">{{ if eq .status "done" }}Done{{ else if eq .status "in_progress" }}In progress{{ else }}Planned{{ end }}</span>
+          <h4>{{ .title }}</h4>
+          <p>{{ .description }}</p>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+  {{ end }}
+  {{ if .note }}
+  <p class="pillar-note">{{ .note | safeHTML }}</p>
+  {{ end }}
+</div>
+{{ end }}

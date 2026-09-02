@@ -1,0 +1,51 @@
+<script>
+  (function () {
+    var toggle = document.querySelector('.nav-toggle');
+    var nav = document.querySelector('.nav-links');
+    if (toggle && nav) {
+      toggle.addEventListener('click', function () {
+        var open = nav.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+
+    var filters = document.querySelectorAll('.pub-filter');
+    var cards = document.querySelectorAll('.pub-card[data-pillars]');
+    var sections = document.querySelectorAll('[data-year-section]');
+    if (filters.length && cards.length) {
+      filters.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var filter = btn.getAttribute('data-filter');
+          filters.forEach(function (b) { b.classList.toggle('active', b === btn); });
+          cards.forEach(function (card) {
+            var pillars = (card.getAttribute('data-pillars') || '').split(/\s+/);
+            var show = filter === 'all' || pillars.indexOf(filter) !== -1;
+            card.hidden = !show;
+          });
+          sections.forEach(function (section) {
+            var visible = section.querySelectorAll('.pub-card:not([hidden])');
+            section.hidden = visible.length === 0;
+          });
+        });
+      });
+    }
+
+    document.querySelectorAll('[data-project-filter-group]').forEach(function (group) {
+      var projectFilters = group.querySelectorAll('.project-filter');
+      var projectCards = group.querySelectorAll('.project-card[data-status]');
+      if (!projectFilters.length || !projectCards.length) {
+        return;
+      }
+      projectFilters.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var filter = btn.getAttribute('data-filter');
+          projectFilters.forEach(function (b) { b.classList.toggle('active', b === btn); });
+          projectCards.forEach(function (card) {
+            var status = card.getAttribute('data-status') || '';
+            card.hidden = filter !== 'all' && status !== filter;
+          });
+        });
+      });
+    });
+  })();
+</script>

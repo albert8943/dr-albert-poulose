@@ -1,0 +1,49 @@
+{{ define "main" }}
+<section class="hero">
+  <div class="container">
+    <div class="hero-heading">
+      <h1>{{ site.Params.name }}</h1>
+      <p class="position">{{ site.Params.role }}<br>{{ site.Params.affiliation }}<br>{{ site.Params.university }}</p>
+    </div>
+    <div class="hero-content-grid">
+      <div class="hero-copy">
+        <p class="bio">{{ site.Params.bioIntro }}</p>
+        <p class="research-statement">{{ site.Params.bioCurrent }}</p>
+        <div class="research-interests" aria-labelledby="research-interests-heading">
+          <h2 class="research-interests-label" id="research-interests-heading">Research interests</h2>
+          <ul class="research-interests-list">
+            {{ range site.Params.researchInterests }}
+            <li>
+              <span class="research-interests-marker" aria-hidden="true"></span>
+              <span class="research-interests-text">{{ . }}</span>
+            </li>
+            {{ end }}
+          </ul>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="{{ "images/profile.jpg" | relURL }}" alt="{{ site.Params.name }}" onerror="this.src='{{ "images/profile-placeholder.svg" | relURL }}';this.onerror=null;">
+      </div>
+      <div class="hero-socials-wrap">
+        {{ partial "social-links.html" . }}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="news-section">
+  <div class="container">
+    <div class="section-heading">
+      <h2>News</h2>
+    </div>
+    <div class="news-list">
+      {{ range site.Data.news }}
+      <article class="news-item">
+        <time class="news-date" datetime="{{ .date }}">{{ time .date | time.Format "Jan 02, 2006" }}</time>
+        <p class="news-text">{{ .text | safeHTML }}</p>
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

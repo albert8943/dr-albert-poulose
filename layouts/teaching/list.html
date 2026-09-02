@@ -1,0 +1,36 @@
+{{ define "main" }}
+<section class="page-header">
+  <div class="container">
+    <h1>{{ .Title }}</h1>
+    <p class="page-lead">Undergraduate lecture courses, listed by year.</p>
+  </div>
+</section>
+
+<section class="page-content">
+  <div class="container content-narrow">
+    {{ range site.Data.teaching }}
+    <div class="pub-section">
+      <h2 class="pub-section-title">{{ .year }}</h2>
+      {{ range .items }}
+      <article class="pub-card">
+        <p class="pub-authors">{{ .code }}</p>
+        <h3 class="pub-title">{{ .title }}</h3>
+        <p class="pub-venue"><em>{{ .period }}</em> &middot; {{ .institution }}</p>
+        <p class="pub-keywords">Students: {{ .students }}</p>
+        {{ if .focus }}
+        <details class="pub-abstract">
+          <summary>Course focus</summary>
+          <ul class="pub-focus-list">
+            {{ range .focus }}
+            <li>{{ . }}</li>
+            {{ end }}
+          </ul>
+        </details>
+        {{ end }}
+      </article>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

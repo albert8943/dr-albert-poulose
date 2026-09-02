@@ -1,0 +1,16 @@
+{{ define "main" }}
+<section class="page-header">
+  <div class="container">
+    <h1>{{ .Title }}</h1>
+    <p class="page-lead">My CV is available on request for academic and professional inquiries.</p>
+  </div>
+</section>
+
+<section class="page-content">
+  <div class="container content-narrow">
+    <p class="cv-note">Please submit the form below. I will review your request and share my CV with you via email shortly.</p>
+
+    {{ partial "cv-request-form.html" . }}
+  </div>
+</section>
+{{ end }}

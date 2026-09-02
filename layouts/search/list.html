@@ -1,0 +1,30 @@
+{{ define "main" }}
+<section class="page-header">
+  <div class="container">
+    <h1>{{ .Title }}</h1>
+    <p class="page-lead">Search pages, publications, teaching, and research topics across this site.</p>
+  </div>
+</section>
+
+<section class="page-content">
+  <div class="container content-narrow">
+    <div class="site-search">
+      <label class="site-search-label" for="site-search-input">Search</label>
+      <input
+        class="site-search-input"
+        type="search"
+        id="site-search-input"
+        name="q"
+        placeholder="e.g. PINN, transient stability, teaching, digital twin…"
+        autocomplete="off"
+        spellcheck="false"
+        autofocus>
+      <p class="site-search-status" id="site-search-status" aria-live="polite"></p>
+      <ul class="site-search-results" id="site-search-results"></ul>
+    </div>
+  </div>
+  {{ partial "site-search-index.html" . }}
+  {{ $searchJS := resources.Get "js/search.js" | minify | fingerprint }}
+  <script src="{{ $searchJS.RelPermalink }}" defer></script>
+</section>
+{{ end }}
