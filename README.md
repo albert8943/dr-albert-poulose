@@ -11,10 +11,11 @@ Hugo-based academic portfolio site. Replaces [Google Sites](https://sites.google
 | CV | Public academic CV (print/save as PDF); optional hosted PDF at `static/files/cv/` |
 | Google Analytics | GA4 configured (live site only; skipped on `hugo server`) |
 | Site search | Client-side search at `/search/` (footer link; not in main nav) |
-| GitHub Pages deploy | Workflow ready (`.github/workflows/deploy.yml`); repo not yet pushed |
+| GitHub Pages deploy | Live via GitHub Actions |
+| Custom domain | `albertpoulose.com` connected (Cloudflare DNS → GitHub Pages) |
 
-**Production URL (after deploy):** `https://albert8943.github.io/dr-albert-poulose/`  
-**Planned custom domain:** `albertpoulose.com` (buy and connect; see [Custom domain](#custom-domain))
+**Production URL:** `https://albertpoulose.com/`  
+**Also:** `https://albert8943.github.io/dr-albert-poulose/` (GitHub usually redirects after custom domain is set)
 
 ## Features
 
@@ -29,7 +30,9 @@ Hugo-based academic portfolio site. Replaces [Google Sites](https://sites.google
 
 ## Local preview
 
-This site is built with [Hugo](https://gohugo.io/). Run the dev server on your machine, then open the site at the same path used on GitHub Pages (with `/dr-albert-poulose/`).
+This site is built with [Hugo](https://gohugo.io/). Run the dev server on your machine, then open the site at the **local root URL**.
+
+**Important:** production and local preview both use the site root (no `/dr-albert-poulose/` path). That subpath was only used before the custom domain. Bookmarks like `http://localhost:1313/dr-albert-poulose/` are obsolete and return 404.
 
 ### Prerequisites
 
@@ -76,35 +79,35 @@ $hugo = "$env:LOCALAPPDATA\Microsoft\WinGet\Packages\Hugo.Hugo.Extended_Microsof
 - The server reloads automatically when you edit content or templates.
 - Leave the terminal open while you browse; press **Ctrl+C** to stop.
 
-Local preview uses `config/development/hugo.toml` with the same subpath as production:
+Local preview uses `config/development/hugo.toml`:
 
 | | Local | Production |
 |---|---|---|
-| Base URL | `http://localhost:1313/dr-albert-poulose/` | `https://albert8943.github.io/dr-albert-poulose/` |
+| Base URL | `http://localhost:1313/` | `https://albertpoulose.com/` |
 | Config | `config/development/hugo.toml` | `config/_default/hugo.toml` |
 
 You should see:
 
 ```text
-Web Server is available at http://localhost:1313/dr-albert-poulose/
+Web Server is available at http://localhost:1313/
 ```
 
 ### 2. Open in your browser
 
-Go to **http://localhost:1313/dr-albert-poulose/** (not `http://localhost:1313/` alone; that path has no site when mirroring GitHub Pages).
+Go to **http://localhost:1313/**
 
 | Page | Path | Local URL | Production URL |
 |------|------|-----------|----------------|
-| Home | `/` | http://localhost:1313/dr-albert-poulose/ | https://albert8943.github.io/dr-albert-poulose/ |
-| Research | `/research/` | http://localhost:1313/dr-albert-poulose/research/ | https://albert8943.github.io/dr-albert-poulose/research/ |
-| Publications | `/publications/` | http://localhost:1313/dr-albert-poulose/publications/ | https://albert8943.github.io/dr-albert-poulose/publications/ |
-| Teaching | `/teaching/` | http://localhost:1313/dr-albert-poulose/teaching/ | https://albert8943.github.io/dr-albert-poulose/teaching/ |
-| Experience | `/experience/` | http://localhost:1313/dr-albert-poulose/experience/ | https://albert8943.github.io/dr-albert-poulose/experience/ |
-| Software | `/software/` | http://localhost:1313/dr-albert-poulose/software/ | https://albert8943.github.io/dr-albert-poulose/software/ |
-| Gallery | `/gallery/` | http://localhost:1313/dr-albert-poulose/gallery/ | https://albert8943.github.io/dr-albert-poulose/gallery/ |
-| Contact | `/contact/` | http://localhost:1313/dr-albert-poulose/contact/ | https://albert8943.github.io/dr-albert-poulose/contact/ |
-| CV | `/cv/` | http://localhost:1313/dr-albert-poulose/cv/ | https://albert8943.github.io/dr-albert-poulose/cv/ |
-| Search | `/search/` | http://localhost:1313/dr-albert-poulose/search/ | https://albert8943.github.io/dr-albert-poulose/search/ |
+| Home | `/` | http://localhost:1313/ | https://albertpoulose.com/ |
+| Research | `/research/` | http://localhost:1313/research/ | https://albertpoulose.com/research/ |
+| Publications | `/publications/` | http://localhost:1313/publications/ | https://albertpoulose.com/publications/ |
+| Teaching | `/teaching/` | http://localhost:1313/teaching/ | https://albertpoulose.com/teaching/ |
+| Experience | `/experience/` | http://localhost:1313/experience/ | https://albertpoulose.com/experience/ |
+| Software | `/software/` | http://localhost:1313/software/ | https://albertpoulose.com/software/ |
+| Gallery | `/gallery/` | http://localhost:1313/gallery/ | https://albertpoulose.com/gallery/ |
+| Contact | `/contact/` | http://localhost:1313/contact/ | https://albertpoulose.com/contact/ |
+| CV | `/cv/` | http://localhost:1313/cv/ | https://albertpoulose.com/cv/ |
+| Search | `/search/` | http://localhost:1313/search/ | https://albertpoulose.com/search/ |
 
 ### Install Hugo (other machines)
 
@@ -128,19 +131,30 @@ After installing, close and reopen your terminal, then run `hugo version`.
 
 ### Troubleshooting
 
+**Wrong page, blank page, or 404 at http://localhost:1313/**
+
+Usually an old Hugo process is still serving the pre-domain subpath, or the browser is still on `/dr-albert-poulose/`.
+
+1. Open **http://localhost:1313/** (not `/dr-albert-poulose/`).
+2. Stop every Hugo server (**Ctrl+C** in its terminal, or end `hugo` in Task Manager).
+3. Start again from the project root: `hugo server -D`.
+4. Confirm the terminal prints `Web Server is available at http://localhost:1313/`.
+
+After changing `baseURL` in `config/development/hugo.toml`, restart the server. A long-running process may keep the old path until you restart it.
+
 **http://localhost:1313 does not load the site**
 
-Use the full local base URL: **http://localhost:1313/dr-albert-poulose/**. Local preview mirrors the GitHub Pages subpath.
+Confirm the server is running and open **http://localhost:1313/**.
 
 **The dev server is not running**
 
 Start it (see step 1 above) and leave the terminal open. If port 1313 is busy, use another port and update the base URL to match:
 
 ```powershell
-hugo server -D --port 1314 --baseURL "http://localhost:1314/dr-albert-poulose/"
+hugo server -D --port 1314 --baseURL "http://localhost:1314/"
 ```
 
-Then open http://localhost:1314/dr-albert-poulose/ instead.
+Then open http://localhost:1314/ instead.
 
 ## Build
 
@@ -163,15 +177,16 @@ Output in `public/`. Open `public/index.html` in a browser, or serve the folder 
 
 ```text
 config/
-  _default/hugo.toml      # Site params, menu, GA, research copy
-  development/hugo.toml   # Local baseURL override
+  _default/hugo.toml      # Production baseURL (albertpoulose.com), params, menu, GA
+  development/hugo.toml   # Local baseURL (http://localhost:1313/)
 content/                  # Section front matter (title, description)
 data/                     # Publications, teaching, timeline, news, pillars, gallery
 layouts/                  # Page templates and partials
 assets/css/main.css       # Site styles
-assets/js/search.js         # Client-side search
-static/                   # Images and PDFs (copied as-is to site root)
-.github/workflows/deploy.yml
+assets/js/search.js       # Client-side search
+static/                   # Images, PDFs, CNAME (copied as-is to site root)
+static/CNAME              # albertpoulose.com (GitHub Pages custom domain)
+.github/workflows/deploy.yml  # Builds with --baseURL https://albertpoulose.com/
 ```
 
 Page bodies are mostly driven by `data/*.yaml` and `config/_default/hugo.toml` params, not by Markdown body text.
@@ -180,7 +195,9 @@ Page bodies are mostly driven by `data/*.yaml` and `config/_default/hugo.toml` p
 
 | File | Purpose |
 |------|---------|
-| `config/_default/hugo.toml` | Contact links, bio, research narrative, menu, GA |
+| `config/_default/hugo.toml` | Contact links, bio, research narrative, menu, GA; production `baseURL` |
+| `config/development/hugo.toml` | Local preview `baseURL` (`http://localhost:1313/`) |
+| `static/CNAME` | Custom domain hostname for GitHub Pages (`albertpoulose.com`) |
 | `data/publications.yaml` | Papers and theses grouped by year; pillar tags for filters |
 | `data/research_pillars.yaml` | Three pillars, project cards (`status`: `done`, `in_progress`, `planned`) |
 | `data/teaching.yaml` | Courses |
@@ -214,25 +231,48 @@ Contact does **not** list a home address or phone numbers. Institutional email i
 
 ## Custom domain
 
-The live GitHub Pages URL can stay as-is until DNS is ready. To attach `albertpoulose.com` later:
+Canonical public URL: **https://albertpoulose.com/**  
+Registrar: Cloudflare Registrar. Hosting: GitHub Pages (not Cloudflare Workers/Pages).
 
-1. Buy the domain (Cloudflare Registrar is a common choice).
-2. Point DNS to GitHub Pages (A/ALIAS/CNAME per GitHub’s custom-domain docs).
-3. Add a `CNAME` file in `static/` containing `albertpoulose.com`.
-4. Update `baseURL` in `config/_default/hugo.toml` and the `hugo --baseURL` flag in `.github/workflows/deploy.yml`.
-5. In the GitHub repo: Settings → Pages → Custom domain.
+### DNS (Cloudflare)
 
-That keeps the printed website URL stable if the host later moves from GitHub Pages to Vercel or elsewhere.
+Use **DNS only** (grey cloud), not Proxied (orange cloud), so GitHub can verify the domain and issue HTTPS.
+
+| Type | Name | Content | Proxy |
+|------|------|---------|-------|
+| A | `@` | `185.199.108.153` | DNS only |
+| A | `@` | `185.199.109.153` | DNS only |
+| A | `@` | `185.199.110.153` | DNS only |
+| A | `@` | `185.199.111.153` | DNS only |
+| CNAME | `www` | `albert8943.github.io` | DNS only |
+
+Those four A-record IPs are GitHub Pages’ published addresses for apex domains. Ignore Cloudflare’s empty-DNS email (MX) recommendations unless you later add custom email for this domain.
+
+### GitHub Pages
+
+1. Repo **Settings → Pages → Custom domain:** `albertpoulose.com`
+2. Wait for **DNS check successful**
+3. Enable **Enforce HTTPS** after the certificate is issued (may take minutes to hours; the checkbox stays grey until then)
+
+### Repo files that must stay in sync
+
+| File | Value |
+|------|--------|
+| `config/_default/hugo.toml` → `baseURL` | `https://albertpoulose.com/` |
+| `config/development/hugo.toml` → `baseURL` | `http://localhost:1313/` |
+| `.github/workflows/deploy.yml` → `hugo --baseURL` | `https://albertpoulose.com/` |
+| `static/CNAME` | `albertpoulose.com` |
+
+If the public hostname ever changes, update all four together, then push `main` and restart any local `hugo server`.
 
 ## Deploy to GitHub Pages
 
-1. Create repo `albert8943/dr-albert-poulose` on GitHub (public)
-2. Commit and push this folder to `main` (or `master`; the workflow supports both)
-3. Settings → Pages → Source: **GitHub Actions**
-4. Push triggers `.github/workflows/deploy.yml`
-5. Site URL: `https://albert8943.github.io/dr-albert-poulose/`
+Push to `main` triggers `.github/workflows/deploy.yml` (builds with production `baseURL`).
 
-After deploy, verify the CV page, search, contact details, and GA Realtime (Analytics may take a few minutes to appear).
+Live site: **https://albertpoulose.com/**  
+Fallback GitHub URL: `https://albert8943.github.io/dr-albert-poulose/` (often redirects once the custom domain is set).
+
+After deploy, check Home, Research, Publications, CV, Search, and images. When HTTPS is ready, confirm the lock icon on `https://albertpoulose.com/`.
 
 ## Maintenance
 

@@ -30,7 +30,7 @@ jobs:
           extended: true
 
       - name: Build
-        run: hugo --minify --baseURL "https://albert8943.github.io/dr-albert-poulose/"
+        run: hugo --minify --baseURL "https://albertpoulose.com/"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
