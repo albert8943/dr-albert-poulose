@@ -11,6 +11,13 @@
   var index = [];
   try {
     index = JSON.parse(indexEl.textContent);
+    // Older builds accidentally double-encoded the index as a JSON string.
+    if (typeof index === "string") {
+      index = JSON.parse(index);
+    }
+    if (!Array.isArray(index)) {
+      throw new Error("Search index is not an array.");
+    }
   } catch (error) {
     statusEl.textContent = "Search index could not be loaded.";
     return;

@@ -46,4 +46,5 @@
   {{- $entries = $entries | append (dict "title" .role "url" (relURL "education/") "section" "Education & Work" "text" $text) -}}
 {{- end -}}
 
-<script type="application/json" id="site-search-index">{{ $entries | jsonify }}</script>
+{{- $json := $entries | jsonify -}}
+<script type="application/json" id="site-search-index">{{ $json | safeJS }}</script>
