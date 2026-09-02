@@ -101,7 +101,7 @@
         <h3>Research software</h3>
         {{ range hugo.Data.software }}
         <div class="cv-item">
-          <p><strong>{{ .title }}</strong> ({{ if eq .status "available" }}available{{ else if eq .status "in_progress" }}in progress{{ else }}planned{{ end }}) &mdash; {{ .short }}</p>
+          <p><strong>{{ .title }}</strong> ({{ if eq .status "available" }}available{{ else if eq .status "in_progress" }}in progress{{ else }}planned{{ end }}): {{ .short }}</p>
         </div>
         {{ end }}
       </section>

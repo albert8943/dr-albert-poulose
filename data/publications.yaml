@@ -3,7 +3,7 @@
     - type: journal
       pillars: ["01", "02", "03"]
       selected: true
-      homepageTitle: "PINN / TSA / CCT — IEEE Access, 2026"
+      homepageTitle: "PINN / TSA / CCT (IEEE Access, 2026)"
       authors: "A. Poulose and S. Kim"
       title: "Unified Physics-Informed Trajectory Surrogate for Transient Stability Assessment and Critical Clearing Time Estimation on a Single-Machine Infinite-Bus Benchmark"
       venue: "IEEE Access, vol. 14, pp. 122177–122196"
@@ -43,7 +43,7 @@
     - type: journal
       pillars: ["01"]
       selected: true
-      homepageTitle: "GFM/GFL transient energy functions — IEEE Access, 2024"
+      homepageTitle: "GFM/GFL transient energy functions (IEEE Access, 2024)"
       authors: "A. Poulose and S. Kim"
       title: "Direct Transient Stability Assessment of Grid-Connected Voltage Source Converters: A Transient Energy Functions Perspective"
       venue: "IEEE Access, vol. 12, pp. 133545–133556"
@@ -58,7 +58,7 @@
     - type: journal
       pillars: ["01"]
       selected: true
-      homepageTitle: "Renewable-rich transient-stability review — Energies, 2023"
+      homepageTitle: "Renewable-rich transient-stability review (Energies, 2023)"
       authors: "A. Poulose and S. Kim"
       title: "Transient Stability Analysis and Enhancement Techniques of Renewable-Rich Power Grids"
       venue: "Energies, vol. 16, no. 5, p. 2495"

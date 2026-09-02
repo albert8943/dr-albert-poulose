@@ -1,6 +1,6 @@
-# Dr. Albert Poulose — Personal Website
+# Dr. Albert Poulose: Personal Website
 
-Hugo-based academic portfolio site. Replaces [Google Sites](https://sites.google.com/view/albertpoulose/home) with a faster, cleaner layout inspired by [baolihao.org](https://baolihao.org/).
+Hugo-based academic portfolio site. Replaces [Google Sites](https://sites.google.com/view/albertpoulose/home) with a faster, cleaner layout.
 
 ## Current status
 
@@ -18,14 +18,14 @@ Hugo-based academic portfolio site. Replaces [Google Sites](https://sites.google
 
 ## Features
 
-- **Home** — research identity headline, featured PINN paper, selected publications, software, recent news
-- **Research** — one-paragraph vision; three programs; visual pipelines; current / building-toward; long notes collapsed
-- **Publications** — grouped by year; collapsible abstracts; Scholar/ORCID/Scopus; filter by research pillar
-- **Teaching** — interests, short philosophy, and courses
-- **Experience** — appointments and education (`/education/` redirects here)
-- **Software** — PINN-TSA and related prototypes
-- **CV** — public, one-click print/save; optional PDF download
-- **Contact** and **Gallery** — linked from the footer (institutional email first; no home address or phone numbers)
+- **Home:** research identity headline, featured PINN paper, selected publications, software, recent news
+- **Research:** one-paragraph vision; three programs; visual pipelines; current / building-toward; long notes collapsed
+- **Publications:** grouped by year; collapsible abstracts; Scholar/ORCID/Scopus; filter by research pillar
+- **Teaching:** interests, short philosophy, and courses
+- **Experience:** appointments and education (`/education/` redirects here)
+- **Software:** PINN-TSA and related prototypes
+- **CV:** public, one-click print/save; optional PDF download
+- **Contact** and **Gallery:** linked from the footer (institutional email first; no home address or phone numbers)
 
 ## Local preview
 
@@ -53,7 +53,7 @@ Expected output:
 hugo v0.165.0+extended windows/amd64
 ```
 
-If `hugo` is not recognized, Hugo is still installed — your terminal may not have WinGet’s `Links` folder on `PATH` yet. Use the full path in step 1 below, or close and reopen your terminal (or restart Cursor) and try `hugo version` again.
+If `hugo` is not recognized, Hugo is still installed. Your terminal may not have WinGet’s `Links` folder on `PATH` yet. Use the full path in step 1 below, or close and reopen your terminal (or restart Cursor) and try `hugo version` again.
 
 ### 1. Start the dev server
 
@@ -91,7 +91,7 @@ Web Server is available at http://localhost:1313/dr-albert-poulose/
 
 ### 2. Open in your browser
 
-Go to **http://localhost:1313/dr-albert-poulose/** (not `http://localhost:1313/` alone — that path has no site when mirroring GitHub Pages).
+Go to **http://localhost:1313/dr-albert-poulose/** (not `http://localhost:1313/` alone; that path has no site when mirroring GitHub Pages).
 
 | Page | Path | Local URL | Production URL |
 |------|------|-----------|----------------|
@@ -110,19 +110,19 @@ Go to **http://localhost:1313/dr-albert-poulose/** (not `http://localhost:1313/`
 
 Only needed if Hugo is not installed yet. Requires [Hugo Extended](https://gohugo.io/installation/) **0.165+** (the extended build includes SCSS support).
 
-**Windows — winget (recommended):**
+**Windows (winget, recommended):**
 
 ```powershell
 winget install Hugo.Hugo.Extended
 ```
 
-**Windows — Chocolatey:**
+**Windows (Chocolatey):**
 
 ```powershell
 choco install hugo-extended
 ```
 
-**Manual download:** [Hugo installation — Windows](https://gohugo.io/installation/windows/)
+**Manual download:** [Hugo installation for Windows](https://gohugo.io/installation/windows/)
 
 After installing, close and reopen your terminal, then run `hugo version`.
 
@@ -130,7 +130,7 @@ After installing, close and reopen your terminal, then run `hugo version`.
 
 **http://localhost:1313 does not load the site**
 
-Use the full local base URL: **http://localhost:1313/dr-albert-poulose/** — local preview mirrors the GitHub Pages subpath.
+Use the full local base URL: **http://localhost:1313/dr-albert-poulose/**. Local preview mirrors the GitHub Pages subpath.
 
 **The dev server is not running**
 
@@ -144,7 +144,7 @@ Then open http://localhost:1314/dr-albert-poulose/ instead.
 
 ## Build
 
-Requires Hugo Extended (already installed on this machine — see [Local preview](#local-preview)).
+Requires Hugo Extended (already installed on this machine; see [Local preview](#local-preview)).
 
 ```powershell
 hugo --minify
@@ -207,8 +207,8 @@ Photos and publication PDFs live under `static/`. Hugo copies them to the site r
    - `isap-2019-slides.pdf`
    - `iciccs-2019-paper.pdf`
    - `iciccs-2019-slides.pdf` (optional)
-5. **Academic CV** — the `/cv/` page is public. Click **Download Academic CV** to print or save as PDF. To add a hosted PDF later, put `albert-poulose-cv.pdf` in `static/files/cv/`.
-6. **Google Analytics** — GA4 ID in `[services.googleAnalytics]` in `hugo.toml`. Analytics runs on the live site only (not localhost).
+5. **Academic CV:** the `/cv/` page is public. Click **Download Academic CV** to print or save as PDF. To add a hosted PDF later, put `albert-poulose-cv.pdf` in `static/files/cv/`.
+6. **Google Analytics:** GA4 ID in `[services.googleAnalytics]` in `hugo.toml`. Analytics runs on the live site only (not localhost).
 
 Contact does **not** list a home address or phone numbers. Institutional email is shown first.
 
@@ -227,7 +227,7 @@ That keeps the printed website URL stable if the host later moves from GitHub Pa
 ## Deploy to GitHub Pages
 
 1. Create repo `albert8943/dr-albert-poulose` on GitHub (public)
-2. Commit and push this folder to `main` (or `master` — the workflow supports both)
+2. Commit and push this folder to `main` (or `master`; the workflow supports both)
 3. Settings → Pages → Source: **GitHub Actions**
 4. Push triggers `.github/workflows/deploy.yml`
 5. Site URL: `https://albert8943.github.io/dr-albert-poulose/`

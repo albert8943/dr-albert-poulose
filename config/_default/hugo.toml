@@ -21,7 +21,7 @@ disableKinds = ['taxonomy', 'term']
   githubPinn = 'https://github.com/albert8943/unified-physics-informed-neural-surrogate-smib-tsa-cct-benchmark'
   cvUpdated = 'September 2026'
   cvPdf = 'files/cv/albert-poulose-cv.pdf'
-  bioIntro = 'I work on dynamic security of converter-dominated power systems—whether the grid stays stable after a fault and whether margins such as critical clearing time (CCT) remain adequate.'
+  bioIntro = 'I work on dynamic security of converter-dominated power systems: whether the grid stays stable after a fault, and whether margins such as critical clearing time (CCT) remain adequate.'
   bioCurrent = 'I pursue this through stability theory for grid-forming (GFM) and grid-following (GFL) converters, physics-informed surrogates for transient stability assessment (TSA) and CCT screening, and grid digital twins.'
   researchInterests = [
     'Dynamic security and transient stability of converter-dominated grids',
@@ -63,7 +63,7 @@ disableKinds = ['taxonomy', 'term']
   researchAssessmentTitle = 'Assessment concepts'
   researchAssessmentIntro = 'For readers who want the technical background: how dynamic security maps to IEEE/CIGRE stability classification, transient stability analysis (TSA), and operational margins such as CCT.'
   researchStabilityTitle = 'Where this sits in power system stability'
-  researchStabilityIntro = 'In the IEEE/CIGRE framework, transient rotor-angle behaviour after a fault belongs under rotor-angle stability. The 2020 revision adds converter-driven and resonance stability. These categories help place TSA and CCT—the main assessment tools in my current work—within the wider stability picture.'
+  researchStabilityIntro = 'In the IEEE/CIGRE framework, transient rotor-angle behaviour after a fault belongs under rotor-angle stability. The 2020 revision adds converter-driven and resonance stability. These categories help place TSA and CCT, the main assessment tools in my current work, within the wider stability picture.'
   researchTsaTitle = 'Transient stability and margins (current focus)'
   researchTsaNote = 'The study period is usually about 3 to 5 seconds in classical multimachine TSA, although it may extend to about 10 seconds for very large systems with dominant interarea modes. With converters, the critical post-fault interval is often shorter, and assessment may need to include converter-driven phenomena (Hatziargyri et al., 2021) as well as rotor-angle behaviour.'
   researchMarginTitle = 'Critical clearing time (CCT) as a security margin'

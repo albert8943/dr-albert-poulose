@@ -62,7 +62,7 @@
   description: "Measurement-informed, operating-point assessment of TSA, CCT, and security margins."
   tags: "PMU-informed models • online security assessment • decision support"
   problem: "Dynamic security is an operating-point question: given how the grid is running now, is the post-disturbance margin still adequate?"
-  approach: "I treat a grid digital twin as a living model of the dynamics—not a 3D plant replica—that can be refreshed with measurements and used to screen contingencies faster than repeating full time-domain simulation for every case."
+  approach: "I treat a grid digital twin as a living model of the dynamics, not a 3D plant replica, that can be refreshed with measurements and used to screen contingencies faster than repeating full time-domain simulation for every case."
   currentDirection: "Build the loop from PMU-informed parameter estimation through a physics-informed surrogate to operator-facing security margins."
   pipeline:
     - "Grid / PMUs"
