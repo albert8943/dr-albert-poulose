@@ -2,12 +2,18 @@
 <section class="page-header">
   <div class="container">
     <h1>{{ .Title }}</h1>
-    <p class="page-lead">Journal articles, conference papers, and theses, listed by year. Filter by research theme. IEEE papers use the DOI link; if IEEE Xplore shows &ldquo;Unusual traffic (Error 418)&rdquo;, try again in a normal browser, use your university library access, or open the Scholar link.</p>
+    <p class="page-lead">Journal articles, conference papers, and theses, listed by year. Abstracts are collapsed so the record can be scanned at once. IEEE papers use the DOI link; if IEEE Xplore shows &ldquo;Unusual traffic (Error 418)&rdquo;, try again in a normal browser, use your university library access, or open the Scholar link.</p>
   </div>
 </section>
 
 <section class="page-content">
   <div class="container content-narrow">
+    <div class="pub-toolbar">
+      <a class="btn btn-sm" href="{{ site.Params.scholar }}" target="_blank" rel="noopener noreferrer">Google Scholar &rarr;</a>
+      <a class="btn btn-sm btn-outline" href="{{ site.Params.orcid }}" target="_blank" rel="noopener noreferrer">ORCID</a>
+      <a class="btn btn-sm btn-outline" href="{{ site.Params.scopus }}" target="_blank" rel="noopener noreferrer">Scopus</a>
+    </div>
+
     <div class="pub-filters" role="group" aria-label="Filter publications by research pillar">
       <button type="button" class="pub-filter active" data-filter="all">All</button>
       <button type="button" class="pub-filter" data-filter="01">01 Stability</button>
@@ -16,7 +22,7 @@
       <button type="button" class="pub-filter" data-filter="other">Other</button>
     </div>
 
-    {{ range site.Data.publications }}
+    {{ range hugo.Data.publications }}
     <div class="pub-section" data-year-section>
       <h2 class="pub-section-title">{{ .year }}</h2>
       {{ range .items }}
@@ -54,6 +60,9 @@
           <a class="btn btn-sm btn-outline" href="https://scholar.google.com/scholar?q={{ .doi | urlquery }}" target="_blank" rel="noopener noreferrer">Scholar</a>
           {{ else if .url }}
           <a class="btn btn-sm" href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ if eq .type "thesis" }}Thesis{{ else }}Link{{ end }}</a>
+          {{ end }}
+          {{ if .code }}
+          <a class="btn btn-sm btn-outline" href="{{ .code }}" target="_blank" rel="noopener noreferrer">Code</a>
           {{ end }}
           {{ if .pdf }}
           <a class="btn btn-sm btn-outline" href="{{ strings.TrimPrefix "/" .pdf | relURL }}" target="_blank" rel="noopener noreferrer">{{ if eq .type "thesis" }}Thesis PDF{{ else }}PDF{{ end }}</a>

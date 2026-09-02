@@ -30,6 +30,13 @@
       });
     }
 
+    var printBtn = document.getElementById('cv-print-btn');
+    if (printBtn) {
+      printBtn.addEventListener('click', function () {
+        window.print();
+      });
+    }
+
     document.querySelectorAll('[data-project-filter-group]').forEach(function (group) {
       var projectFilters = group.querySelectorAll('.project-filter');
       var projectCards = group.querySelectorAll('.project-card[data-status]');

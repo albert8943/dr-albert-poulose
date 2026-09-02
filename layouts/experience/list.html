@@ -2,14 +2,15 @@
 <section class="page-header">
   <div class="container">
     <h1>{{ .Title }}</h1>
+    <p class="page-lead">Academic appointments and education. Earlier roles are listed separately.</p>
   </div>
 </section>
 
 <section class="page-content">
   <div class="container content-narrow">
-    <h2 class="timeline-tier-title">Professional</h2>
+    <h2 class="timeline-tier-title">Appointments</h2>
     <div class="timeline">
-      {{ range site.Data.timeline.professional }}
+      {{ range hugo.Data.timeline.appointments }}
       <article class="timeline-card">
         <time class="timeline-period">{{ .period }}</time>
         <h3>{{ .role }}</h3>
@@ -23,9 +24,25 @@
       {{ end }}
     </div>
 
-    <h2 class="timeline-tier-title">Early Career</h2>
+    <h2 class="timeline-tier-title">Education</h2>
+    <div class="timeline">
+      {{ range hugo.Data.timeline.education }}
+      <article class="timeline-card">
+        <time class="timeline-period">{{ .period }}</time>
+        <h3>{{ .role }}</h3>
+        <p class="timeline-institution">{{ .institution }}</p>
+        {{ if .highlights }}
+        <ul>
+          {{ range .highlights }}<li>{{ . }}</li>{{ end }}
+        </ul>
+        {{ end }}
+      </article>
+      {{ end }}
+    </div>
+
+    <h2 class="timeline-tier-title">Earlier appointments</h2>
     <div class="timeline timeline-compact">
-      {{ range site.Data.timeline.early_career }}
+      {{ range hugo.Data.timeline.early_career }}
       <article class="timeline-card timeline-card-compact">
         <time class="timeline-period">{{ .period }}</time>
         <h3>{{ .role }}</h3>
@@ -37,7 +54,7 @@
     <details class="timeline-accordion">
       <summary>Earlier education</summary>
       <div class="timeline timeline-compact">
-        {{ range site.Data.timeline.school }}
+        {{ range hugo.Data.timeline.school }}
         <article class="timeline-card timeline-card-compact">
           <time class="timeline-period">{{ .period }}</time>
           <h3>{{ .role }}</h3>

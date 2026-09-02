@@ -1,16 +1,111 @@
 {{ define "main" }}
-<section class="page-header">
+{{ $cvPdfPath := printf "static/%s" site.Params.cvPdf }}
+{{ $hasPdf := and site.Params.cvPdf (os.FileExists $cvPdfPath) }}
+<section class="page-header no-print">
   <div class="container">
     <h1>{{ .Title }}</h1>
-    <p class="page-lead">My CV is available on request for academic and professional inquiries.</p>
+    <p class="page-lead">Academic CV for postdoctoral, faculty, and research inquiries. Last updated: {{ site.Params.cvUpdated }}.</p>
   </div>
 </section>
 
-<section class="page-content">
+<section class="page-content cv-page">
   <div class="container content-narrow">
-    <p class="cv-note">Please submit the form below. I will review your request and share my CV with you via email shortly.</p>
+    <div class="cv-actions no-print">
+      {{ if $hasPdf }}
+      <a class="btn" href="{{ site.Params.cvPdf | relURL }}" download>Download Academic CV</a>
+      {{ end }}
+      <button type="button" class="btn{{ if $hasPdf }} btn-outline{{ end }}" id="cv-print-btn">{{ if $hasPdf }}Print{{ else }}Download Academic CV{{ end }}</button>
+      {{ if not $hasPdf }}
+      <p class="cv-note">Opens the print dialog. Choose <strong>Save as PDF</strong> to keep a copy. Last updated {{ site.Params.cvUpdated }}.</p>
+      {{ end }}
+    </div>
 
-    {{ partial "cv-request-form.html" . }}
+    <article class="cv-document">
+      <header class="cv-doc-header">
+        <h2>{{ site.Params.name }}</h2>
+        <p class="cv-identity">{{ site.Params.researchIdentity }}</p>
+        <p>{{ site.Params.role }} | {{ site.Params.university }}</p>
+        <p class="cv-contact-line">
+          <a href="mailto:{{ site.Params.email }}">{{ site.Params.email }}</a>
+          {{ with site.Params.emailPersonal }} · <a href="mailto:{{ . }}">{{ . }}</a>{{ end }}
+        </p>
+        <p class="cv-contact-line">
+          <a href="{{ site.Params.scholar }}" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+          · <a href="{{ site.Params.orcid }}" target="_blank" rel="noopener noreferrer">ORCID</a>
+          · <a href="{{ site.Params.github }}" target="_blank" rel="noopener noreferrer">GitHub</a>
+          · <a href="{{ site.Params.linkedin }}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </p>
+      </header>
+
+      <section class="cv-block">
+        <h3>Research identity</h3>
+        <p>{{ site.Params.bioIntro }} {{ site.Params.bioCurrent }}</p>
+      </section>
+
+      <section class="cv-block">
+        <h3>Appointments</h3>
+        {{ range hugo.Data.timeline.appointments }}
+        <div class="cv-item">
+          <p class="cv-item-meta">{{ .period }}</p>
+          <p><strong>{{ .role }}</strong>, {{ .institution }}</p>
+          {{ if .highlights }}
+          <ul>
+            {{ range .highlights }}<li>{{ . }}</li>{{ end }}
+          </ul>
+          {{ end }}
+        </div>
+        {{ end }}
+      </section>
+
+      <section class="cv-block">
+        <h3>Education</h3>
+        {{ range hugo.Data.timeline.education }}
+        <div class="cv-item">
+          <p class="cv-item-meta">{{ .period }}</p>
+          <p><strong>{{ .role }}</strong>, {{ .institution }}</p>
+          {{ if .highlights }}
+          <ul>
+            {{ range .highlights }}<li>{{ . }}</li>{{ end }}
+          </ul>
+          {{ end }}
+        </div>
+        {{ end }}
+      </section>
+
+      <section class="cv-block">
+        <h3>Selected publications</h3>
+        {{ range hugo.Data.publications }}
+          {{ range .items }}
+            {{ if .selected }}
+            <div class="cv-item">
+              <p>{{ .authors }}, &ldquo;{{ .title }},&rdquo; <em>{{ .venue }}</em>{{ if .doi }}. doi: {{ .doi }}{{ end }}.</p>
+            </div>
+            {{ end }}
+          {{ end }}
+        {{ end }}
+        <p class="cv-more no-print"><a href="{{ "publications/" | relURL }}">Full publication list &rarr;</a></p>
+      </section>
+
+      <section class="cv-block">
+        <h3>Teaching</h3>
+        {{ range hugo.Data.teaching }}
+          {{ range .items }}
+          <div class="cv-item">
+            <p><strong>{{ .title }}</strong> ({{ .code }}) &middot; {{ .period }} &middot; {{ .institution }} &middot; {{ .students }} students</p>
+          </div>
+          {{ end }}
+        {{ end }}
+      </section>
+
+      <section class="cv-block">
+        <h3>Research software</h3>
+        {{ range hugo.Data.software }}
+        <div class="cv-item">
+          <p><strong>{{ .title }}</strong> ({{ if eq .status "available" }}available{{ else if eq .status "in_progress" }}in progress{{ else }}planned{{ end }}) &mdash; {{ .short }}</p>
+        </div>
+        {{ end }}
+      </section>
+    </article>
   </div>
 </section>
 {{ end }}

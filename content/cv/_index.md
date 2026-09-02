@@ -1,4 +1,4 @@
 ---
 title: CV
-description: Request a CV for academic or professional inquiries via the web form or email.
+description: Academic CV for postdoctoral, faculty, and research inquiries.
 ---

@@ -1,20 +1,26 @@
 {{- $entries := slice -}}
 
-{{- $homeText := printf "%s %s %s" site.Params.bioIntro site.Params.bioCurrent (delimit site.Params.researchInterests " ") -}}
+{{- $homeText := printf "%s %s %s %s" site.Params.researchIdentity site.Params.bioIntro site.Params.bioCurrent (delimit site.Params.researchInterests " ") -}}
 {{- $entries = $entries | append (dict "title" site.Params.name "url" site.Home.RelPermalink "section" "Home" "text" $homeText) -}}
 
 {{- range where site.RegularPages "Section" "!=" "search" -}}
   {{- $text := "" -}}
   {{- if eq .Section "research" -}}
-    {{- $text = printf "%s %s %s %s" site.Params.researchProblem site.Params.researchHow site.Params.researchDefinition site.Params.researchMarginIntro -}}
+    {{- $text = printf "%s %s %s" site.Params.researchVision site.Params.researchHow site.Params.researchDefinition -}}
   {{- else if eq .Section "contact" -}}
-    {{- $text = printf "%s %s %s" site.Params.email site.Params.emailKnu site.Params.currentAddress -}}
+    {{- $text = printf "%s %s %s" site.Params.email site.Params.emailPersonal site.Params.currentAddress -}}
+  {{- else if eq .Section "software" -}}
+    {{- $text = "PINN-TSA CCT screening digital twin research software" -}}
   {{- end -}}
   {{- $entries = $entries | append (dict "title" .Title "url" .RelPermalink "section" (humanize .Section) "text" $text) -}}
 {{- end -}}
 
 {{- range hugo.Data.research_pillars -}}
-  {{- $entries = $entries | append (dict "title" .title "url" (relURL "research/") "section" "Research" "text" (printf "%s %s" .description .body)) -}}
+  {{- $entries = $entries | append (dict "title" .title "url" (relURL "research/") "section" "Research" "text" (printf "%s %s %s" .description (.problem | default "") .body)) -}}
+{{- end -}}
+
+{{- range hugo.Data.software -}}
+  {{- $entries = $entries | append (dict "title" .title "url" (relURL "software/") "section" "Software" "text" (printf "%s %s %s" .short .description .stack)) -}}
 {{- end -}}
 
 {{- range hugo.Data.publications -}}
@@ -31,19 +37,19 @@
   {{- end -}}
 {{- end -}}
 
-{{- range hugo.Data.timeline.professional -}}
+{{- range hugo.Data.timeline.appointments -}}
   {{- $text := printf "%s %s %s" (.period | default "") (.institution | default "") (delimit (.highlights | default slice) " ") -}}
-  {{- $entries = $entries | append (dict "title" .role "url" (relURL "education/") "section" "Education & Work" "text" $text) -}}
+  {{- $entries = $entries | append (dict "title" .role "url" (relURL "experience/") "section" "Experience" "text" $text) -}}
+{{- end -}}
+
+{{- range hugo.Data.timeline.education -}}
+  {{- $text := printf "%s %s %s" (.period | default "") (.institution | default "") (delimit (.highlights | default slice) " ") -}}
+  {{- $entries = $entries | append (dict "title" .role "url" (relURL "experience/") "section" "Experience" "text" $text) -}}
 {{- end -}}
 
 {{- range hugo.Data.timeline.early_career -}}
   {{- $text := printf "%s %s" (.period | default "") (.institution | default "") -}}
-  {{- $entries = $entries | append (dict "title" .role "url" (relURL "education/") "section" "Education & Work" "text" $text) -}}
-{{- end -}}
-
-{{- range hugo.Data.timeline.school -}}
-  {{- $text := printf "%s %s" (.period | default "") (.institution | default "") -}}
-  {{- $entries = $entries | append (dict "title" .role "url" (relURL "education/") "section" "Education & Work" "text" $text) -}}
+  {{- $entries = $entries | append (dict "title" .role "url" (relURL "experience/") "section" "Experience" "text" $text) -}}
 {{- end -}}
 
 {{- $json := $entries | jsonify -}}

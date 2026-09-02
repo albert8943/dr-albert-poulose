@@ -1,0 +1,10 @@
+<figure class="research-pipeline" aria-label="{{ .title }} workflow">
+  <div class="pipeline-track">
+    {{ range $i, $step := .pipeline }}
+    {{ if $i }}
+    <span class="pipeline-arrow" aria-hidden="true">&darr;</span>
+    {{ end }}
+    <div class="pipeline-node">{{ $step }}</div>
+    {{ end }}
+  </div>
+</figure>

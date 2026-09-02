@@ -1,4 +1,4 @@
 ---
 title: Teaching
-description: Undergraduate lecture courses, listed by year.
+description: Teaching interests, a short teaching philosophy, and undergraduate lecture courses.
 ---

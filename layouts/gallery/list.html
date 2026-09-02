@@ -2,12 +2,13 @@
 <section class="page-header">
   <div class="container">
     <h1>{{ .Title }}</h1>
+    <p class="page-lead">Academic activities: laboratory work, supervision, and graduation. Conference, teaching, and collaboration photos will be added here as the record grows.</p>
   </div>
 </section>
 
 <section class="page-content gallery-page">
   <div class="container">
-    {{ range site.Data.gallery }}
+    {{ range hugo.Data.gallery }}
     <div class="gallery-section">
       <h2>{{ .title }}</h2>
       <div class="gallery-grid">

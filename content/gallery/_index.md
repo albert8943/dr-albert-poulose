@@ -1,4 +1,4 @@
 ---
 title: Gallery
-description: Photos from research, graduation, and academic life.
+description: Academic activities including laboratory work, supervision, and graduation.
 ---

@@ -2,6 +2,15 @@
   id: "modern-grid-stability"
   title: "Modern Grid Stability"
   description: "Physics and criteria for post-fault rotor-angle security in conventional and converter-connected grids."
+  tags: "GFM/GFL • transient stability • energy functions • CCT"
+  problem: "After a fault, can conventional machines and GFM/GFL converters keep synchronism, and is a margin such as critical clearing time still adequate?"
+  approach: "I form model-based criteria rather than a black-box stable/unstable label: synchronizing-torque indices in multimachine networks, and Lyapunov energy functions for GFM and GFL voltage source converters, including CCT of the GFM unit when a GFL converter is in parallel."
+  currentDirection: "Extend energy-function and torque-based criteria for mixed GFM/GFL plants, and keep those criteria as the physics that later AI models and digital twins must respect."
+  pipeline:
+    - "Fault"
+    - "GFM + GFL converter system"
+    - "Energy-function criterion"
+    - "Critical clearing time"
   body: >-
     This is the physics and criteria layer. Dynamic security is decided with models and margins, not with a black-box label of stable or unstable. I work on rotor-angle transient stability in two settings. In conventional multimachine networks I form a model-based transient stability index from synchronizing-torque contributions among generators, interpreted through electromechanical oscillation modes, so that a security margin can be read in torque terms and checked against CCT. In converter-connected systems I use Lyapunov-based transient energy functions for direct assessment of grid-forming (GFM) and grid-following (GFL) voltage source converters (VSCs), including CCT of the GFM unit when a GFL converter is in parallel. A review of analysis and enhancement methods for renewable-rich, low-inertia grids sits beside that work, because GFL and GFM pose different transient-stability problems. These criteria are what later AI models are asked to respect, and what a digital twin is asked to monitor.
   figure: "research-fig-01.html"
@@ -23,6 +32,15 @@
   id: "scientific-ai"
   title: "Scientific AI for Grid Dynamics"
   description: "Physics-informed surrogates that speed TSA and CCT without discarding the swing equations."
+  tags: "PINNs • system identification • surrogate models • uncertainty"
+  problem: "Time-domain simulation remains the reference for TSA and CCT, but it is too expensive when many post-fault trajectories or clearing times must be screened."
+  approach: "I train a physics-informed neural network to predict rotor-angle trajectories on an SMIB benchmark, conditioned on electrical power, initial conditions, and machine parameters. The same checkpoint is used for nominal-clearing TSA and for surrogate-assisted CCT search."
+  currentDirection: "Move from SMIB trajectory surrogates toward multimachine TSA, inertia/damping estimation, and uncertainty-aware screening that still respects swing physics."
+  pipeline:
+    - "Grid parameters + operating condition"
+    - "PINN"
+    - "δ(t), ω(t)"
+    - "TSA / CCT"
   body: >-
     Time-domain simulation remains the reference for TSA and CCT, but it is expensive when many post-fault trajectories or clearing times must be screened. This part asks whether scientific AI can speed that assessment without treating the grid as a black box. The main result is a physics-informed neural network (PINN) that predicts rotor-angle trajectories on a single-machine infinite-bus (SMIB) benchmark, conditioned on electrical power, initial conditions, and machine parameters. The same trained checkpoint is used for nominal-clearing TSA and for surrogate-assisted CCT search. Trajectory accuracy improves over a width-matched standard neural network, but better trajectories do not by themselves give protection-grade CCT; the surrogate is aimed at planning-oriented screening and comparative margin studies. A technical briefing on machine learning for TSA places that work among classification versus regression models, PINNs, and graph-based methods, and states the limits that still matter: scarce data, generalisation, and interpretability. The physics comes from pillar 01. Fast trajectories are what pillar 03 would run online.
   figure: "research-fig-02.html"
@@ -42,6 +60,17 @@
   id: "grid-digital-twins"
   title: "Grid Digital Twins"
   description: "Measurement-informed, operating-point assessment of TSA, CCT, and security margins."
+  tags: "PMU-informed models • online security assessment • decision support"
+  problem: "Dynamic security is an operating-point question: given how the grid is running now, is the post-disturbance margin still adequate?"
+  approach: "I treat a grid digital twin as a living model of the dynamics—not a 3D plant replica—that can be refreshed with measurements and used to screen contingencies faster than repeating full time-domain simulation for every case."
+  currentDirection: "Build the loop from PMU-informed parameter estimation through a physics-informed surrogate to operator-facing security margins."
+  pipeline:
+    - "Grid / PMUs"
+    - "Parameter estimation"
+    - "Dynamic model"
+    - "Physics-informed surrogate"
+    - "Security margins"
+    - "Operator decision"
   body: >-
     Dynamic security is an operating-point question: given how the grid is running now, is the post-disturbance margin still adequate? This part is the operational setting I am building toward. A grid digital twin, here, is not a three-dimensional replica of substations. It is a living model of the dynamics that can be refreshed with measurements and used to screen contingencies and track security margins faster than repeating full time-domain simulation for every case. Pillar 01 defines the quantities to monitor: synchronism, energy-function margins, and CCT. Pillar 02 supplies a fast trajectory surrogate that can be queried inside that loop. The published energy-function and PINN studies already point at operational planning and contingency management; the twin is how those engines would sit in an online or near-online workflow.
   figure: "research-fig-03.html"

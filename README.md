@@ -8,22 +8,24 @@ Hugo-based academic portfolio site. Replaces [Google Sites](https://sites.google
 |------|--------|
 | Local preview | Ready (`hugo server -D`) |
 | Content & assets | Populated (publications, research pillars, gallery, PDFs) |
-| CV request form | Formspree configured (`formspreeId` in `hugo.toml`) |
+| CV | Public academic CV (print/save as PDF); optional hosted PDF at `static/files/cv/` |
 | Google Analytics | GA4 configured (live site only; skipped on `hugo server`) |
-| Site search | Client-side search at `/search/` |
+| Site search | Client-side search at `/search/` (footer link; not in main nav) |
 | GitHub Pages deploy | Workflow ready (`.github/workflows/deploy.yml`); repo not yet pushed |
 
 **Production URL (after deploy):** `https://albert8943.github.io/dr-albert-poulose/`  
-**Planned custom domain:** `albertpoulose.com` (not connected yet)
+**Planned custom domain:** `albertpoulose.com` (buy and connect; see [Custom domain](#custom-domain))
 
 ## Features
 
-- **Home** — bio, research interests, news
-- **Research** — dynamic-security framing; three pillars with overlap diagram; selected projects with **Done / In progress / Planned** filter tabs; assessment background (IEEE/CIGRE classification, TSA, CCT)
-- **Publications** — grouped by year; filter by research pillar (01 Stability, 02 Scientific AI, 03 Digital Twins)
-- **Teaching**, **Education & Work**, **Gallery**, **Contact**
-- **CV** — Formspree web form plus mailto fallback (CV PDF not hosted on site)
-- **Search** — indexes pages, publications, teaching, timeline, and research pillars
+- **Home** — research identity headline, featured PINN paper, selected publications, software, recent news
+- **Research** — one-paragraph vision; three programs; visual pipelines; current / building-toward; long notes collapsed
+- **Publications** — grouped by year; collapsible abstracts; Scholar/ORCID/Scopus; filter by research pillar
+- **Teaching** — interests, short philosophy, and courses
+- **Experience** — appointments and education (`/education/` redirects here)
+- **Software** — PINN-TSA and related prototypes
+- **CV** — public, one-click print/save; optional PDF download
+- **Contact** and **Gallery** — linked from the footer (institutional email first; no home address or phone numbers)
 
 ## Local preview
 
@@ -97,10 +99,11 @@ Go to **http://localhost:1313/dr-albert-poulose/** (not `http://localhost:1313/`
 | Research | `/research/` | http://localhost:1313/dr-albert-poulose/research/ | https://albert8943.github.io/dr-albert-poulose/research/ |
 | Publications | `/publications/` | http://localhost:1313/dr-albert-poulose/publications/ | https://albert8943.github.io/dr-albert-poulose/publications/ |
 | Teaching | `/teaching/` | http://localhost:1313/dr-albert-poulose/teaching/ | https://albert8943.github.io/dr-albert-poulose/teaching/ |
-| Education & Work | `/education/` | http://localhost:1313/dr-albert-poulose/education/ | https://albert8943.github.io/dr-albert-poulose/education/ |
+| Experience | `/experience/` | http://localhost:1313/dr-albert-poulose/experience/ | https://albert8943.github.io/dr-albert-poulose/experience/ |
+| Software | `/software/` | http://localhost:1313/dr-albert-poulose/software/ | https://albert8943.github.io/dr-albert-poulose/software/ |
 | Gallery | `/gallery/` | http://localhost:1313/dr-albert-poulose/gallery/ | https://albert8943.github.io/dr-albert-poulose/gallery/ |
 | Contact | `/contact/` | http://localhost:1313/dr-albert-poulose/contact/ | https://albert8943.github.io/dr-albert-poulose/contact/ |
-| CV (request form) | `/cv/` | http://localhost:1313/dr-albert-poulose/cv/ | https://albert8943.github.io/dr-albert-poulose/cv/ |
+| CV | `/cv/` | http://localhost:1313/dr-albert-poulose/cv/ | https://albert8943.github.io/dr-albert-poulose/cv/ |
 | Search | `/search/` | http://localhost:1313/dr-albert-poulose/search/ | https://albert8943.github.io/dr-albert-poulose/search/ |
 
 ### Install Hugo (other machines)
@@ -160,7 +163,7 @@ Output in `public/`. Open `public/index.html` in a browser, or serve the folder 
 
 ```text
 config/
-  _default/hugo.toml      # Site params, menu, GA, Formspree, research copy
+  _default/hugo.toml      # Site params, menu, GA, research copy
   development/hugo.toml   # Local baseURL override
 content/                  # Section front matter (title, description)
 data/                     # Publications, teaching, timeline, news, pillars, gallery
@@ -177,12 +180,13 @@ Page bodies are mostly driven by `data/*.yaml` and `config/_default/hugo.toml` p
 
 | File | Purpose |
 |------|---------|
-| `config/_default/hugo.toml` | Contact links, bio, research narrative, menu, Formspree, GA |
+| `config/_default/hugo.toml` | Contact links, bio, research narrative, menu, GA |
 | `data/publications.yaml` | Papers and theses grouped by year; pillar tags for filters |
 | `data/research_pillars.yaml` | Three pillars, project cards (`status`: `done`, `in_progress`, `planned`) |
 | `data/teaching.yaml` | Courses |
-| `data/timeline.yaml` | Education & work (tiered) |
-| `data/news.yaml` | Home page news |
+| `data/timeline.yaml` | Appointments, education, earlier roles |
+| `data/news.yaml` | Home page news (recent professional items only) |
+| `data/software.yaml` | Research software cards |
 | `data/gallery.yaml` | Gallery sections |
 | `content/*/_index.md` | Section titles and descriptions (metadata) |
 
@@ -203,10 +207,22 @@ Photos and publication PDFs live under `static/`. Hugo copies them to the site r
    - `isap-2019-slides.pdf`
    - `iciccs-2019-paper.pdf`
    - `iciccs-2019-slides.pdf` (optional)
-5. **CV requests (Formspree)** — configured in `config/_default/hugo.toml` (`formspreeId`). Visitors can also use **Request CV via Email** on `/cv/`.
+5. **Academic CV** — the `/cv/` page is public. Click **Download Academic CV** to print or save as PDF. To add a hosted PDF later, put `albert-poulose-cv.pdf` in `static/files/cv/`.
 6. **Google Analytics** — GA4 ID in `[services.googleAnalytics]` in `hugo.toml`. Analytics runs on the live site only (not localhost).
 
-CV PDF is **not** hosted on this site. Reply manually with the PDF from `Albert_Personal_Repository`.
+Contact does **not** list a home address or phone numbers. Institutional email is shown first.
+
+## Custom domain
+
+The live GitHub Pages URL can stay as-is until DNS is ready. To attach `albertpoulose.com` later:
+
+1. Buy the domain (Cloudflare Registrar is a common choice).
+2. Point DNS to GitHub Pages (A/ALIAS/CNAME per GitHub’s custom-domain docs).
+3. Add a `CNAME` file in `static/` containing `albertpoulose.com`.
+4. Update `baseURL` in `config/_default/hugo.toml` and the `hugo --baseURL` flag in `.github/workflows/deploy.yml`.
+5. In the GitHub repo: Settings → Pages → Custom domain.
+
+That keeps the printed website URL stable if the host later moves from GitHub Pages to Vercel or elsewhere.
 
 ## Deploy to GitHub Pages
 
@@ -216,9 +232,7 @@ CV PDF is **not** hosted on this site. Reply manually with the PDF from `Albert_
 4. Push triggers `.github/workflows/deploy.yml`
 5. Site URL: `https://albert8943.github.io/dr-albert-poulose/`
 
-After deploy, verify the CV form, search, and GA Realtime (Analytics may take a few minutes to appear).
-
-Update `baseURL` in `config/_default/hugo.toml` and the workflow `hugo --baseURL` flag when you connect a custom domain (e.g. `albertpoulose.com`).
+After deploy, verify the CV page, search, contact details, and GA Realtime (Analytics may take a few minutes to appear).
 
 ## Maintenance
 

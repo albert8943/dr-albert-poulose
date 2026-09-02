@@ -2,11 +2,14 @@
   items:
     - type: journal
       pillars: ["01", "02", "03"]
+      selected: true
+      homepageTitle: "PINN / TSA / CCT — IEEE Access, 2026"
       authors: "A. Poulose and S. Kim"
       title: "Unified Physics-Informed Trajectory Surrogate for Transient Stability Assessment and Critical Clearing Time Estimation on a Single-Machine Infinite-Bus Benchmark"
       venue: "IEEE Access, vol. 14, pp. 122177–122196"
       doi: "10.1109/ACCESS.2026.3718419"
       url: "https://doi.org/10.1109/ACCESS.2026.3718419"
+      code: "https://github.com/albert8943/unified-physics-informed-neural-surrogate-smib-tsa-cct-benchmark"
       abstract: >-
         Time-domain simulation remains the reference for transient stability assessment (TSA) and critical clearing time (CCT) analysis, but it becomes expensive when post-fault trajectories must be screened repeatedly or clearing margins explored iteratively. This paper investigates whether a single physics-informed neural network (PINN) can serve as a unified surrogate for both tasks on a single-machine infinite-bus (SMIB) benchmark. The proposed model is conditioned on time-varying electrical power, initial conditions, and machine parameters, and predicts rotor-angle trajectories. The predicted trajectories are evaluated against open-source ANDES simulator generated SMIB reference trajectories and compared to a width-matched standard neural network baseline, with checkpoint selection based only on mean per-scenario rotor-angle RMSE on the validation split. The same persistence-based angle criterion is used for both nominal-clearing TSA and surrogate-assisted CCT estimation by binary search, rather than a terminal-only horizon snapshot or direct reuse of the ANDES peak-angle primary rule on the predicted rotor-angle trajectory, so that one trained checkpoint serves both tasks without a separate CCT regressor. On the held-out test split, the PINN improves mean per-scenario rotor-angle R² from 0.796 to 0.875 and reduces RMSE from 0.424 to 0.242 rad, while also showing lower cross-seed dispersion and smaller post hoc swing-equation residuals than the baseline. At the validation-selected persistence window of 0.05 s, both models achieve 100% nominal-screening accuracy, but CCT mean absolute errors remain about 0.19 s and 0.20 s for the PINN and the baseline, respectively, and increase with wider persistence windows. These results support physics-informed trajectory surrogates for planning-oriented screening and comparative margin studies in the SMIB setting, while also showing that improved trajectory fidelity alone does not yield protection-grade CCT estimation.
       keywords: "Physics-informed neural networks, Transient stability assessment, Critical clearing time, Surrogate modeling, Single-machine infinite-bus systems, Power-system dynamics, Time-domain simulation"
@@ -39,6 +42,8 @@
   items:
     - type: journal
       pillars: ["01"]
+      selected: true
+      homepageTitle: "GFM/GFL transient energy functions — IEEE Access, 2024"
       authors: "A. Poulose and S. Kim"
       title: "Direct Transient Stability Assessment of Grid-Connected Voltage Source Converters: A Transient Energy Functions Perspective"
       venue: "IEEE Access, vol. 12, pp. 133545–133556"
@@ -52,6 +57,8 @@
   items:
     - type: journal
       pillars: ["01"]
+      selected: true
+      homepageTitle: "Renewable-rich transient-stability review — Energies, 2023"
       authors: "A. Poulose and S. Kim"
       title: "Transient Stability Analysis and Enhancement Techniques of Renewable-Rich Power Grids"
       venue: "Energies, vol. 16, no. 5, p. 2495"

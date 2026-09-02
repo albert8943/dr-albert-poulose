@@ -1,4 +1,4 @@
 ---
 title: Contact
-description: Email, phone, and mailing addresses in South Korea and India.
+description: Institutional email, affiliation, and professional profiles.
 ---

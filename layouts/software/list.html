@@ -1,0 +1,34 @@
+{{ define "main" }}
+<section class="page-header">
+  <div class="container">
+    <h1>{{ .Title }}</h1>
+    <p class="page-lead">Research software and prototypes for transient stability assessment, CCT screening, and grid digital twins. Some items are published; others are still in progress.</p>
+  </div>
+</section>
+
+<section class="page-content">
+  <div class="container content-narrow">
+    <div class="software-grid">
+      {{ range hugo.Data.software }}
+      <article class="software-card software-card-{{ .status }}">
+        <span class="project-status-badge project-status-{{ .status }}">{{ if eq .status "available" }}Available{{ else if eq .status "in_progress" }}In progress{{ else }}Planned{{ end }}</span>
+        <h2>{{ .title }}</h2>
+        <p>{{ .description }}</p>
+        <p class="software-stack">{{ .stack }}</p>
+        <div class="pub-links">
+          {{ if .paper }}
+          <a class="btn btn-sm" href="{{ .paper }}" target="_blank" rel="noopener noreferrer">Paper</a>
+          {{ end }}
+          {{ if .code }}
+          <a class="btn btn-sm btn-outline" href="{{ .code }}" target="_blank" rel="noopener noreferrer">Code</a>
+          {{ end }}
+          {{ if .project }}
+          <a class="btn btn-sm btn-outline" href="{{ .project | relURL }}">Project</a>
+          {{ end }}
+        </div>
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

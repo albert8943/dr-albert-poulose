@@ -1,4 +1,4 @@
-{{ range site.Data.research_pillars }}
+{{ range hugo.Data.research_pillars }}
 <div class="research-pillar" id="{{ .id }}">
   <div class="pillar-heading">
     <div class="pillar-number">{{ .number }}</div>
@@ -6,6 +6,9 @@
       <h2>{{ .title }}</h2>
       {{ if .description }}
       <p class="pillar-tagline">{{ .description }}</p>
+      {{ end }}
+      {{ if .tags }}
+      <p class="pillar-tags">{{ .tags }}</p>
       {{ end }}
       {{ if .overlaps }}
       <ul class="pillar-overlaps">
@@ -16,14 +19,34 @@
       {{ end }}
     </div>
   </div>
-  {{ if .body }}
-  <p class="pillar-body">{{ .body }}</p>
+
+  {{ if .pipeline }}
+  {{ partial "research-pipeline.html" . }}
   {{ end }}
-  {{ if .figure }}
-  {{ partial .figure . }}
-  {{ end }}
+
+  <div class="pillar-pa">
+    {{ if .problem }}
+    <div class="pillar-pa-block">
+      <h3>Problem</h3>
+      <p>{{ .problem }}</p>
+    </div>
+    {{ end }}
+    {{ if .approach }}
+    <div class="pillar-pa-block">
+      <h3>My approach</h3>
+      <p>{{ .approach }}</p>
+    </div>
+    {{ end }}
+    {{ if .currentDirection }}
+    <div class="pillar-pa-block">
+      <h3>Current direction</h3>
+      <p>{{ .currentDirection }}</p>
+    </div>
+    {{ end }}
+  </div>
+
   {{ if .projects }}
-  <h3 class="pillar-work-heading">Selected projects</h3>
+  <h3 class="pillar-work-heading">Selected work</h3>
   <div class="pillar-projects" data-project-filter-group>
     <div class="project-filters pub-filters" role="group" aria-label="Filter projects by status">
       <button type="button" class="project-filter pub-filter active" data-filter="all">All</button>
@@ -44,8 +67,21 @@
     </div>
   </div>
   {{ end }}
+
   {{ if .note }}
   <p class="pillar-note">{{ .note | safeHTML }}</p>
+  {{ end }}
+
+  {{ if or .body .figure }}
+  <details class="pillar-notes">
+    <summary>Technical note</summary>
+    {{ if .body }}
+    <p class="pillar-body pillar-body-nested">{{ .body }}</p>
+    {{ end }}
+    {{ if .figure }}
+    {{ partial .figure . }}
+    {{ end }}
+  </details>
   {{ end }}
 </div>
 {{ end }}

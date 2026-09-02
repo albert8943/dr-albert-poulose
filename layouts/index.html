@@ -3,7 +3,8 @@
   <div class="container">
     <div class="hero-heading">
       <h1>{{ site.Params.name }}</h1>
-      <p class="position">{{ site.Params.role }}<br>{{ site.Params.affiliation }}<br>{{ site.Params.university }}</p>
+      <p class="research-identity">{{ site.Params.researchIdentity }}</p>
+      <p class="position">{{ site.Params.role }} | {{ site.Params.university }}<br>{{ site.Params.affiliation }}</p>
     </div>
     <div class="hero-content-grid">
       <div class="hero-copy">
@@ -31,13 +32,90 @@
   </div>
 </section>
 
+<section class="featured-section">
+  <div class="container">
+    <div class="section-heading">
+      <h2>Featured research</h2>
+      <a class="section-link" href="{{ "research/" | relURL }}">Research programme &rarr;</a>
+    </div>
+    <article class="featured-card">
+      <div class="featured-copy">
+        <p class="featured-kicker">{{ site.Params.featuredVenue }}</p>
+        <h3>{{ site.Params.featuredTitle }}</h3>
+        <p>{{ site.Params.featuredSummary }}</p>
+        <div class="featured-actions">
+          <a class="btn btn-sm" href="{{ site.Params.featuredPaper }}" target="_blank" rel="noopener noreferrer">Paper</a>
+          <a class="btn btn-sm btn-outline" href="{{ site.Params.featuredCode }}" target="_blank" rel="noopener noreferrer">Code</a>
+          <a class="btn btn-sm btn-outline" href="{{ site.Params.featuredProject | relURL }}">Project</a>
+          <a class="btn btn-sm btn-outline" href="{{ site.Params.github }}" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+      </div>
+      <div class="featured-figure">
+        {{ partial "research-fig-02.html" . }}
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="selected-section">
+  <div class="container">
+    <div class="section-heading">
+      <h2>Selected publications</h2>
+      <a class="section-link" href="{{ "publications/" | relURL }}">All publications &rarr;</a>
+    </div>
+    <div class="selected-list">
+      {{ range hugo.Data.publications }}
+        {{ range .items }}
+          {{ if .selected }}
+          <article class="selected-item">
+            <h3>{{ if .homepageTitle }}{{ .homepageTitle }}{{ else }}{{ .title }}{{ end }}</h3>
+            <p>{{ .authors }}</p>
+            <p class="selected-venue"><em>{{ .venue }}</em></p>
+            <div class="pub-links">
+              {{ if .doi }}
+              <a class="btn btn-sm" href="https://doi.org/{{ .doi }}" target="_blank" rel="noopener noreferrer">DOI</a>
+              {{ else if .url }}
+              <a class="btn btn-sm" href="{{ .url }}" target="_blank" rel="noopener noreferrer">Link</a>
+              {{ end }}
+              {{ if .code }}
+              <a class="btn btn-sm btn-outline" href="{{ .code }}" target="_blank" rel="noopener noreferrer">Code</a>
+              {{ end }}
+            </div>
+          </article>
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<section class="software-teaser-section">
+  <div class="container">
+    <div class="section-heading">
+      <h2>Research software</h2>
+      <a class="section-link" href="{{ "software/" | relURL }}">Software &rarr;</a>
+    </div>
+    <div class="software-grid software-grid-home">
+      {{ range first 3 hugo.Data.software }}
+      <a class="software-card software-card-{{ .status }}" href="{{ "software/" | relURL }}">
+        <span class="project-status-badge project-status-{{ .status }}">{{ if eq .status "available" }}Available{{ else if eq .status "in_progress" }}In progress{{ else }}Planned{{ end }}</span>
+        <h3>{{ .title }}</h3>
+        <p>{{ .short }}</p>
+        <p class="software-stack">{{ .stack }}</p>
+      </a>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
 <section class="news-section">
   <div class="container">
     <div class="section-heading">
       <h2>News</h2>
+      <a class="section-link" href="{{ "experience/" | relURL }}">Full chronology &rarr;</a>
     </div>
     <div class="news-list">
-      {{ range site.Data.news }}
+      {{ range hugo.Data.news }}
       <article class="news-item">
         <time class="news-date" datetime="{{ .date }}">{{ time .date | time.Format "Jan 02, 2006" }}</time>
         <p class="news-text">{{ .text | safeHTML }}</p>

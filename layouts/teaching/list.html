@@ -2,15 +2,34 @@
 <section class="page-header">
   <div class="container">
     <h1>{{ .Title }}</h1>
-    <p class="page-lead">Undergraduate lecture courses, listed by year.</p>
+    <p class="page-lead">Undergraduate lecture courses, listed by year, with teaching interests for future faculty applications.</p>
   </div>
 </section>
 
 <section class="page-content">
   <div class="container content-narrow">
-    {{ range site.Data.teaching }}
+    {{ with site.Params.teachingInterests }}
+    <div class="teaching-interests">
+      <h2>Teaching interests</h2>
+      <ul class="teaching-interest-list">
+        {{ range . }}
+        <li>{{ . }}</li>
+        {{ end }}
+      </ul>
+    </div>
+    {{ end }}
+
+    {{ with site.Params.teachingPhilosophy }}
+    <div class="teaching-philosophy">
+      <h2>Teaching philosophy</h2>
+      <p>{{ . }}</p>
+    </div>
+    {{ end }}
+
+    <h2 class="timeline-tier-title">Courses</h2>
+    {{ range hugo.Data.teaching }}
     <div class="pub-section">
-      <h2 class="pub-section-title">{{ .year }}</h2>
+      <h3 class="pub-section-title">{{ .year }}</h3>
       {{ range .items }}
       <article class="pub-card">
         <p class="pub-authors">{{ .code }}</p>

@@ -1,0 +1,25 @@
+- id: pinn-tsa
+  title: PINN-TSA
+  short: Physics-informed surrogate modeling for transient stability.
+  description: A unified physics-informed neural network that predicts SMIB rotor-angle trajectories and is reused for TSA screening and surrogate-assisted CCT search, compared against ANDES time-domain references.
+  stack: "Python · PyTorch · ANDES"
+  status: available
+  paper: "https://doi.org/10.1109/ACCESS.2026.3718419"
+  code: "https://github.com/albert8943/unified-physics-informed-neural-surrogate-smib-tsa-cct-benchmark"
+  project: "research/#scientific-ai"
+
+- id: cct-toolkit
+  title: CCT Screening Toolkit
+  short: Automated CCT analysis and contingency screening.
+  description: Research prototype for repeating critical-clearing-time studies across contingencies, aimed at planning-oriented screening rather than protection-grade timing.
+  stack: "MATLAB · Python"
+  status: in_progress
+  project: "research/#modern-grid-stability"
+
+- id: digital-twin
+  title: Grid Digital Twin Framework
+  short: Parameter estimation, dynamic model, and security assessment in one loop.
+  description: A measurement-informed workflow that would refresh a dynamic model, query physics-informed surrogates, and return TSA/CCT margins for operator-facing screening.
+  stack: "PMU analytics · surrogates"
+  status: planned
+  project: "research/#grid-digital-twins"

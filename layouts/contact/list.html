@@ -2,6 +2,7 @@
 <section class="page-header">
   <div class="container">
     <h1>{{ .Title }}</h1>
+    <p class="page-lead">Institutional affiliation and professional profiles. For a CV, see <a href="{{ "cv/" | relURL }}">Download Academic CV</a>.</p>
   </div>
 </section>
 
@@ -9,22 +10,21 @@
   <div class="container content-narrow">
     <div class="contact-grid">
       <div class="contact-block">
+        <h2>{{ site.Params.name }}</h2>
+        <p>{{ site.Params.role }}</p>
+        <p>{{ site.Params.affiliation }}</p>
+        <p>{{ site.Params.university }}</p>
+      </div>
+      <div class="contact-block">
         <h2>Email</h2>
-        <p><a href="mailto:{{ site.Params.email }}">{{ site.Params.email }}</a></p>
-        <p><a href="mailto:{{ site.Params.emailKnu }}">{{ site.Params.emailKnu }}</a> (KNU)</p>
+        <p><a href="mailto:{{ site.Params.email }}">{{ site.Params.email }}</a> (institutional)</p>
+        {{ with site.Params.emailPersonal }}
+        <p><a href="mailto:{{ . }}">{{ . }}</a> (personal)</p>
+        {{ end }}
       </div>
       <div class="contact-block">
-        <h2>Phone</h2>
-        <p>South Korea: {{ site.Params.phoneKr }}</p>
-        <p>India: {{ site.Params.phoneIn }}</p>
-      </div>
-      <div class="contact-block">
-        <h2>Current Address</h2>
+        <h2>Address</h2>
         <p>{{ site.Params.currentAddress }}</p>
-      </div>
-      <div class="contact-block">
-        <h2>Home Address</h2>
-        <p>{{ site.Params.homeAddress }}</p>
       </div>
     </div>
     <div class="contact-social">
