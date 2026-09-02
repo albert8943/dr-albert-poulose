@@ -13,9 +13,8 @@
     <div class="cv-actions no-print">
       {{ if $hasPdf }}
       <a class="btn" href="{{ site.Params.cvPdf | relURL }}" download>Download Academic CV</a>
-      {{ end }}
-      <button type="button" class="btn{{ if $hasPdf }} btn-outline{{ end }}" id="cv-print-btn">{{ if $hasPdf }}Print{{ else }}Download Academic CV{{ end }}</button>
-      {{ if not $hasPdf }}
+      {{ else }}
+      <button type="button" class="btn" id="cv-print-btn">Download Academic CV</button>
       <p class="cv-note">Opens the print dialog. Choose <strong>Save as PDF</strong> to keep a copy. Last updated {{ site.Params.cvUpdated }}.</p>
       {{ end }}
     </div>
