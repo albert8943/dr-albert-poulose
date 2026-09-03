@@ -1,7 +1,7 @@
 - year: 2026
   items:
     - type: journal
-      pillars: ["01", "02", "03"]
+      pillars: ["01", "02"]
       selected: true
       homepageTitle: "PINN / TSA / CCT (IEEE Access, 2026)"
       authors: "A. Poulose and S. Kim"

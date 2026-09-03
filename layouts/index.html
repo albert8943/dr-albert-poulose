@@ -20,6 +20,10 @@
             </li>
             {{ end }}
           </ul>
+          <p class="current-focus">
+            <span class="current-focus-label">Current focus:</span>
+            {{ delimit site.Params.currentResearch " · " }}
+          </p>
         </div>
       </div>
       <div class="hero-photo">
@@ -68,7 +72,7 @@
         {{ range .items }}
           {{ if .selected }}
           <article class="selected-item">
-            <h3>{{ if .homepageTitle }}{{ .homepageTitle }}{{ else }}{{ .title }}{{ end }}</h3>
+            <h3>{{ .title }}</h3>
             <p>{{ .authors }}</p>
             <p class="selected-venue"><em>{{ .venue }}</em></p>
             <div class="pub-links">

@@ -1,0 +1,25 @@
+{{ define "main" }}
+<section class="page-header">
+  <div class="container">
+    <h1>{{ .Title }}</h1>
+    <p class="page-lead">Optional technical background for readers who want IEEE/CIGRE placement, transient stability assessment (TSA) cases, and critical clearing time (CCT) as a security margin. The research programme itself is on the <a href="{{ "research/" | relURL }}">Research</a> page.</p>
+  </div>
+</section>
+
+<section class="page-content research-page">
+  <div class="container content-narrow">
+    <div class="research-story">
+      <h2>{{ site.Params.researchAssessmentTitle }}</h2>
+      {{ partial "research-assessment-concepts.html" . }}
+    </div>
+
+    <div class="research-story">
+      <h2>Programme figures</h2>
+      <p>Short visual summaries of the three research programmes. For problem statements, methods, and selected work, see <a href="{{ "research/" | relURL }}">Research</a>.</p>
+      {{ partial "research-fig-01.html" . }}
+      {{ partial "research-fig-02.html" . }}
+      {{ partial "research-fig-03.html" . }}
+    </div>
+  </div>
+</section>
+{{ end }}

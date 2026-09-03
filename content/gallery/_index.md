@@ -1,4 +1,4 @@
 ---
 title: Gallery
-description: Academic activities including laboratory work, supervision, and graduation.
+description: Optional academic photos (laboratory and graduation). Linked from the footer only.
 ---

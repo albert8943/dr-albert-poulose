@@ -1,0 +1,17 @@
+<p class="research-assessment-intro">{{ site.Params.researchAssessmentIntro }}</p>
+<blockquote class="research-definition">
+  <p class="research-definition-label">{{ site.Params.researchDefinitionTitle }}</p>
+  <p class="research-definition-text">{{ site.Params.researchDefinition }}</p>
+  <p class="research-definition-source">
+    Based on IEEE/CIGRE definitions of power system stability and security:
+    <a href="https://doi.org/10.1109/TPWRS.2004.825981" target="_blank" rel="noopener noreferrer">Kundur et al., IEEE Trans. Power Syst., 2004</a>
+    and the converter-era update
+    <a href="https://doi.org/10.1109/TPWRS.2020.3041774" target="_blank" rel="noopener noreferrer">Hatziargyriou et al., IEEE Trans. Power Syst., 2021</a>.
+  </p>
+</blockquote>
+{{ partial "research-stability-context.html" (dict "nested" true) }}
+<div class="research-story">
+  <h3>{{ site.Params.researchMarginTitle }}</h3>
+  <p>{{ site.Params.researchMarginIntro }}</p>
+  {{ partial "research-fig-dsa.html" . }}
+</div>

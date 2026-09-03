@@ -37,12 +37,6 @@
       <p>{{ .approach }}</p>
     </div>
     {{ end }}
-    {{ if .currentDirection }}
-    <div class="pillar-pa-block">
-      <h3>Current direction</h3>
-      <p>{{ .currentDirection }}</p>
-    </div>
-    {{ end }}
   </div>
 
   {{ if .projects }}
@@ -68,20 +62,17 @@
   </div>
   {{ end }}
 
-  {{ if .note }}
-  <p class="pillar-note">{{ .note | safeHTML }}</p>
+  {{ if .currentDirection }}
+  <div class="pillar-pa pillar-pa-direction">
+    <div class="pillar-pa-block">
+      <h3>Current direction</h3>
+      <p>{{ .currentDirection }}</p>
+    </div>
+  </div>
   {{ end }}
 
-  {{ if or .body .figure }}
-  <details class="pillar-notes">
-    <summary>Technical note</summary>
-    {{ if .body }}
-    <p class="pillar-body pillar-body-nested">{{ .body }}</p>
-    {{ end }}
-    {{ if .figure }}
-    {{ partial .figure . }}
-    {{ end }}
-  </details>
+  {{ if .note }}
+  <p class="pillar-note">{{ .note | safeHTML }}</p>
   {{ end }}
 </div>
 {{ end }}

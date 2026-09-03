@@ -1,4 +1,4 @@
 ---
 title: CV
-description: Academic CV for postdoctoral, faculty, and research inquiries.
+description: Academic CV summary with downloadable full academic CV (PDF).
 ---

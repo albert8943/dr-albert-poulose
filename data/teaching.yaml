@@ -5,6 +5,10 @@
       period: "Fall (Sep–Dec)"
       institution: "Kyungpook National University, South Korea"
       students: 26
+      photo: "images/teaching/numerical-analysis-2025.jpg"
+      photoCaption: "Numerical Analysis class, Kyungpook National University (Fall 2025)"
+      photoAlt: "Group photo from the Numerical Analysis course"
+      syllabus: "files/teaching/numerical-analysis-2025.pdf"
       focus:
         - "Structured introduction to numerical methods for engineering analysis and optimization"
         - "Practical implementation using MATLAB as the primary computational tool"
@@ -15,6 +19,10 @@
       period: "Spring (Mar–Jun)"
       institution: "Kyungpook National University, South Korea"
       students: 69
+      photo: "images/teaching/logic-circuits-2025.jpg"
+      photoCaption: "Logic Circuits class, Kyungpook National University (Spring 2025)"
+      photoAlt: "Group photo from the Logic Circuits course"
+      syllabus: "files/teaching/logic-circuits-2025.pdf"
       focus:
         - "Digital logic concepts, number systems, and Boolean algebra"
         - "Design and analysis of combinational and sequential circuits"
@@ -27,6 +35,10 @@
       period: "Aug – Nov"
       institution: "Cochin College of Engineering and Technology (APJ Abdul Kalam Technological University), India"
       students: 13
+      photo: "images/teaching/linear-control-systems-2019.jpg"
+      photoCaption: "Linear Control Systems class, Cochin College of Engineering and Technology (2019)"
+      photoAlt: "Group photo from the Linear Control Systems course"
+      syllabus: "files/teaching/linear-control-systems-2019.pdf"
       focus:
         - "Mathematical models of dynamic systems for control analysis"
         - "Open-loop and closed-loop control systems"
@@ -37,6 +49,10 @@
       period: "Aug – Nov"
       institution: "Cochin College of Engineering and Technology (APJ Abdul Kalam Technological University), India"
       students: 17
+      photo: "images/teaching/electric-hybrid-vehicles-2019.jpg"
+      photoCaption: "Electric Hybrid Vehicles class, Cochin College of Engineering and Technology (2019)"
+      photoAlt: "Group photo from the Electric Hybrid Vehicles course"
+      syllabus: "files/teaching/electric-hybrid-vehicles-2019.pdf"
       focus:
         - "Electric and hybrid vehicle architectures and drivetrains"
         - "Electric propulsion units and motor drive technologies"

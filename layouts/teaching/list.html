@@ -22,7 +22,9 @@
     {{ with site.Params.teachingPhilosophy }}
     <div class="teaching-philosophy">
       <h2>Teaching philosophy</h2>
+      {{ range . }}
       <p>{{ . }}</p>
+      {{ end }}
     </div>
     {{ end }}
 
@@ -31,7 +33,19 @@
     <div class="pub-section">
       <h3 class="pub-section-title">{{ .year }}</h3>
       {{ range .items }}
-      <article class="pub-card">
+      {{ $photoPath := "" }}
+      {{ $hasPhoto := false }}
+      {{ with .photo }}
+        {{ $photoPath = . }}
+        {{ $hasPhoto = os.FileExists (printf "static/%s" .) }}
+      {{ end }}
+      {{ $syllabusPath := "" }}
+      {{ $hasSyllabus := false }}
+      {{ with .syllabus }}
+        {{ $syllabusPath = . }}
+        {{ $hasSyllabus = os.FileExists (printf "static/%s" .) }}
+      {{ end }}
+      <article class="pub-card teaching-course">
         <p class="pub-authors">{{ .code }}</p>
         <h3 class="pub-title">{{ .title }}</h3>
         <p class="pub-venue"><em>{{ .period }}</em> &middot; {{ .institution }}</p>
@@ -45,6 +59,17 @@
             {{ end }}
           </ul>
         </details>
+        {{ end }}
+        {{ if $hasSyllabus }}
+        <div class="pub-links teaching-syllabus-links">
+          <a class="btn btn-sm" href="{{ $syllabusPath | relURL }}" target="_blank" rel="noopener noreferrer">Syllabus (PDF)</a>
+        </div>
+        {{ end }}
+        {{ if $hasPhoto }}
+        <figure class="teaching-photo">
+          <img src="{{ $photoPath | relURL }}" alt="{{ .photoAlt | default .title }}" loading="lazy" width="960" height="640">
+          {{ with .photoCaption }}<figcaption>{{ . }}</figcaption>{{ end }}
+        </figure>
         {{ end }}
       </article>
       {{ end }}

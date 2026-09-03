@@ -1,3 +1,6 @@
-Place a PDF named `albert-poulose-cv.pdf` in this folder to enable a one-click download on the CV page.
+Hosted academic CV for the site.
 
-Until that file exists, the CV page offers a print-friendly academic CV that visitors can save as PDF from the browser.
+Current file: `albert-poulose-cv.pdf`
+
+The CV page shows **Academic CV — PDF · Updated …** when this file is present.
+Replace the PDF in place to update the download; bump `cvUpdated` in `config/_default/hugo.toml` when you do.

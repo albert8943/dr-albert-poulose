@@ -2,7 +2,7 @@
 <section class="page-header">
   <div class="container">
     <h1>{{ .Title }}</h1>
-    <p class="page-lead">Research software and prototypes for transient stability assessment, CCT screening, and grid digital twins. Some items are published; others are still in progress.</p>
+    <p class="page-lead">Research software and prototypes for transient stability assessment (TSA), critical clearing time (CCT) screening, and grid digital twins. Some items are published; others are still in progress.</p>
   </div>
 </section>
 
@@ -14,7 +14,17 @@
         <span class="project-status-badge project-status-{{ .status }}">{{ if eq .status "available" }}Available{{ else if eq .status "in_progress" }}In progress{{ else }}Planned{{ end }}</span>
         <h2>{{ .title }}</h2>
         <p>{{ .description }}</p>
-        <p class="software-stack">{{ .stack }}</p>
+        {{ if or .inputs .outputs .validatedAgainst .statusLabel }}
+        <ul class="software-evidence">
+          {{ with .inputs }}<li><strong>Inputs:</strong> {{ . }}</li>{{ end }}
+          {{ with .outputs }}<li><strong>Outputs:</strong> {{ . }}</li>{{ end }}
+          {{ with .validatedAgainst }}<li><strong>Validated against:</strong> {{ . }}</li>{{ end }}
+          {{ with .stack }}<li><strong>Stack:</strong> {{ . }}</li>{{ end }}
+          {{ with .statusLabel }}<li><strong>Status:</strong> {{ . }}</li>{{ end }}
+        </ul>
+        {{ else }}
+        {{ with .stack }}<p class="software-stack">{{ . }}</p>{{ end }}
+        {{ end }}
         <div class="pub-links">
           {{ if .paper }}
           <a class="btn btn-sm" href="{{ .paper }}" target="_blank" rel="noopener noreferrer">Paper</a>

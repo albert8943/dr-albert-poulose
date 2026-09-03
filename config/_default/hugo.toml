@@ -21,24 +21,26 @@ disableKinds = ['taxonomy', 'term']
   githubPinn = 'https://github.com/albert8943/unified-physics-informed-neural-surrogate-smib-tsa-cct-benchmark'
   cvUpdated = 'Sep 02, 2026'
   cvPdf = 'files/cv/albert-poulose-cv.pdf'
-  bioIntro = 'I work on dynamic security of converter-dominated power systems: whether the grid stays stable after a fault, and whether margins such as critical clearing time (CCT) remain adequate.'
-  bioCurrent = 'I pursue this through stability theory for grid-forming (GFM) and grid-following (GFL) converters, physics-informed surrogates for transient stability assessment (TSA) and CCT screening, and grid digital twins.'
+  bioIntro = 'My research focuses on the dynamic security and transient stability of converter-dominated power systems, with particular emphasis on determining whether the grid can maintain stable operation following severe disturbances and whether critical stability margins, such as critical clearing time (CCT), remain adequate.'
+  bioCurrent = 'I pursue this research through stability analysis and modeling of grid-forming (GFM) and grid-following (GFL) converters, together with physics-informed neural network (PINN) surrogate models for fast transient stability assessment (TSA), trajectory prediction, and CCT screening. Building on these foundations, my long-term research direction is toward measurement-informed digital twins for real-time dynamic security assessment and decision support in renewable-rich power systems.'
   researchInterests = [
-    'Dynamic security and transient stability of converter-dominated grids',
-    'Stability theory for GFM and GFL converters',
-    'Physics-informed AI for TSA and CCT screening',
-    'Grid digital twins for online security assessment',
+    'Dynamic security and transient stability of converter-dominated power systems',
+    'Large-disturbance stability of grid-forming (GFM) and grid-following (GFL) converters',
+    'Physics-informed AI for transient stability assessment, trajectory prediction, and critical clearing time (CCT) estimation',
+    'Measurement-informed digital twins for dynamic security assessment',
   ]
   researchVisionTitle = 'Research vision'
-  researchVision = 'I study whether converter-dominated grids remain stable after faults, and whether operational margins such as critical clearing time stay adequate. The programme runs as one trajectory: stability theory for GFM and GFL plants, physics-informed AI for fast TSA and CCT, and grid digital twins that would use both in an operating-point setting.'
+  researchVision = 'My research focuses on the dynamic security of converter-dominated power systems, with particular emphasis on whether the grid can maintain stable operation following severe disturbances and whether operational stability margins, such as critical clearing time (CCT), remain adequate.'
+  researchVisionContinued = 'My research programme follows a coherent progression from the stability analysis of grid-forming (GFM) and grid-following (GFL) converter-based resources, to physics-informed neural network (PINN) models for fast transient stability assessment (TSA), trajectory prediction, and CCT estimation. Building on these foundations, I am working toward measurement-informed grid digital twins that integrate phasor measurement unit (PMU) data with physics-based and data-driven models for operating-point-specific dynamic security assessment and decision support.'
   researchProgramsTitle = 'Three research programs'
   researchCurrentTitle = 'Current research'
   researchBuildingTitle = 'Building toward'
   currentResearch = [
-    'PINNs for multimachine TSA',
+    'Physics-informed neural networks for TSA and CCT estimation',
+    'Extension to multimachine power systems',
     'Inertia and damping parameter estimation',
     'GFM/GFL transient stability',
-    'Surrogate-assisted CCT screening',
+    'Fast surrogate-based CCT screening',
   ]
   futureResearch = [
     'PMU-informed digital twins',
@@ -47,7 +49,7 @@ disableKinds = ['taxonomy', 'term']
     'Real-time dynamic security assessment',
   ]
   featuredTitle = 'Physics-Informed AI for Transient Stability'
-  featuredSummary = 'A unified PINN trajectory surrogate for transient stability assessment and critical clearing time estimation.'
+  featuredSummary = 'A unified PINN trajectory surrogate for TSA and CCT estimation.'
   featuredVenue = 'IEEE Access, 2026'
   featuredPaper = 'https://doi.org/10.1109/ACCESS.2026.3718419'
   featuredCode = 'https://github.com/albert8943/unified-physics-informed-neural-surrogate-smib-tsa-cct-benchmark'
@@ -55,28 +57,32 @@ disableKinds = ['taxonomy', 'term']
   researchProblemTitle = 'Research overview'
   researchProblem = 'As solar, wind, and power-electronics converters replace conventional plants, grids have less inertia and more converter interactions. After a short circuit or a similar disturbance, machines and converters can lose synchronism, or the remaining stability margin can become too small. The question I aim at is operational: in the present operating condition, will the grid stay stable after a credible disturbance, and is a margin such as critical clearing time (CCT) still adequate? That question is the dynamic security of converter-dominated power systems.'
   researchCurrentEmphasisTitle = 'Current emphasis'
-  researchCurrentEmphasis = 'My published work is strongest in rotor-angle transient security and converter-driven behaviour today. Transient stability analysis (TSA) and critical clearing time (CCT) are the assessment tools I use most in that setting. The three-part programme below also develops stability theory, scientific AI, and grid digital twins for the same dynamic-security question.'
+  researchCurrentEmphasis = 'My published work is strongest in rotor-angle transient security and converter-driven behaviour today. Transient stability analysis (TSA) and critical clearing time (CCT) are the assessment tools I use most in that setting. The three-part programme below develops stability theory and scientific AI now, and builds toward measurement-informed grid digital twins for the same dynamic-security question.'
   researchHowTitle = 'How I work on it'
   researchHow = 'I do not treat dynamic security as a single method. I work on it through three overlapping parts, shown in the figure. Each part is explained below. None of the three is the whole programme. They share one centre: keeping converter-dominated grids stable after faults and other disturbances.'
   researchDefinitionTitle = 'Dynamic security'
   researchDefinition = 'In power systems, dynamic security is the ability of the grid, in its present operating condition, to remain stable after credible disturbances such as short circuits. It is assessed by checking whether generators and converters keep synchronism and whether a stability margin (for example CCT) remains adequate.'
   researchAssessmentTitle = 'Assessment concepts'
-  researchAssessmentIntro = 'For readers who want the technical background: how dynamic security maps to IEEE/CIGRE stability classification, transient stability analysis (TSA), and operational margins such as CCT.'
+  researchAssessmentIntro = 'For readers who want the technical background: how dynamic security maps to IEEE/CIGRE stability classification, TSA, and operational margins such as CCT.'
   researchStabilityTitle = 'Where this sits in power system stability'
   researchStabilityIntro = 'In the IEEE/CIGRE framework, transient rotor-angle behaviour after a fault belongs under rotor-angle stability. The 2020 revision adds converter-driven and resonance stability. These categories help place TSA and CCT, the main assessment tools in my current work, within the wider stability picture.'
   researchTsaTitle = 'Transient stability and margins (current focus)'
   researchTsaNote = 'The study period is usually about 3 to 5 seconds in classical multimachine TSA, although it may extend to about 10 seconds for very large systems with dominant interarea modes. With converters, the critical post-fault interval is often shorter, and assessment may need to include converter-driven phenomena (Hatziargyri et al., 2021) as well as rotor-angle behaviour.'
-  researchMarginTitle = 'Critical clearing time (CCT) as a security margin'
+  researchMarginTitle = 'CCT as a security margin'
   researchMarginIntro = 'TSA asks whether synchronism is kept after a disturbance. In operations, we also need a margin: how long can a fault remain before stability is lost? CCT is one such measure.'
   teachingInterests = [
     'Power System Analysis',
-    'Power System Stability',
+    'Power System Stability and Dynamics',
     'Renewable Energy Integration',
-    'Smart Grids',
-    'Numerical Methods',
-    'AI/ML for Power Systems',
+    'Smart Grids and Modern Power Systems',
+    'Numerical Methods for Engineers',
+    'Artificial Intelligence and Machine Learning for Power Systems',
   ]
-  teachingPhilosophy = 'I teach so that students can move from a circuit or a swing equation to a judgement about whether a system will remain stable. In lecture courses I combine analysis with numerical implementation, because power-system work is done in models as well as in proofs. I want students to leave able to state assumptions, check a result against physics, and explain a margin such as critical clearing time in operational terms.'
+  teachingPhilosophy = [
+    'My teaching philosophy is to help students build a strong understanding of fundamental theory while learning how to apply it to practical engineering problems. I combine clear explanations of mathematical models and core principles with computational exercises, simulations, and application-oriented projects.',
+    'I emphasise explicit assumptions, physical interpretation, numerical verification, and critical evaluation of results. Students should learn not only how a method works, but also when it is appropriate, how to implement it correctly, and how to recognise its limitations.',
+    'My goal is for students to develop both conceptual understanding and practical engineering judgement, enabling them to translate theory into reliable solutions for real-world power and energy system problems.',
+  ]
 
 [services]
   # Add your GA4 measurement ID from https://analytics.google.com/ (format: G-XXXXXXXXXX)
