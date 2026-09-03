@@ -19,7 +19,7 @@
     <iconify-icon icon="simple-icons:github"></iconify-icon><span>GitHub</span>
   </a>
   <span class="social-separator">|</span>
-  <a href="mailto:{{ site.Params.email }}">
-    <iconify-icon icon="mdi:email"></iconify-icon><span>Email</span>
+  <a href="{{ "contact/" | relURL }}#email" title="{{ site.Params.email }}">
+    <iconify-icon icon="mdi:email" aria-hidden="true"></iconify-icon><span>Email</span>
   </a>
 </div>

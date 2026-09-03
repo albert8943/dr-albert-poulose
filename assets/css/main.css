@@ -259,7 +259,11 @@ a:hover { color: var(--color-accent-dark); text-decoration: underline; }
 
 .social-separator { color: var(--color-border); user-select: none; }
 
-iconify-icon { font-size: 1.1rem; vertical-align: middle; }
+iconify-icon {
+  font-size: 1.1rem;
+  vertical-align: middle;
+  pointer-events: none;
+}
 
 /* Sections */
 .section-heading {
