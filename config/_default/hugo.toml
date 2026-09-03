@@ -7,7 +7,7 @@ disableKinds = ['taxonomy', 'term']
 [params]
   name = 'Albert Poulose, Ph.D.'
   role = 'Postdoctoral Researcher'
-  affiliation = 'Microgrid Research Center & Dept. of Electrical Engineering'
+  affiliation = 'Microgrid Research Center · Department of Electrical Engineering'
   university = 'Kyungpook National University, Daegu, South Korea'
   researchIdentity = 'Power-System Stability · Scientific AI · Grid Digital Twins'
   email = 'albertpoulosepalatty@knu.ac.kr'
