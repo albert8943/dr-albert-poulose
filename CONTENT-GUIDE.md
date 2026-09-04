@@ -1,12 +1,23 @@
 # Content editing guide
 
 Use this file when you want to **edit, update, or add** content on [albertpoulose.com](https://albertpoulose.com/).  
-For Hugo install, local preview, and deploy, see [README.md](README.md).
+For Hugo install, **daily local preview**, and deploy, see [README.md → Local preview](README.md#local-preview) (especially [Any day you open this repo](README.md#any-day-you-open-this-repo)).
 
 **Rule of thumb:** most page copy lives in `config/_default/hugo.toml` and `data/*.yaml`.  
 `content/*/_index.md` files usually hold only the page **title** and **meta description**.
 
-After edits, preview with `hugo server -D`, then push `main` to deploy.
+### Preview before you edit (every session)
+
+Localhost does **not** start when you open the repo. Error **-102** means Hugo is not running.
+
+```powershell
+cd D:\Albert_OneDrive\OneDrive\dr-albert-poulose
+hugo server -D
+```
+
+Then open **http://localhost:1313/**. Leave the terminal open. Full steps: [README — Any day you open this repo](README.md#any-day-you-open-this-repo).
+
+After edits, confirm the pages in that preview, then push `main` to deploy.
 
 ---
 
@@ -14,10 +25,10 @@ After edits, preview with `hugo server -D`, then push `main` to deploy.
 
 | Website page | Primary files to edit |
 |--------------|------------------------|
-| Home | `config/_default/hugo.toml`, `data/publications.yaml` (`selected`), `data/software.yaml`, `data/news.yaml` |
+| Home | `config/_default/hugo.toml`, `data/publications.yaml` (`selected`), `data/software.yaml`, `data/news.yaml`, `data/metrics.yaml` |
 | Research | `config/_default/hugo.toml`, `data/research_pillars.yaml` |
 | Research Notes | `config/_default/hugo.toml` (assessment params), `layouts/research/single.html`, `layouts/partials/research-*.html` |
-| Publications | `data/publications.yaml` |
+| Publications | `data/publications.yaml`, `data/metrics.yaml` |
 | Teaching | `config/_default/hugo.toml`, `data/teaching.yaml`, `static/files/teaching/`, `static/images/teaching/` |
 | Experience | `data/timeline.yaml` |
 | Software | `data/software.yaml` |
@@ -194,6 +205,23 @@ File: [`config/_default/hugo.toml`](config/_default/hugo.toml)
 
 Folder: `static/files/publications/`  
 See `static/files/publications/README.txt` for expected filenames.
+
+---
+
+## Citation metrics (Home & Publications)
+
+Shown as Citations · h-index · i10-index from **OpenAlex** (not Google Scholar scraping).
+
+| File | Role |
+|------|------|
+| [`data/metrics.yaml`](data/metrics.yaml) | Numbers + `updated` date |
+| [`layouts/partials/metrics-strip.html`](layouts/partials/metrics-strip.html) | Shared UI |
+| [`scripts/fetch-openalex-metrics.py`](scripts/fetch-openalex-metrics.py) | Fetches by ORCID |
+| [`.github/workflows/update-metrics.yml`](.github/workflows/update-metrics.yml) | Weekly Monday refresh + manual run |
+
+**Force refresh:** GitHub → Actions → **Update OpenAlex metrics** → Run workflow.
+
+OpenAlex counts are often lower than Google Scholar. The strip links to Scholar for the familiar profile. Do not edit metrics by hand unless the Action is unavailable—prefer re-running the workflow.
 
 ---
 
@@ -393,7 +421,7 @@ Keep Soft claims: use **building toward** / **in progress** / **planned** until 
 
 ## Checklist before publishing
 
-1. Run `hugo server -D` and open the changed pages.
+1. Start Hugo if it is not already running (`hugo server -D`), then open the changed pages at http://localhost:1313/ (see [README — Local preview](README.md#local-preview)).
 2. Check acronym first-use on that page.
 3. Confirm new images/PDFs appear (file name must match YAML).
 4. Confirm pillar tags on new papers are conservative.

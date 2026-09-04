@@ -8,6 +8,7 @@ Hugo-based academic site for **albertpoulose.com**. Research-programme focused: 
 |------|--------|
 | Local preview | Ready (`hugo server -D`) |
 | Content & assets | Populated (publications, research pillars, teaching syllabi/photos, software, CV PDF) |
+| Citation metrics | OpenAlex strip on Home and Publications; weekly GitHub Action refresh |
 | CV | Hosted PDF at `static/files/cv/albert-poulose-cv.pdf`; web summary at `/cv/` |
 | Teaching | Interests, philosophy, courses with optional syllabus PDF and group photo per course |
 | Research Notes | Technical background at `/research/notes/` (not in main nav) |
@@ -21,10 +22,10 @@ Hugo-based academic site for **albertpoulose.com**. Research-programme focused: 
 
 ## Features
 
-- **Home:** research identity, two-paragraph bio, research interests, current focus, featured PINN paper, selected publications (full titles), software, recent news
+- **Home:** research identity, two-paragraph bio, research interests, current focus, OpenAlex citation metrics, featured PINN paper, selected publications (full titles), software, recent news
 - **Research:** two-paragraph vision; three programmes; overlap figure; current / building-toward; pillar sections (Problem → Approach → Selected work → Current direction); link to Research Notes
 - **Research Notes:** IEEE/CIGRE / TSA / CCT background and programme figures (footer of Research only; not main nav)
-- **Publications:** grouped by year; collapsible abstracts; Scholar/ORCID/Scopus; filter by research pillar (`01` Stability · `02` Scientific AI · `03` Digital Twins)
+- **Publications:** OpenAlex metrics; grouped by year; collapsible abstracts; Scholar/ORCID/Scopus; filter by research pillar (`01` Stability · `02` Scientific AI · `03` Digital Twins)
 - **Teaching:** interests, multi-paragraph philosophy, courses with **Syllabus (PDF)** and optional class photo
 - **Experience:** appointments and education (`/education/` redirects here); no certificate PDFs on this page
 - **Software:** PINN-TSA (evidence block) plus in-progress / planned prototypes
@@ -33,7 +34,40 @@ Hugo-based academic site for **albertpoulose.com**. Research-programme focused: 
 
 ## Local preview
 
-This site is built with [Hugo](https://gohugo.io/). Run the dev server on your machine, then open the site at the **local root URL**.
+Local preview is **not** automatic. Opening this repo in Cursor (or a browser bookmark to `http://localhost:1313/`) does **not** start the site. You must run Hugo in a terminal first. If you skip that step, the browser shows **Error Code: -102** (connection refused): nothing is listening on port 1313.
+
+### Any day you open this repo
+
+1. Open a terminal in the project root (Cursor: **Terminal → New Terminal**).
+2. Start Hugo:
+
+```powershell
+cd D:\Albert_OneDrive\OneDrive\dr-albert-poulose
+hugo server -D
+```
+
+3. Wait until the terminal prints:
+
+```text
+Web Server is available at http://localhost:1313/
+```
+
+4. Open **http://localhost:1313/** in your browser (site root — not `/dr-albert-poulose/`).
+5. Leave that terminal open while you browse. Edits to content/templates reload automatically.
+6. When finished, press **Ctrl+C** in the terminal to stop the server.
+
+If `hugo` is not recognized, use the full path:
+
+```powershell
+cd D:\Albert_OneDrive\OneDrive\dr-albert-poulose
+$hugo = "$env:LOCALAPPDATA\Microsoft\WinGet\Packages\Hugo.Hugo.Extended_Microsoft.Winget.Source_8wekyb3d8bbwe\hugo.exe"
+& $hugo server -D
+```
+
+| | Local | Production |
+|---|---|---|
+| Base URL | `http://localhost:1313/` | `https://albertpoulose.com/` |
+| Config | `config/development/hugo.toml` | `config/_default/hugo.toml` |
 
 **Important:** production and local preview both use the site root (no `/dr-albert-poulose/` path). That subpath was only used before the custom domain. Bookmarks like `http://localhost:1313/dr-albert-poulose/` are obsolete and return 404.
 
@@ -59,45 +93,9 @@ Expected output:
 hugo v0.165.0+extended windows/amd64
 ```
 
-If `hugo` is not recognized, Hugo is still installed. Your terminal may not have WinGet’s `Links` folder on `PATH` yet. Use the full path in step 1 below, or close and reopen your terminal (or restart Cursor) and try `hugo version` again.
+If `hugo` is not recognized, Hugo is still installed. Your terminal may not have WinGet’s `Links` folder on `PATH` yet. Use the full path in [Any day you open this repo](#any-day-you-open-this-repo), or close and reopen your terminal (or restart Cursor) and try `hugo version` again.
 
-### 1. Start the dev server
-
-From the project root:
-
-```powershell
-cd D:\Albert_OneDrive\OneDrive\dr-albert-poulose
-hugo server -D
-```
-
-If `hugo` is not on `PATH`, use the WinGet install location:
-
-```powershell
-cd D:\Albert_OneDrive\OneDrive\dr-albert-poulose
-$hugo = "$env:LOCALAPPDATA\Microsoft\WinGet\Packages\Hugo.Hugo.Extended_Microsoft.Winget.Source_8wekyb3d8bbwe\hugo.exe"
-& $hugo server -D
-```
-
-- `-D` includes draft content.
-- The server reloads automatically when you edit content or templates.
-- Leave the terminal open while you browse; press **Ctrl+C** to stop.
-
-Local preview uses `config/development/hugo.toml`:
-
-| | Local | Production |
-|---|---|---|
-| Base URL | `http://localhost:1313/` | `https://albertpoulose.com/` |
-| Config | `config/development/hugo.toml` | `config/_default/hugo.toml` |
-
-You should see:
-
-```text
-Web Server is available at http://localhost:1313/
-```
-
-### 2. Open in your browser
-
-Go to **http://localhost:1313/**
+### Page URL map
 
 | Page | Path | Local URL | Production URL |
 |------|------|-----------|----------------|
@@ -135,6 +133,10 @@ After installing, close and reopen your terminal, then run `hugo version`.
 
 ### Troubleshooting
 
+**Error Code: -102 / connection refused / “This site can’t be reached”**
+
+Hugo is not running. The browser bookmark alone is not enough. Follow [Any day you open this repo](#any-day-you-open-this-repo): start `hugo server -D`, wait for `Web Server is available at http://localhost:1313/`, then open the URL.
+
 **Wrong page, blank page, or 404 at http://localhost:1313/**
 
 Usually an old Hugo process is still serving the pre-domain subpath, or the browser is still on `/dr-albert-poulose/`.
@@ -146,13 +148,9 @@ Usually an old Hugo process is still serving the pre-domain subpath, or the brow
 
 After changing `baseURL` in `config/development/hugo.toml`, restart the server. A long-running process may keep the old path until you restart it.
 
-**http://localhost:1313 does not load the site**
+**Port 1313 is already in use**
 
-Confirm the server is running and open **http://localhost:1313/**.
-
-**The dev server is not running**
-
-Start it (see step 1 above) and leave the terminal open. If port 1313 is busy, use another port and update the base URL to match:
+Stop the other Hugo process, or use another port:
 
 ```powershell
 hugo server -D --port 1314 --baseURL "http://localhost:1314/"
@@ -212,6 +210,7 @@ Page bodies are mostly driven by `data/*.yaml` and `config/_default/hugo.toml` p
 | `data/timeline.yaml` | Appointments, education, earlier roles |
 | `data/news.yaml` | Home page news (recent professional items only) |
 | `data/software.yaml` | Research software cards (optional evidence fields for mature tools) |
+| `data/metrics.yaml` | OpenAlex citation metrics (citations, h-index, i10-index); refreshed weekly |
 | `data/gallery.yaml` | Optional gallery sections (footer link) |
 | `content/*/_index.md` | Section titles and descriptions (metadata) |
 | `content/research/notes.md` | Research Notes title/description |

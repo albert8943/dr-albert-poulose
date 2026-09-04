@@ -36,6 +36,14 @@
   </div>
 </section>
 
+{{ with hugo.Data.metrics }}
+<section class="metrics-section" aria-label="Citation metrics">
+  <div class="container">
+    {{ partial "metrics-strip.html" . }}
+  </div>
+</section>
+{{ end }}
+
 <section class="featured-section">
   <div class="container">
     <div class="section-heading">

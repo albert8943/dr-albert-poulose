@@ -1,0 +1,22 @@
+{{ with hugo.Data.metrics }}
+<div class="metrics-strip">
+  <div class="metrics-figures">
+    <div class="metrics-item">
+      <span class="metrics-value">{{ .citations }}</span>
+      <span class="metrics-label">Citations</span>
+    </div>
+    <div class="metrics-item">
+      <span class="metrics-value">{{ .h_index }}</span>
+      <span class="metrics-label">h-index</span>
+    </div>
+    <div class="metrics-item">
+      <span class="metrics-value">{{ .i10_index }}</span>
+      <span class="metrics-label">i10-index</span>
+    </div>
+  </div>
+  <p class="metrics-caption">
+    {{ .source | default "OpenAlex" }}{{ with .updated }} · Updated {{ . }}{{ end }}
+    · <a href="{{ site.Params.scholar }}" target="_blank" rel="noopener noreferrer">Google Scholar &rarr;</a>
+  </p>
+</div>
+{{ end }}
