@@ -21,6 +21,7 @@ disableKinds = ['taxonomy', 'term']
   githubPinn = 'https://github.com/albert8943/unified-physics-informed-neural-surrogate-smib-tsa-cct-benchmark'
   cvUpdated = 'Sep 03, 2026'
   cvPdf = 'files/cv/albert-poulose-cv.pdf'
+  showCitationMetrics = false
   bioIntro = 'My research focuses on the dynamic security and transient stability of converter-dominated power systems, with particular emphasis on determining whether the grid can maintain stable operation following severe disturbances and whether critical stability margins, such as critical clearing time (CCT), remain adequate.'
   bioCurrent = 'I pursue this research through stability analysis and modeling of grid-forming (GFM) and grid-following (GFL) converters, together with physics-informed neural network (PINN) surrogate models for fast transient stability assessment (TSA), trajectory prediction, and CCT screening. Building on these foundations, my long-term research direction is toward measurement-informed digital twins for real-time dynamic security assessment and decision support in renewable-rich power systems.'
   researchInterests = [

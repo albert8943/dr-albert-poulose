@@ -8,7 +8,9 @@
 
 <section class="page-content">
   <div class="container content-narrow">
+    {{ if site.Params.showCitationMetrics }}
     {{ partial "metrics-strip.html" . }}
+    {{ end }}
     <div class="pub-toolbar">
       <a class="btn btn-sm" href="{{ site.Params.scholar }}" target="_blank" rel="noopener noreferrer">Google Scholar &rarr;</a>
       <a class="btn btn-sm btn-outline" href="{{ site.Params.orcid }}" target="_blank" rel="noopener noreferrer">ORCID</a>

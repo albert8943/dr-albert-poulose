@@ -8,7 +8,7 @@ Hugo-based academic site for **albertpoulose.com**. Research-programme focused: 
 |------|--------|
 | Local preview | Ready (`hugo server -D`) |
 | Content & assets | Populated (publications, research pillars, teaching syllabi/photos, software, CV PDF) |
-| Citation metrics | OpenAlex strip on Home and Publications; weekly GitHub Action refresh |
+| Citation metrics | Built (OpenAlex); **hidden** via `showCitationMetrics = false` until re-enabled |
 | CV | Hosted PDF at `static/files/cv/albert-poulose-cv.pdf`; web summary at `/cv/` |
 | Teaching | Interests, philosophy, courses with optional syllabus PDF and group photo per course |
 | Research Notes | Technical background at `/research/notes/` (not in main nav) |
@@ -22,10 +22,10 @@ Hugo-based academic site for **albertpoulose.com**. Research-programme focused: 
 
 ## Features
 
-- **Home:** research identity, two-paragraph bio, research interests, current focus, OpenAlex citation metrics, featured PINN paper, selected publications (full titles), software, recent news
+- **Home:** research identity, two-paragraph bio, research interests, current focus, featured PINN paper, selected publications (full titles), software, recent news
 - **Research:** two-paragraph vision; three programmes; overlap figure; current / building-toward; pillar sections (Problem → Approach → Selected work → Current direction); link to Research Notes
 - **Research Notes:** IEEE/CIGRE / TSA / CCT background and programme figures (footer of Research only; not main nav)
-- **Publications:** OpenAlex metrics; grouped by year; collapsible abstracts; Scholar/ORCID/Scopus; filter by research pillar (`01` Stability · `02` Scientific AI · `03` Digital Twins)
+- **Publications:** grouped by year; collapsible abstracts; Scholar/ORCID/Scopus; filter by research pillar (`01` Stability · `02` Scientific AI · `03` Digital Twins)
 - **Teaching:** interests, multi-paragraph philosophy, courses with **Syllabus (PDF)** and optional class photo
 - **Experience:** appointments and education (`/education/` redirects here); no certificate PDFs on this page
 - **Software:** PINN-TSA (evidence block) plus in-progress / planned prototypes
