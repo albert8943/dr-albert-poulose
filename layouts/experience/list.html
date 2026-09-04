@@ -2,7 +2,7 @@
 <section class="page-header">
   <div class="container">
     <h1>{{ .Title }}</h1>
-    <p class="page-lead">Academic appointments and education. Earlier roles are listed separately.</p>
+    <p class="page-lead">Academic appointments and education. Earlier roles and schooling are under one collapsed section.</p>
   </div>
 </section>
 
@@ -40,20 +40,16 @@
       {{ end }}
     </div>
 
-    <h2 class="timeline-tier-title">Earlier appointments</h2>
-    <div class="timeline timeline-compact">
-      {{ range hugo.Data.timeline.early_career }}
-      <article class="timeline-card timeline-card-compact">
-        <time class="timeline-period">{{ .period }}</time>
-        <h3>{{ .role }}</h3>
-        <p class="timeline-institution">{{ .institution }}</p>
-      </article>
-      {{ end }}
-    </div>
-
     <details class="timeline-accordion">
-      <summary>Earlier education</summary>
+      <summary>Earlier appointments and education</summary>
       <div class="timeline timeline-compact">
+        {{ range hugo.Data.timeline.early_career }}
+        <article class="timeline-card timeline-card-compact">
+          <time class="timeline-period">{{ .period }}</time>
+          <h3>{{ .role }}</h3>
+          <p class="timeline-institution">{{ .institution }}</p>
+        </article>
+        {{ end }}
         {{ range hugo.Data.timeline.school }}
         <article class="timeline-card timeline-card-compact">
           <time class="timeline-period">{{ .period }}</time>
