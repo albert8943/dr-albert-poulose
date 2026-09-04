@@ -26,9 +26,27 @@ def fetch_author() -> dict:
         return json.load(resp)
 
 
+def citations_by_year_series(author: dict) -> list[tuple[int, int]]:
+    raw = author.get("counts_by_year") or []
+    by_year: dict[int, int] = {}
+    for row in raw:
+        try:
+            year = int(row.get("year"))
+            cited = int(row.get("cited_by_count") or 0)
+        except (TypeError, ValueError):
+            continue
+        by_year[year] = cited
+    if not by_year:
+        return []
+    start = min(by_year)
+    end = date.today().year
+    return [(year, by_year.get(year, 0)) for year in range(start, end + 1)]
+
+
 def write_metrics(author: dict) -> None:
     stats = author.get("summary_stats") or {}
     openalex_id = (author.get("id") or "").rstrip("/").split("/")[-1]
+    series = citations_by_year_series(author)
     lines = [
         "source: OpenAlex",
         f'orcid: "{ORCID}"',
@@ -38,8 +56,15 @@ def write_metrics(author: dict) -> None:
         f"i10_index: {int(stats.get('i10_index') or 0)}",
         f"works_count: {int(author.get('works_count') or 0)}",
         f'updated: "{date.today().isoformat()}"',
-        "",
+        "citations_by_year:",
     ]
+    if series:
+        for year, citations in series:
+            lines.append(f"  - year: {year}")
+            lines.append(f"    citations: {citations}")
+    else:
+        lines.append("  []")
+    lines.append("")
     OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUT_PATH.write_text("\n".join(lines), encoding="utf-8")
 

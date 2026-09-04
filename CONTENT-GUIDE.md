@@ -210,18 +210,23 @@ See `static/files/publications/README.txt` for expected filenames.
 
 ## Citation metrics (Home & Publications)
 
-Shown as Citations · h-index · i10-index from **OpenAlex** (not Google Scholar scraping).
+Infrastructure is in place but **currently hidden** because OpenAlex totals differ from Google Scholar.
+
+To show again: set `showCitationMetrics = true` in [`config/_default/hugo.toml`](config/_default/hugo.toml).
+
+Built as Citations · h-index · i10-index from **OpenAlex** (not Google Scholar scraping), plus a **citations-by-year** bar chart from OpenAlex yearly counts.
 
 | File | Role |
 |------|------|
-| [`data/metrics.yaml`](data/metrics.yaml) | Numbers + `updated` date |
-| [`layouts/partials/metrics-strip.html`](layouts/partials/metrics-strip.html) | Shared UI |
+| `showCitationMetrics` in `hugo.toml` | On/off switch (currently `false`) |
+| [`data/metrics.yaml`](data/metrics.yaml) | Totals, `citations_by_year`, and `updated` date |
+| [`layouts/partials/metrics-strip.html`](layouts/partials/metrics-strip.html) | Shared UI (figures + SVG chart) |
 | [`scripts/fetch-openalex-metrics.py`](scripts/fetch-openalex-metrics.py) | Fetches by ORCID |
-| [`.github/workflows/update-metrics.yml`](.github/workflows/update-metrics.yml) | Weekly Monday refresh + manual run |
+| [`.github/workflows/update-metrics.yml`](.github/workflows/update-metrics.yml) | Manual refresh only while the strip is hidden |
 
-**Force refresh:** GitHub → Actions → **Update OpenAlex metrics** → Run workflow.
+**Force refresh:** GitHub → Actions → **Update OpenAlex metrics** → Run workflow. Re-add a weekly `schedule` in that workflow when you turn the strip back on.
 
-OpenAlex counts are often lower than Google Scholar. The strip links to Scholar for the familiar profile. Do not edit metrics by hand unless the Action is unavailable—prefer re-running the workflow.
+OpenAlex counts (and the yearly bars) are often lower than Google Scholar. The strip links to Scholar for the familiar profile.
 
 ---
 

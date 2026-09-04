@@ -1,18 +1,55 @@
 {{ with hugo.Data.metrics }}
+{{ $series := .citations_by_year | default slice }}
+{{ $max := 1 }}
+{{ range $series }}
+  {{ if gt .citations $max }}{{ $max = .citations }}{{ end }}
+{{ end }}
+{{ $n := len $series }}
+{{ $ariaParts := slice }}
+{{ range $series }}
+  {{ $ariaParts = $ariaParts | append (printf "%d: %d" .year .citations) }}
+{{ end }}
 <div class="metrics-strip">
-  <div class="metrics-figures">
-    <div class="metrics-item">
-      <span class="metrics-value">{{ .citations }}</span>
-      <span class="metrics-label">Citations</span>
+  <div class="metrics-layout">
+    <div class="metrics-figures">
+      <div class="metrics-item">
+        <span class="metrics-value">{{ .citations }}</span>
+        <span class="metrics-label">Citations</span>
+      </div>
+      <div class="metrics-item">
+        <span class="metrics-value">{{ .h_index }}</span>
+        <span class="metrics-label">h-index</span>
+      </div>
+      <div class="metrics-item">
+        <span class="metrics-value">{{ .i10_index }}</span>
+        <span class="metrics-label">i10-index</span>
+      </div>
     </div>
-    <div class="metrics-item">
-      <span class="metrics-value">{{ .h_index }}</span>
-      <span class="metrics-label">h-index</span>
+
+    {{ if gt $n 0 }}
+    {{ $chartW := 360.0 }}
+    {{ $chartH := 132.0 }}
+    {{ $padTop := 20.0 }}
+    {{ $padBottom := 24.0 }}
+    {{ $padX := 8.0 }}
+    {{ $plotH := sub $chartH (add $padTop $padBottom) }}
+    {{ $slot := div (sub $chartW (mul $padX 2)) (float $n) }}
+    {{ $barW := mul $slot 0.62 }}
+    <div class="metrics-chart">
+      <p class="metrics-chart-title">Citations by year</p>
+      <svg class="metrics-chart-svg" viewBox="0 0 {{ $chartW }} {{ $chartH }}" role="img" aria-label="Citations by year (OpenAlex): {{ delimit $ariaParts `; ` }}">
+        {{ range $i, $row := $series }}
+          {{ $h := mul $plotH (div (float $row.citations) (float $max)) }}
+          {{ $x := add $padX (add (mul (float $i) $slot) (div (sub $slot $barW) 2)) }}
+          {{ $y := sub (sub $chartH $padBottom) $h }}
+          {{ $cx := add $x (div $barW 2) }}
+          <rect class="metrics-bar" x="{{ printf "%.2f" $x }}" y="{{ printf "%.2f" $y }}" width="{{ printf "%.2f" $barW }}" height="{{ printf "%.2f" $h }}" rx="2"></rect>
+          <text class="metrics-bar-count" x="{{ printf "%.2f" $cx }}" y="{{ printf "%.2f" (sub $y 4) }}">{{ $row.citations }}</text>
+          <text class="metrics-bar-year" x="{{ printf "%.2f" $cx }}" y="{{ printf "%.2f" (sub $chartH 6) }}">{{ $row.year }}</text>
+        {{ end }}
+      </svg>
     </div>
-    <div class="metrics-item">
-      <span class="metrics-value">{{ .i10_index }}</span>
-      <span class="metrics-label">i10-index</span>
-    </div>
+    {{ end }}
   </div>
   <p class="metrics-caption">
     {{ .source | default "OpenAlex" }}{{ with .updated }} · Updated {{ . }}{{ end }}
