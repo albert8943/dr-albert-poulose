@@ -1,4 +1,4 @@
-# Dr. Albert Poulose: Personal Website
+ # Dr. Albert Poulose: Personal Website
 
 Hugo-based academic site for **albertpoulose.com**. Research-programme focused: power-system stability, scientific AI, and grid digital twins.
 
