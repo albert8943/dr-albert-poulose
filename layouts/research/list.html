@@ -47,7 +47,7 @@
         <a class="section-link" href="{{ site.Params.scholar }}" target="_blank" rel="noopener noreferrer">Google Scholar &rarr;</a>
       </div>
       <div class="pub-filters-sticky-wrap">
-        {{ partial "publications-list.html" (dict "showSort" true) }}
+        {{ partial "publications-list.html" . }}
       </div>
       <p class="research-hub-footnote">
         <a href="{{ "publications/" | relURL }}">Open dedicated publications page &rarr;</a>

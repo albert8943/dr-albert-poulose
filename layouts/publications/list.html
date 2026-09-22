@@ -17,7 +17,7 @@
       <a class="btn btn-sm btn-outline" href="{{ site.Params.scopus }}" target="_blank" rel="noopener noreferrer">Scopus</a>
     </div>
 
-    {{ partial "publications-list.html" (dict "showSort" true) }}
+    {{ partial "publications-list.html" . }}
   </div>
 </section>
 {{ end }}

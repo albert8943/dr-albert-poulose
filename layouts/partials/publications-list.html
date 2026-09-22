@@ -1,5 +1,4 @@
-{{- /* Shared publication list with type + pillar filters. */ -}}
-{{- $showSort := .showSort | default true -}}
+{{- /* Shared publication list with year, type, and pillar filters. */ -}}
 {{- $journalCount := 0 -}}
 {{- $conferenceCount := 0 -}}
 {{- $thesisCount := 0 -}}
@@ -35,13 +34,6 @@
     <button type="button" class="pub-filter" data-pillar-filter="03">03 Digital Twins</button>
     <button type="button" class="pub-filter" data-pillar-filter="other">Other</button>
   </div>
-
-  {{ if $showSort }}
-  <div class="pub-filters pub-sort" role="group" aria-label="Sort publications by year">
-    <button type="button" class="pub-filter active" data-sort="newest">Newest first</button>
-    <button type="button" class="pub-filter" data-sort="oldest">Oldest first</button>
-  </div>
-  {{ end }}
 </div>
 
 <div class="pub-list-root" data-pub-list>
