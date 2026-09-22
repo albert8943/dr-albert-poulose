@@ -7,10 +7,10 @@ disableKinds = ['taxonomy', 'term']
 [params]
   name = 'Albert Poulose, Ph.D.'
   role = 'Postdoctoral Researcher'
-  affiliation = 'Microgrid Research Center · Department of Electrical Engineering'
+  affiliation = 'Microgrid Research Center, Department of Electrical Engineering'
   university = 'Kyungpook National University, Daegu, South Korea'
   researchIdentity = 'Power-system stability | Scientific AI | Grid digital twins'
-  homeAffiliation = 'Department of Electrical Engineering and Microgrid Research Center, Kyungpook National University, Daegu, South Korea.'
+  homeAffiliation = 'Microgrid Research Center, Department of Electrical Engineering<br>Kyungpook National University, Daegu, South Korea'
   email = 'albertpoulosepalatty@knu.ac.kr'
   emailPersonal = 'albertpoulosepalatty@gmail.com'
   currentAddress = 'Microgrid Research Center, School of Electronic and Electrical Engineering, Kyungpook National University, 80 Daehak-ro, Buk-gu, Daegu 41566, Republic of Korea'
