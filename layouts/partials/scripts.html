@@ -136,5 +136,58 @@
         });
       });
     });
+
+    var researchSubnav = document.querySelector('[data-research-subnav]');
+    if (researchSubnav) {
+      var researchTabs = Array.prototype.slice.call(researchSubnav.querySelectorAll('[data-research-tab]'));
+      var researchPanels = researchTabs.map(function (tab) {
+        var id = (tab.getAttribute('href') || '').replace(/^#/, '');
+        return id ? document.getElementById(id) : null;
+      });
+
+      function setActiveResearchTab(id) {
+        researchTabs.forEach(function (tab) {
+          var tabId = (tab.getAttribute('href') || '').replace(/^#/, '');
+          tab.classList.toggle('active', tabId === id);
+        });
+      }
+
+      researchTabs.forEach(function (tab) {
+        tab.addEventListener('click', function (event) {
+          var id = (tab.getAttribute('href') || '').replace(/^#/, '');
+          var target = id ? document.getElementById(id) : null;
+          if (!target) return;
+          event.preventDefault();
+          setActiveResearchTab(id);
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (history.replaceState) {
+            history.replaceState(null, '', '#' + id);
+          }
+        });
+      });
+
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function (entries) {
+          var visible = entries
+            .filter(function (entry) { return entry.isIntersecting; })
+            .sort(function (a, b) { return b.intersectionRatio - a.intersectionRatio; });
+          if (visible.length) {
+            setActiveResearchTab(visible[0].target.id);
+          }
+        }, {
+          rootMargin: '-30% 0px -55% 0px',
+          threshold: [0.05, 0.2, 0.4]
+        });
+        researchPanels.forEach(function (panel) {
+          if (panel) observer.observe(panel);
+        });
+      }
+
+      if (location.hash) {
+        setActiveResearchTab(location.hash.replace(/^#/, ''));
+      } else if (researchTabs[0]) {
+        setActiveResearchTab((researchTabs[0].getAttribute('href') || '').replace(/^#/, ''));
+      }
+    }
   })();
 </script>

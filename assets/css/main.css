@@ -1779,16 +1779,22 @@ iconify-icon {
 }
 
 .research-subnav {
+  position: sticky;
+  top: 3.6rem;
+  z-index: 90;
+  margin: 0;
+  padding: 0.7rem 0;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: 0 2px 8px rgba(26, 35, 50, 0.04);
+}
+
+.research-subnav-inner {
   display: flex;
   flex-wrap: wrap;
   gap: 0.35rem 1.25rem;
-  margin: 0 0 1.75rem;
-  padding-bottom: 0.85rem;
-  border-bottom: 1px solid var(--color-border);
-  position: sticky;
-  top: 0;
-  background: var(--color-bg);
-  z-index: 5;
+  align-items: center;
 }
 
 .research-subnav a {
@@ -1796,17 +1802,23 @@ iconify-icon {
   font-size: 0.95rem;
   text-decoration: none;
   color: var(--color-muted);
-  padding-bottom: 0.35rem;
+  padding: 0.25rem 0;
   border-bottom: 2px solid transparent;
 }
 
 .research-subnav a:hover {
   color: var(--color-accent);
+  text-decoration: none;
+}
+
+.research-subnav a.active {
+  color: var(--color-accent-dark);
+  border-bottom-color: var(--color-accent);
 }
 
 .research-hub-panel {
   margin-bottom: 2.75rem;
-  scroll-margin-top: 3.5rem;
+  scroll-margin-top: 7.5rem;
 }
 
 .research-hub-panel > h2,
