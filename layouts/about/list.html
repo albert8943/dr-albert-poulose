@@ -1,53 +1,64 @@
 {{ define "main" }}
-<section class="page-header">
-  <div class="container">
-    <h1>{{ .Title }}</h1>
-    <p class="page-lead">{{ site.Params.aboutLead }}</p>
+<section class="page-header about-header">
+  <div class="container about-header-inner">
+    <div class="about-photo">
+      <img src="{{ "images/profile.jpg" | relURL }}" alt="{{ site.Params.name }}" onerror="this.src='{{ "images/profile-placeholder.svg" | relURL }}';this.onerror=null;">
+    </div>
+    <div class="about-header-text">
+      <h1>{{ .Title }}</h1>
+      <p class="page-lead">{{ site.Params.aboutLead }}</p>
+    </div>
   </div>
 </section>
 
 <section class="page-content">
   <div class="container content-narrow">
-    <div class="about-intro">
+    <div class="about-bio-card">
       <p>{{ site.Params.aboutIntro }}</p>
       {{ with site.Params.aboutIntroContinued }}
       <p>{{ . }}</p>
       {{ end }}
     </div>
 
-    <h2 class="timeline-tier-title">Positions</h2>
-    <div class="timeline">
-      {{ range hugo.Data.timeline.appointments }}
-      <article class="timeline-card">
-        <time class="timeline-period">{{ .period }}</time>
-        <h3>{{ .role }}</h3>
-        <p class="timeline-institution">{{ .institution }}</p>
-        {{ with .summary }}
-        <p class="timeline-summary">{{ . }}</p>
-        {{ end }}
-        {{ if .highlights }}
-        <ul>
-          {{ range .highlights }}<li>{{ . }}</li>{{ end }}
-        </ul>
-        {{ end }}
-      </article>
-      {{ end }}
-    </div>
+    <div class="about-columns">
+      <div class="about-column">
+        <h2 class="timeline-tier-title">Positions</h2>
+        <div class="timeline">
+          {{ range hugo.Data.timeline.appointments }}
+          <article class="timeline-card">
+            <time class="timeline-period">{{ .period }}</time>
+            <h3>{{ .role }}</h3>
+            <p class="timeline-institution">{{ .institution }}</p>
+            {{ with .summary }}
+            <p class="timeline-summary">{{ . }}</p>
+            {{ end }}
+            {{ if .highlights }}
+            <ul>
+              {{ range .highlights }}<li>{{ . }}</li>{{ end }}
+            </ul>
+            {{ end }}
+          </article>
+          {{ end }}
+        </div>
+      </div>
 
-    <h2 class="timeline-tier-title">Education</h2>
-    <div class="timeline">
-      {{ range hugo.Data.timeline.education }}
-      <article class="timeline-card">
-        <time class="timeline-period">{{ .period }}</time>
-        <h3>{{ .role }}</h3>
-        <p class="timeline-institution">{{ .institution }}</p>
-        {{ if .highlights }}
-        <ul>
-          {{ range .highlights }}<li>{{ . }}</li>{{ end }}
-        </ul>
-        {{ end }}
-      </article>
-      {{ end }}
+      <div class="about-column">
+        <h2 class="timeline-tier-title">Education</h2>
+        <div class="timeline">
+          {{ range hugo.Data.timeline.education }}
+          <article class="timeline-card">
+            <time class="timeline-period">{{ .period }}</time>
+            <h3>{{ .role }}</h3>
+            <p class="timeline-institution">{{ .institution }}</p>
+            {{ if .highlights }}
+            <ul>
+              {{ range .highlights }}<li>{{ . }}</li>{{ end }}
+            </ul>
+            {{ end }}
+          </article>
+          {{ end }}
+        </div>
+      </div>
     </div>
 
     <h2 class="timeline-tier-title">Awards and recognition</h2>

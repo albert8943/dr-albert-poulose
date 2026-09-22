@@ -45,58 +45,27 @@ After edits, confirm the pages in that preview, then push `main` to deploy.
 
 **Layout:** `layouts/index.html`
 
-### Identity and bio
+Antonio-style landing: current title, short affiliation line, large circular photo, CTAs, Recent News only.
 
-File: [`config/_default/hugo.toml`](config/_default/hugo.toml) under `[params]`
+| Param / file | What it controls |
+|--------------|------------------|
+| `name`, `role` | Greeting name and title |
+| `homeAffiliation` | One short affiliation + research line under the title |
+| `data/news.yaml` | Recent News cards (`date`, `tag`, `title`, `text`) |
+| `static/images/profile.jpg` | Large circular Home photo |
 
-| Param | What it controls |
-|-------|------------------|
-| `name`, `role`, `affiliation`, `university` | Hero name and position line |
-| `researchIdentity` | Headline under your name (programme label) |
-| `bioIntro` | First bio paragraph |
-| `bioCurrent` | Second bio paragraph |
-| `researchInterests` | Bullet list under **Research interests** |
-| `currentResearch` | **Current focus** line on Home (also **Current research** on Research) |
-
-### Featured research
-
-Same file:
-
-| Param | What it controls |
-|-------|------------------|
-| `featuredTitle`, `featuredSummary`, `featuredVenue` | Featured card copy |
-| `featuredPaper`, `featuredCode`, `featuredProject` | Buttons |
-
-### Selected publications
-
-File: [`data/publications.yaml`](data/publications.yaml)
-
-- Set `selected: true` on items you want on Home.
-- Home shows the full `title` (not `homepageTitle`).
-- Keep `homepageTitle` optional/legacy; it is unused on Home now.
-
-### Research software teaser
-
-File: [`data/software.yaml`](data/software.yaml)
-
-- Home shows the first three entries.
-- Uses `title`, `short`, `stack`, `status`.
+Longer bio (`bioIntro`, `bioCurrent`, `researchInterests`) is used on CV / search / About, not on Home.
 
 ### Recent news
 
-File: [`data/news.yaml`](data/news.yaml)
-
 ```yaml
 - date: YYYY-MM-DD
+  tag: Paper   # Paper | Position | Talk | Achievement
+  title: "Short milestone headline"
   text: "Plain text or HTML (links with <a href=...>)"
 ```
 
-Newest dates appear first if you keep the list ordered by date descending.
-
-### Profile photo
-
-- Replace: `static/images/profile.jpg`
-- Fallback: `static/images/profile-placeholder.svg`
+Keep newest first. Home shows the first five entries.
 
 ---
 
@@ -107,15 +76,17 @@ Newest dates appear first if you keep the list ordered by date descending.
 
 ### Hub (top of page)
 
-Short scanning layer before the deep programme:
+Sub-nav jumps to Interests, Publications, and Software:
 
 | Piece | Source |
 |-------|--------|
 | Lead line | `researchHubLead` in `hugo.toml` |
 | One-paragraph vision | `researchVision` |
-| Interest cards | `title`, `tags`, `description` from `data/research_pillars.yaml` (link to pillar anchors) |
-| Selected publications | `selected: true` in `data/publications.yaml`; full list at `/publications/` |
-| Software teasers | `data/software.yaml`; full list at `/software/` |
+| Interest cards | `title`, `tags`, `description` from `data/research_pillars.yaml` |
+| Publications | Full list via `layouts/partials/publications-list.html` (type + pillar filters, newest/oldest sort) |
+| Software | `data/software.yaml` |
+
+Shared pub list also powers `/publications/`.
 
 ### Full research programme (below)
 
@@ -283,10 +254,12 @@ Grouped by `year`, each course:
 **Data:** [`data/timeline.yaml`](data/timeline.yaml), [`data/awards.yaml`](data/awards.yaml)  
 **Params:** `aboutLead`, `aboutIntro`, `aboutIntroContinued` in `hugo.toml`
 
+Page order: small circular photo + title → bio card → **Positions (left) | Education (right)** → awards → earlier accordion.
+
 | YAML key | Page section |
 |----------|----------------|
-| `appointments` | Positions (use optional `summary` for a one-line focus) |
-| `education` | Education |
+| `appointments` | Positions (left; optional `summary`) |
+| `education` | Education (right) |
 | `awards` (`data/awards.yaml`) | Awards and recognition |
 | `early_career` | Earlier appointments |
 | `school` | Earlier education (collapsed) |

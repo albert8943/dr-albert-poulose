@@ -9,14 +9,96 @@
       });
     }
 
-    var filters = document.querySelectorAll('.pub-filter');
-    var cards = document.querySelectorAll('.pub-card[data-pillars]');
-    var sections = document.querySelectorAll('[data-year-section]');
-    if (filters.length && cards.length) {
-      filters.forEach(function (btn) {
+    function applyPubFilters(root) {
+      var typeFilter = 'all';
+      var pillarFilter = 'all';
+      var typeBtn = root.querySelector('[data-type-filter].active');
+      var pillarBtn = root.querySelector('[data-pillar-filter].active');
+      if (typeBtn) typeFilter = typeBtn.getAttribute('data-type-filter') || 'all';
+      if (pillarBtn) pillarFilter = pillarBtn.getAttribute('data-pillar-filter') || 'all';
+
+      var listRoot = root.parentElement
+        ? root.parentElement.querySelector('[data-pub-list]')
+        : document.querySelector('[data-pub-list]');
+      if (!listRoot) {
+        listRoot = document.querySelector('[data-pub-list]');
+      }
+      // Prefer sibling list after this filter bar
+      var siblingList = root.nextElementSibling;
+      while (siblingList && !siblingList.hasAttribute('data-pub-list')) {
+        siblingList = siblingList.nextElementSibling;
+      }
+      if (siblingList) listRoot = siblingList;
+
+      if (!listRoot) return;
+
+      var cards = listRoot.querySelectorAll('.pub-card');
+      var sections = listRoot.querySelectorAll('[data-year-section]');
+      cards.forEach(function (card) {
+        var type = card.getAttribute('data-type') || 'other';
+        var pillars = (card.getAttribute('data-pillars') || '').split(/\s+/).filter(Boolean);
+        var typeOk = typeFilter === 'all' || type === typeFilter;
+        var pillarOk = pillarFilter === 'all'
+          || (pillarFilter === 'other' && (pillars.length === 0 || pillars.indexOf('other') !== -1 || (pillars.indexOf('01') === -1 && pillars.indexOf('02') === -1 && pillars.indexOf('03') === -1)))
+          || pillars.indexOf(pillarFilter) !== -1;
+        card.hidden = !(typeOk && pillarOk);
+      });
+      sections.forEach(function (section) {
+        var visible = section.querySelectorAll('.pub-card:not([hidden])');
+        section.hidden = visible.length === 0;
+      });
+    }
+
+    document.querySelectorAll('[data-pub-filter-root]').forEach(function (root) {
+      root.querySelectorAll('[data-type-filter]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          root.querySelectorAll('[data-type-filter]').forEach(function (b) {
+            b.classList.toggle('active', b === btn);
+          });
+          applyPubFilters(root);
+        });
+      });
+      root.querySelectorAll('[data-pillar-filter]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          root.querySelectorAll('[data-pillar-filter]').forEach(function (b) {
+            b.classList.toggle('active', b === btn);
+          });
+          applyPubFilters(root);
+        });
+      });
+      root.querySelectorAll('[data-sort]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          root.querySelectorAll('[data-sort]').forEach(function (b) {
+            b.classList.toggle('active', b === btn);
+          });
+          var sort = btn.getAttribute('data-sort') || 'newest';
+          var siblingList = root.nextElementSibling;
+          while (siblingList && !siblingList.hasAttribute('data-pub-list')) {
+            siblingList = siblingList.nextElementSibling;
+          }
+          if (!siblingList) return;
+          var sections = Array.prototype.slice.call(siblingList.querySelectorAll('[data-year-section]'));
+          sections.sort(function (a, b) {
+            var ya = parseInt(a.getAttribute('data-year') || '0', 10);
+            var yb = parseInt(b.getAttribute('data-year') || '0', 10);
+            return sort === 'oldest' ? ya - yb : yb - ya;
+          });
+          sections.forEach(function (section) {
+            siblingList.appendChild(section);
+          });
+        });
+      });
+    });
+
+    // Legacy single-row pillar filters (if any remain without data-pub-filter-root)
+    var legacyFilters = document.querySelectorAll('.pub-filter[data-filter]');
+    if (legacyFilters.length) {
+      var cards = document.querySelectorAll('.pub-card[data-pillars]');
+      var sections = document.querySelectorAll('[data-year-section]');
+      legacyFilters.forEach(function (btn) {
         btn.addEventListener('click', function () {
           var filter = btn.getAttribute('data-filter');
-          filters.forEach(function (b) { b.classList.toggle('active', b === btn); });
+          legacyFilters.forEach(function (b) { b.classList.toggle('active', b === btn); });
           cards.forEach(function (card) {
             var pillars = (card.getAttribute('data-pillars') || '').split(/\s+/);
             var show = filter === 'all' || pillars.indexOf(filter) !== -1;

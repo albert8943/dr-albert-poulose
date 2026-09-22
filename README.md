@@ -22,13 +22,13 @@ Hugo-based academic site for **albertpoulose.com**. Research-programme focused: 
 
 ## Features
 
-- **Home:** research identity, two-paragraph bio, research interests, current focus, featured PINN paper, selected publications (full titles), software, recent news
-- **Research:** short interest briefs plus selected publications and software; full three-programme deep dive below; link to Research Notes
+- **Home:** current title and affiliation, large circular photo, About/Contact CTAs, recent news with titles
+- **Research:** sub-nav for Interests, Publications, and Software; short interest cards; filterable full publication list; software; full programme below
 - **Research Notes:** IEEE/CIGRE / TSA / CCT background and programme figures (footer of Research only; not main nav)
-- **Publications:** grouped by year; collapsible abstracts; Scholar/ORCID/Scopus; filter by research pillar (`01` Stability · `02` Scientific AI · `03` Digital Twins); linked from Research hub (not main nav)
+- **Publications:** grouped by year; type and pillar filters; sort by year; collapsible abstracts; Scholar/ORCID/Scopus; also embedded on Research
 - **Teaching:** interests, multi-paragraph philosophy, courses with **Syllabus (PDF)** and optional class photo
-- **About:** narrative bio, positions with focus summaries, education, awards; `/experience/` and `/education/` alias here; no certificate PDFs on this page
-- **Software:** PINN-TSA (evidence block) plus in-progress / planned prototypes; linked from Research hub (not main nav)
+- **About:** small circular photo, short bio, Positions | Education columns, awards; `/experience/` and `/education/` alias here
+- **Software:** PINN-TSA (evidence block) plus in-progress / planned prototypes; also on Research hub
 - **CV:** web summary plus clear **Academic CV — PDF** download
 - **Contact** and **Gallery:** footer only (institutional email first; no home address or phone). Gallery is optional secondary content
 

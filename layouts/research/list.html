@@ -8,12 +8,18 @@
 
 <section class="page-content research-page">
   <div class="container content-narrow">
+    <nav class="research-subnav" aria-label="Research sections">
+      <a href="#interests">Research Interests</a>
+      <a href="#publications">Publications</a>
+      <a href="#software">Software</a>
+    </nav>
+
     <div class="research-hub-intro">
       <p>{{ site.Params.researchVision }}</p>
     </div>
 
-    <div class="research-interests-hub" aria-labelledby="research-interests-hub-heading">
-      <h2 id="research-interests-hub-heading">Research interests</h2>
+    <div class="research-hub-panel" id="interests">
+      <h2>Research Interests</h2>
       <div class="research-interest-grid">
         {{ range hugo.Data.research_pillars }}
         <a class="research-interest-card" href="#{{ .id }}">
@@ -25,37 +31,18 @@
       </div>
     </div>
 
-    <div class="research-hub-section" id="publications">
+    <div class="research-hub-panel" id="publications">
       <div class="section-heading">
         <h2>Publications</h2>
-        <a class="section-link" href="{{ "publications/" | relURL }}">All publications &rarr;</a>
+        <a class="section-link" href="{{ site.Params.scholar }}" target="_blank" rel="noopener noreferrer">Google Scholar &rarr;</a>
       </div>
-      <div class="selected-list">
-        {{ range hugo.Data.publications }}
-          {{ range .items }}
-            {{ if .selected }}
-            <article class="selected-item">
-              <h3>{{ .title }}</h3>
-              <p>{{ .authors }}</p>
-              <p class="selected-venue"><em>{{ .venue }}</em></p>
-              <div class="pub-links">
-                {{ if .doi }}
-                <a class="btn btn-sm" href="https://doi.org/{{ .doi }}" target="_blank" rel="noopener noreferrer">DOI</a>
-                {{ else if .url }}
-                <a class="btn btn-sm" href="{{ .url }}" target="_blank" rel="noopener noreferrer">Link</a>
-                {{ end }}
-                {{ if .code }}
-                <a class="btn btn-sm btn-outline" href="{{ .code }}" target="_blank" rel="noopener noreferrer">Code</a>
-                {{ end }}
-              </div>
-            </article>
-            {{ end }}
-          {{ end }}
-        {{ end }}
-      </div>
+      {{ partial "publications-list.html" (dict "showSort" true) }}
+      <p class="research-hub-footnote">
+        <a href="{{ "publications/" | relURL }}">Open dedicated publications page &rarr;</a>
+      </p>
     </div>
 
-    <div class="research-hub-section" id="software">
+    <div class="research-hub-panel" id="software">
       <div class="section-heading">
         <h2>Software</h2>
         <a class="section-link" href="{{ "software/" | relURL }}">All software &rarr;</a>

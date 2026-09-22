@@ -1,0 +1,94 @@
+{{- /* Shared publication list with type + pillar filters. */ -}}
+{{- $showSort := .showSort | default true -}}
+{{- $journalCount := 0 -}}
+{{- $conferenceCount := 0 -}}
+{{- $thesisCount := 0 -}}
+{{- $allCount := 0 -}}
+{{- range hugo.Data.publications -}}
+  {{- range .items -}}
+    {{- $allCount = add $allCount 1 -}}
+    {{- if eq .type "journal" -}}{{- $journalCount = add $journalCount 1 -}}{{- end -}}
+    {{- if eq .type "conference" -}}{{- $conferenceCount = add $conferenceCount 1 -}}{{- end -}}
+    {{- if eq .type "thesis" -}}{{- $thesisCount = add $thesisCount 1 -}}{{- end -}}
+  {{- end -}}
+{{- end -}}
+
+<div class="pub-filter-bar" data-pub-filter-root>
+  <div class="pub-filters" role="group" aria-label="Filter publications by type">
+    <button type="button" class="pub-filter active" data-type-filter="all">All ({{ $allCount }})</button>
+    <button type="button" class="pub-filter" data-type-filter="journal">Journal ({{ $journalCount }})</button>
+    <button type="button" class="pub-filter" data-type-filter="conference">Conference ({{ $conferenceCount }})</button>
+    <button type="button" class="pub-filter" data-type-filter="thesis">Thesis ({{ $thesisCount }})</button>
+  </div>
+
+  <div class="pub-filters" role="group" aria-label="Filter publications by research pillar">
+    <button type="button" class="pub-filter active" data-pillar-filter="all">All pillars</button>
+    <button type="button" class="pub-filter" data-pillar-filter="01">01 Stability</button>
+    <button type="button" class="pub-filter" data-pillar-filter="02">02 Scientific AI</button>
+    <button type="button" class="pub-filter" data-pillar-filter="03">03 Digital Twins</button>
+    <button type="button" class="pub-filter" data-pillar-filter="other">Other</button>
+  </div>
+
+  {{ if $showSort }}
+  <div class="pub-filters pub-sort" role="group" aria-label="Sort publications by year">
+    <button type="button" class="pub-filter active" data-sort="newest">Newest first</button>
+    <button type="button" class="pub-filter" data-sort="oldest">Oldest first</button>
+  </div>
+  {{ end }}
+</div>
+
+<div class="pub-list-root" data-pub-list>
+{{ range hugo.Data.publications }}
+<div class="pub-section" data-year-section data-year="{{ .year }}">
+  <h2 class="pub-section-title">{{ .year }}</h2>
+  {{ range .items }}
+  {{ $pubType := .type | default "other" }}
+  <article class="pub-card" data-type="{{ $pubType }}" data-pillars="{{ if .pillars }}{{ delimit .pillars " " }}{{ else }}other{{ end }}">
+    <div class="pub-card-meta">
+      {{ range .pillars }}
+      {{ if eq . "01" }}
+      <span class="pub-chip pub-chip-01"><span class="pub-chip-num">01</span><span class="pub-chip-label">Stability</span></span>
+      {{ else if eq . "02" }}
+      <span class="pub-chip pub-chip-02"><span class="pub-chip-num">02</span><span class="pub-chip-label">Scientific AI</span></span>
+      {{ else if eq . "03" }}
+      <span class="pub-chip pub-chip-03"><span class="pub-chip-num">03</span><span class="pub-chip-label">Digital Twins</span></span>
+      {{ else }}
+      <span class="pub-chip pub-chip-other"><span class="pub-chip-label">Other</span></span>
+      {{ end }}
+      {{ end }}
+      <span class="pub-type-badge">{{ $pubType | title }}</span>
+    </div>
+    <p class="pub-authors">{{ .authors }}</p>
+    <h3 class="pub-title">{{ .title }}</h3>
+    <p class="pub-venue"><em>{{ .venue }}</em></p>
+    {{ if .abstract }}
+    <details class="pub-abstract">
+      <summary>Abstract</summary>
+      <p>{{ .abstract }}</p>
+      {{ if .keywords }}
+      <p class="pub-keywords"><strong>Keywords:</strong> {{ .keywords }}</p>
+      {{ end }}
+    </details>
+    {{ end }}
+    <div class="pub-links">
+      {{ if .doi }}
+      <a class="btn btn-sm" href="https://doi.org/{{ .doi }}" target="_blank" rel="noopener noreferrer">DOI</a>
+      <a class="btn btn-sm btn-outline" href="https://scholar.google.com/scholar?q={{ .doi | urlquery }}" target="_blank" rel="noopener noreferrer">Scholar</a>
+      {{ else if .url }}
+      <a class="btn btn-sm" href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ if eq $pubType "thesis" }}Thesis{{ else }}Link{{ end }}</a>
+      {{ end }}
+      {{ if .code }}
+      <a class="btn btn-sm btn-outline" href="{{ .code }}" target="_blank" rel="noopener noreferrer">Code</a>
+      {{ end }}
+      {{ if .pdf }}
+      <a class="btn btn-sm btn-outline" href="{{ strings.TrimPrefix "/" .pdf | relURL }}" target="_blank" rel="noopener noreferrer">{{ if eq $pubType "thesis" }}Thesis PDF{{ else }}PDF{{ end }}</a>
+      {{ end }}
+      {{ if .slides }}
+      <a class="btn btn-sm btn-outline" href="{{ strings.TrimPrefix "/" .slides | relURL }}" target="_blank" rel="noopener noreferrer">Slides</a>
+      {{ end }}
+    </div>
+  </article>
+  {{ end }}
+</div>
+{{ end }}
+</div>

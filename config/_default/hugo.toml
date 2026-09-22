@@ -10,6 +10,7 @@ disableKinds = ['taxonomy', 'term']
   affiliation = 'Microgrid Research Center · Department of Electrical Engineering'
   university = 'Kyungpook National University, Daegu, South Korea'
   researchIdentity = 'Power-System Stability · Scientific AI · Grid Digital Twins'
+  homeAffiliation = 'Department of Electrical Engineering and Microgrid Research Center, Kyungpook National University, Daegu, South Korea. I work on power-system stability, physics-informed AI for TSA and CCT, and measurement-informed grid digital twins.'
   email = 'albertpoulosepalatty@knu.ac.kr'
   emailPersonal = 'albertpoulosepalatty@gmail.com'
   currentAddress = 'Microgrid Research Center, School of Electronic and Electrical Engineering, Kyungpook National University, 80 Daehak-ro, Buk-gu, Daegu 41566, Republic of Korea'

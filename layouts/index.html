@@ -1,123 +1,23 @@
 {{ define "main" }}
-<section class="hero">
+<section class="hero hero-home">
   <div class="container">
-    <div class="hero-heading">
-      <h1>{{ site.Params.name }}</h1>
-      <p class="research-identity">{{ site.Params.researchIdentity }}</p>
-      <p class="position">{{ site.Params.role }} | {{ site.Params.university }}<br>{{ site.Params.affiliation }}</p>
-    </div>
-    <div class="hero-content-grid">
-      <div class="hero-copy">
-        <p class="bio">{{ site.Params.bioIntro }}</p>
-        <p class="research-statement">{{ site.Params.bioCurrent }}</p>
-        <div class="research-interests" aria-labelledby="research-interests-heading">
-          <h2 class="research-interests-label" id="research-interests-heading">Research interests</h2>
-          <ul class="research-interests-list">
-            {{ range site.Params.researchInterests }}
-            <li>
-              <span class="research-interests-marker" aria-hidden="true"></span>
-              <span class="research-interests-text">{{ . }}</span>
-            </li>
-            {{ end }}
-          </ul>
-          <p class="current-focus">
-            <span class="current-focus-label">Current focus:</span>
-            {{ delimit site.Params.currentResearch " · " }}
-          </p>
+    <div class="hero-home-grid">
+      <div class="hero-home-copy">
+        <p class="hero-greeting">Hi, I'm</p>
+        <h1>{{ site.Params.name }}</h1>
+        <p class="hero-title">{{ site.Params.role }}</p>
+        <p class="hero-affiliation">{{ site.Params.homeAffiliation }}</p>
+        <div class="hero-actions">
+          <a class="btn" href="{{ "about/" | relURL }}">About</a>
+          <a class="btn btn-outline" href="{{ "contact/" | relURL }}">Contact</a>
+        </div>
+        <div class="hero-socials-wrap">
+          {{ partial "social-links.html" . }}
         </div>
       </div>
-      <div class="hero-photo">
+      <div class="hero-photo hero-photo-circle">
         <img src="{{ "images/profile.jpg" | relURL }}" alt="{{ site.Params.name }}" onerror="this.src='{{ "images/profile-placeholder.svg" | relURL }}';this.onerror=null;">
       </div>
-      <div class="hero-socials-wrap">
-        {{ partial "social-links.html" . }}
-      </div>
-    </div>
-  </div>
-</section>
-
-{{ if site.Params.showCitationMetrics }}
-{{ with hugo.Data.metrics }}
-<section class="metrics-section" aria-label="Citation metrics">
-  <div class="container">
-    {{ partial "metrics-strip.html" . }}
-  </div>
-</section>
-{{ end }}
-{{ end }}
-
-<section class="featured-section">
-  <div class="container">
-    <div class="section-heading">
-      <h2>Featured research</h2>
-      <a class="section-link" href="{{ "research/" | relURL }}">Research programme &rarr;</a>
-    </div>
-    <article class="featured-card">
-      <div class="featured-copy">
-        <p class="featured-kicker">{{ site.Params.featuredVenue }}</p>
-        <h3>{{ site.Params.featuredTitle }}</h3>
-        <p>{{ site.Params.featuredSummary }}</p>
-        <div class="featured-actions">
-          <a class="btn btn-sm" href="{{ site.Params.featuredPaper }}" target="_blank" rel="noopener noreferrer">Paper</a>
-          <a class="btn btn-sm btn-outline" href="{{ site.Params.featuredCode }}" target="_blank" rel="noopener noreferrer">Code</a>
-          <a class="btn btn-sm btn-outline" href="{{ site.Params.featuredProject | relURL }}">Project</a>
-          <a class="btn btn-sm btn-outline" href="{{ site.Params.github }}" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </div>
-      </div>
-      <div class="featured-figure">
-        {{ partial "research-fig-02.html" . }}
-      </div>
-    </article>
-  </div>
-</section>
-
-<section class="selected-section">
-  <div class="container">
-    <div class="section-heading">
-      <h2>Selected publications</h2>
-      <a class="section-link" href="{{ "publications/" | relURL }}">All publications &rarr;</a>
-    </div>
-    <div class="selected-list">
-      {{ range hugo.Data.publications }}
-        {{ range .items }}
-          {{ if .selected }}
-          <article class="selected-item">
-            <h3>{{ .title }}</h3>
-            <p>{{ .authors }}</p>
-            <p class="selected-venue"><em>{{ .venue }}</em></p>
-            <div class="pub-links">
-              {{ if .doi }}
-              <a class="btn btn-sm" href="https://doi.org/{{ .doi }}" target="_blank" rel="noopener noreferrer">DOI</a>
-              {{ else if .url }}
-              <a class="btn btn-sm" href="{{ .url }}" target="_blank" rel="noopener noreferrer">Link</a>
-              {{ end }}
-              {{ if .code }}
-              <a class="btn btn-sm btn-outline" href="{{ .code }}" target="_blank" rel="noopener noreferrer">Code</a>
-              {{ end }}
-            </div>
-          </article>
-          {{ end }}
-        {{ end }}
-      {{ end }}
-    </div>
-  </div>
-</section>
-
-<section class="software-teaser-section">
-  <div class="container">
-    <div class="section-heading">
-      <h2>Research software</h2>
-      <a class="section-link" href="{{ "software/" | relURL }}">Software &rarr;</a>
-    </div>
-    <div class="software-grid software-grid-home">
-      {{ range first 3 hugo.Data.software }}
-      <a class="software-card software-card-{{ .status }}" href="{{ "software/" | relURL }}">
-        <span class="project-status-badge project-status-{{ .status }}">{{ if eq .status "available" }}Available{{ else if eq .status "in_progress" }}In progress{{ else }}Planned{{ end }}</span>
-        <h3>{{ .title }}</h3>
-        <p>{{ .short }}</p>
-        <p class="software-stack">{{ .stack }}</p>
-      </a>
-      {{ end }}
     </div>
   </div>
 </section>
@@ -125,14 +25,18 @@
 <section class="news-section">
   <div class="container">
     <div class="section-heading">
-      <h2>News</h2>
-      <a class="section-link" href="{{ "about/" | relURL }}">Full chronology &rarr;</a>
+      <h2>Recent News</h2>
+      <a class="section-link" href="{{ "about/" | relURL }}">About &rarr;</a>
     </div>
-    <div class="news-list">
-      {{ range hugo.Data.news }}
-      <article class="news-item">
-        <time class="news-date" datetime="{{ .date }}">{{ time .date | time.Format "Jan 02, 2006" }}</time>
-        <p class="news-text">{{ .text | safeHTML }}</p>
+    <div class="news-list news-list-cards">
+      {{ range first 5 hugo.Data.news }}
+      <article class="news-card">
+        <time class="news-card-date" datetime="{{ .date }}">{{ time .date | time.Format "Jan 2006" }}</time>
+        <div class="news-card-body">
+          {{ with .tag }}<span class="news-tag news-tag-{{ lower . }}">{{ . }}</span>{{ end }}
+          {{ with .title }}<h3 class="news-card-title">{{ . }}</h3>{{ end }}
+          <p class="news-text">{{ .text | safeHTML }}</p>
+        </div>
       </article>
       {{ end }}
     </div>
