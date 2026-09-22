@@ -7,6 +7,13 @@
         <h1>{{ site.Params.name }}</h1>
         <p class="hero-title">{{ site.Params.role }}</p>
         <p class="hero-affiliation">{{ site.Params.homeAffiliation }}</p>
+        <p class="hero-identity" aria-label="{{ site.Params.researchIdentity }}">
+          {{ $parts := split site.Params.researchIdentity " | " }}
+          {{ range $i, $part := $parts }}
+          {{ if $i }}<span class="hero-identity-sep" aria-hidden="true">|</span>{{ end }}
+          <span class="hero-identity-part hero-identity-part-{{ add $i 1 }}">{{ $part }}</span>
+          {{ end }}
+        </p>
         <div class="hero-actions">
           <a class="btn" href="{{ "about/" | relURL }}">About</a>
           <a class="btn btn-outline" href="{{ "contact/" | relURL }}">Contact</a>

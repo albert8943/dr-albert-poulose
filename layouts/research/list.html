@@ -22,15 +22,20 @@
 
     <div class="research-hub-panel" id="interests">
       <h2>Research Interests</h2>
-      <div class="research-interest-grid">
-        {{ range hugo.Data.research_pillars }}
-        <a class="research-interest-card" href="#{{ .id }}">
-          <h3>{{ .title }}</h3>
-          <p class="research-interest-tags">{{ .tags }}</p>
-          <p>{{ .description }}</p>
-        </a>
-        {{ end }}
+      <div class="research-programs" aria-labelledby="research-programs-heading">
+        <h3 id="research-programs-heading">{{ site.Params.researchProgramsTitle }}</h3>
+        <div class="research-program-grid">
+          {{ range hugo.Data.research_pillars }}
+          <a class="research-program-card" href="#{{ .id }}">
+            <span class="research-program-num">{{ .number }}</span>
+            <h3>{{ .title }}</h3>
+            <p>{{ .tags }}</p>
+          </a>
+          {{ end }}
+        </div>
       </div>
+
+      {{ partial "research-overlap.html" . }}
     </div>
 
     <div class="research-hub-panel" id="publications">
@@ -38,7 +43,9 @@
         <h2>Publications</h2>
         <a class="section-link" href="{{ site.Params.scholar }}" target="_blank" rel="noopener noreferrer">Google Scholar &rarr;</a>
       </div>
-      {{ partial "publications-list.html" (dict "showSort" true) }}
+      <div class="pub-filters-sticky-wrap">
+        {{ partial "publications-list.html" (dict "showSort" true) }}
+      </div>
       <p class="research-hub-footnote">
         <a href="{{ "publications/" | relURL }}">Open dedicated publications page &rarr;</a>
       </p>
@@ -66,26 +73,10 @@
 
       <div class="research-story">
         <h3>{{ site.Params.researchVisionTitle }}</h3>
-        <p>{{ site.Params.researchVision }}</p>
         {{ with site.Params.researchVisionContinued }}
         <p>{{ . }}</p>
         {{ end }}
       </div>
-
-      <div class="research-programs" aria-labelledby="research-programs-heading">
-        <h3 id="research-programs-heading">{{ site.Params.researchProgramsTitle }}</h3>
-        <div class="research-program-grid">
-          {{ range hugo.Data.research_pillars }}
-          <a class="research-program-card" href="#{{ .id }}">
-            <span class="research-program-num">{{ .number }}</span>
-            <h3>{{ .title }}</h3>
-            <p>{{ .tags }}</p>
-          </a>
-          {{ end }}
-        </div>
-      </div>
-
-      {{ partial "research-overlap.html" . }}
 
       <div class="horizon-grid">
         <div class="horizon-col">

@@ -6,6 +6,18 @@
   </div>
 </section>
 
+<nav class="teaching-year-nav" aria-label="Filter courses by year" data-teaching-year-nav>
+  <div class="container content-narrow teaching-year-nav-inner">
+    <span class="teaching-year-nav-label">Courses by year</span>
+    <div class="pub-filters" role="group" aria-label="Course years">
+      <button type="button" class="pub-filter active" data-teaching-year="all">All</button>
+      {{ range hugo.Data.teaching }}
+      <button type="button" class="pub-filter" data-teaching-year="{{ .year }}">{{ .year }}</button>
+      {{ end }}
+    </div>
+  </div>
+</nav>
+
 <section class="page-content">
   <div class="container content-narrow">
     {{ with site.Params.teachingInterests }}
@@ -28,9 +40,9 @@
     </div>
     {{ end }}
 
-    <h2 class="timeline-tier-title">Courses</h2>
+    <h2 class="timeline-tier-title" id="courses">Courses</h2>
     {{ range hugo.Data.teaching }}
-    <div class="pub-section">
+    <div class="pub-section teaching-year-section" id="year-{{ .year }}" data-teaching-year-section="{{ .year }}">
       <h3 class="pub-section-title">{{ .year }}</h3>
       {{ range .items }}
       {{ $photoPath := "" }}

@@ -12,10 +12,13 @@
     function applyPubFilters(root) {
       var typeFilter = 'all';
       var pillarFilter = 'all';
+      var yearFilter = 'all';
       var typeBtn = root.querySelector('[data-type-filter].active');
       var pillarBtn = root.querySelector('[data-pillar-filter].active');
+      var yearBtn = root.querySelector('[data-year-filter].active');
       if (typeBtn) typeFilter = typeBtn.getAttribute('data-type-filter') || 'all';
       if (pillarBtn) pillarFilter = pillarBtn.getAttribute('data-pillar-filter') || 'all';
+      if (yearBtn) yearFilter = yearBtn.getAttribute('data-year-filter') || 'all';
 
       var listRoot = root.parentElement
         ? root.parentElement.querySelector('[data-pub-list]')
@@ -23,7 +26,6 @@
       if (!listRoot) {
         listRoot = document.querySelector('[data-pub-list]');
       }
-      // Prefer sibling list after this filter bar
       var siblingList = root.nextElementSibling;
       while (siblingList && !siblingList.hasAttribute('data-pub-list')) {
         siblingList = siblingList.nextElementSibling;
@@ -44,12 +46,29 @@
         card.hidden = !(typeOk && pillarOk);
       });
       sections.forEach(function (section) {
+        var year = section.getAttribute('data-year') || '';
+        var yearOk = yearFilter === 'all' || String(year) === String(yearFilter);
         var visible = section.querySelectorAll('.pub-card:not([hidden])');
-        section.hidden = visible.length === 0;
+        section.hidden = !yearOk || visible.length === 0;
       });
     }
 
     document.querySelectorAll('[data-pub-filter-root]').forEach(function (root) {
+      root.querySelectorAll('[data-year-filter]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          root.querySelectorAll('[data-year-filter]').forEach(function (b) {
+            b.classList.toggle('active', b === btn);
+          });
+          applyPubFilters(root);
+          var year = btn.getAttribute('data-year-filter') || 'all';
+          if (year !== 'all') {
+            var target = document.getElementById('pub-year-' + year);
+            if (target) {
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }
+        });
+      });
       root.querySelectorAll('[data-type-filter]').forEach(function (btn) {
         btn.addEventListener('click', function () {
           root.querySelectorAll('[data-type-filter]').forEach(function (b) {
@@ -187,6 +206,42 @@
         setActiveResearchTab(location.hash.replace(/^#/, ''));
       } else if (researchTabs[0]) {
         setActiveResearchTab((researchTabs[0].getAttribute('href') || '').replace(/^#/, ''));
+      }
+    }
+
+    var teachingYearNav = document.querySelector('[data-teaching-year-nav]');
+    if (teachingYearNav) {
+      var yearButtons = Array.prototype.slice.call(teachingYearNav.querySelectorAll('[data-teaching-year]'));
+      var yearSections = Array.prototype.slice.call(document.querySelectorAll('[data-teaching-year-section]'));
+
+      function filterTeachingYears(year) {
+        yearButtons.forEach(function (btn) {
+          btn.classList.toggle('active', btn.getAttribute('data-teaching-year') === year);
+        });
+        yearSections.forEach(function (section) {
+          var sectionYear = section.getAttribute('data-teaching-year-section') || '';
+          section.hidden = year !== 'all' && sectionYear !== year;
+        });
+      }
+
+      yearButtons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var year = btn.getAttribute('data-teaching-year') || 'all';
+          filterTeachingYears(year);
+          var target = year === 'all'
+            ? document.getElementById('courses')
+            : document.getElementById('year-' + year);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+          if (history.replaceState) {
+            history.replaceState(null, '', year === 'all' ? '#courses' : '#year-' + year);
+          }
+        });
+      });
+
+      if (location.hash && location.hash.indexOf('#year-') === 0) {
+        filterTeachingYears(location.hash.replace('#year-', ''));
       }
     }
   })();

@@ -14,6 +14,13 @@
 {{- end -}}
 
 <div class="pub-filter-bar" data-pub-filter-root>
+  <div class="pub-filters" role="group" aria-label="Filter publications by year">
+    <button type="button" class="pub-filter active" data-year-filter="all">All years</button>
+    {{ range hugo.Data.publications }}
+    <button type="button" class="pub-filter" data-year-filter="{{ .year }}">{{ .year }}</button>
+    {{ end }}
+  </div>
+
   <div class="pub-filters" role="group" aria-label="Filter publications by type">
     <button type="button" class="pub-filter active" data-type-filter="all">All ({{ $allCount }})</button>
     <button type="button" class="pub-filter" data-type-filter="journal">Journal ({{ $journalCount }})</button>
@@ -39,7 +46,7 @@
 
 <div class="pub-list-root" data-pub-list>
 {{ range hugo.Data.publications }}
-<div class="pub-section" data-year-section data-year="{{ .year }}">
+<div class="pub-section" data-year-section data-year="{{ .year }}" id="pub-year-{{ .year }}">
   <h2 class="pub-section-title">{{ .year }}</h2>
   {{ range .items }}
   {{ $pubType := .type | default "other" }}

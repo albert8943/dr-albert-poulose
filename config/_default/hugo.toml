@@ -9,8 +9,8 @@ disableKinds = ['taxonomy', 'term']
   role = 'Postdoctoral Researcher'
   affiliation = 'Microgrid Research Center · Department of Electrical Engineering'
   university = 'Kyungpook National University, Daegu, South Korea'
-  researchIdentity = 'Power-System Stability · Scientific AI · Grid Digital Twins'
-  homeAffiliation = 'Department of Electrical Engineering and Microgrid Research Center, Kyungpook National University, Daegu, South Korea. I work on power-system stability, physics-informed AI for TSA and CCT, and measurement-informed grid digital twins.'
+  researchIdentity = 'Power-system stability | Scientific AI | Grid digital twins'
+  homeAffiliation = 'Department of Electrical Engineering and Microgrid Research Center, Kyungpook National University, Daegu, South Korea.'
   email = 'albertpoulosepalatty@knu.ac.kr'
   emailPersonal = 'albertpoulosepalatty@gmail.com'
   currentAddress = 'Microgrid Research Center, School of Electronic and Electrical Engineering, Kyungpook National University, 80 Daehak-ro, Buk-gu, Daegu 41566, Republic of Korea'
@@ -32,8 +32,8 @@ disableKinds = ['taxonomy', 'term']
     'Measurement-informed digital twins for dynamic security assessment',
   ]
   aboutLead = 'Academic journey, appointments, education, and awards.'
-  aboutIntro = "I am a postdoctoral researcher at Kyungpook National University working on the dynamic security of converter-dominated power systems. My path runs from undergraduate and master's work in electrical engineering and load-frequency control, through a Ph.D. on multifaceted transient stability analysis, to current research on physics-informed neural network (PINN) surrogates for transient stability assessment (TSA) and critical clearing time (CCT) estimation."
-  aboutIntroContinued = 'Building on that foundation, my longer-term direction is measurement-informed grid digital twins for operating-point-specific dynamic security assessment and decision support in renewable-rich grids.'
+  aboutIntro = "I am a postdoctoral researcher at Kyungpook National University, where I work on the dynamic security of converter-dominated power systems. My academic path began with a B.Tech in Electrical and Electronics Engineering, followed by an M.Tech in Power Systems with thesis research on load-frequency control. Building on that foundation, I completed a Ph.D. on multifaceted transient stability analysis of power systems, and I now develop physics-informed neural network (PINN) surrogates for transient stability assessment (TSA) and critical clearing time (CCT) estimation."
+  aboutIntroContinued = "Looking ahead, I aim to extend this work toward measurement-informed grid digital twins that support operating-point-specific dynamic security assessment and decision making in renewable-rich grids."
   researchHubLead = 'Interests, publications, and software'
   researchVisionTitle = 'Research vision'
   researchVision = 'My research focuses on the dynamic security of converter-dominated power systems, with particular emphasis on whether the grid can maintain stable operation following severe disturbances and whether operational stability margins, such as critical clearing time (CCT), remain adequate.'

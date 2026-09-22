@@ -82,8 +82,8 @@ Sub-nav jumps to Interests, Publications, and Software:
 |-------|--------|
 | Lead line | `researchHubLead` in `hugo.toml` |
 | One-paragraph vision | `researchVision` |
-| Interest cards | `title`, `tags`, `description` from `data/research_pillars.yaml` |
-| Publications | Full list via `layouts/partials/publications-list.html` (type + pillar filters, newest/oldest sort) |
+| Interest overview | Three programme cards + overlap figure from `research_pillars.yaml` / `research-overlap.html` |
+| Publications | Full list via `layouts/partials/publications-list.html` (year + type + pillar filters, newest/oldest sort) |
 | Software | `data/software.yaml` |
 
 Shared pub list also powers `/publications/`.
