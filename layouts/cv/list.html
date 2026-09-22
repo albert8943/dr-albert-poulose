@@ -4,7 +4,7 @@
 <section class="page-header no-print">
   <div class="container">
     <h1>{{ .Title }}</h1>
-    <p class="page-lead">Academic CV for postdoctoral, faculty, and research inquiries. Last updated: {{ site.Params.cvUpdated }}.</p>
+    <p class="page-lead">CV for postdoctoral, faculty, and research inquiries. Last updated: {{ site.Params.cvUpdated }}.</p>
   </div>
 </section>
 
@@ -12,9 +12,9 @@
   <div class="container content-narrow">
     <div class="cv-actions no-print">
       {{ if $hasPdf }}
-      <a class="btn" href="{{ site.Params.cvPdf | relURL }}" download>Academic CV — PDF · Updated {{ site.Params.cvUpdated }}</a>
+      <a class="btn" href="{{ site.Params.cvPdf | relURL }}" download>CV (PDF) · Updated {{ site.Params.cvUpdated }}</a>
       {{ else }}
-      <button type="button" class="btn" id="cv-print-btn">Academic CV — PDF · Updated {{ site.Params.cvUpdated }}</button>
+      <button type="button" class="btn" id="cv-print-btn">CV (PDF) · Updated {{ site.Params.cvUpdated }}</button>
       <p class="cv-note">Opens the print dialog. Choose <strong>Save as PDF</strong> to keep a copy. Last updated {{ site.Params.cvUpdated }}.</p>
       {{ end }}
     </div>

@@ -1,4 +1,4 @@
 ---
 title: CV
-description: Academic CV summary with downloadable full academic CV (PDF).
+description: CV summary with downloadable full CV (PDF).
 ---
