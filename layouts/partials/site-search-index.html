@@ -38,18 +38,22 @@
 {{- end -}}
 
 {{- range hugo.Data.timeline.appointments -}}
-  {{- $text := printf "%s %s %s" (.period | default "") (.institution | default "") (delimit (.highlights | default slice) " ") -}}
-  {{- $entries = $entries | append (dict "title" .role "url" (relURL "experience/") "section" "Experience" "text" $text) -}}
+  {{- $text := printf "%s %s %s %s" (.period | default "") (.institution | default "") (.summary | default "") (delimit (.highlights | default slice) " ") -}}
+  {{- $entries = $entries | append (dict "title" .role "url" (relURL "about/") "section" "About" "text" $text) -}}
 {{- end -}}
 
 {{- range hugo.Data.timeline.education -}}
   {{- $text := printf "%s %s %s" (.period | default "") (.institution | default "") (delimit (.highlights | default slice) " ") -}}
-  {{- $entries = $entries | append (dict "title" .role "url" (relURL "experience/") "section" "Experience" "text" $text) -}}
+  {{- $entries = $entries | append (dict "title" .role "url" (relURL "about/") "section" "About" "text" $text) -}}
 {{- end -}}
 
 {{- range hugo.Data.timeline.early_career -}}
   {{- $text := printf "%s %s" (.period | default "") (.institution | default "") -}}
-  {{- $entries = $entries | append (dict "title" .role "url" (relURL "experience/") "section" "Experience" "text" $text) -}}
+  {{- $entries = $entries | append (dict "title" .role "url" (relURL "about/") "section" "About" "text" $text) -}}
+{{- end -}}
+
+{{- range hugo.Data.awards -}}
+  {{- $entries = $entries | append (dict "title" .title "url" (relURL "about/") "section" "About" "text" (printf "%s %s" (.year | default "") (.detail | default ""))) -}}
 {{- end -}}
 
 {{- $json := $entries | jsonify -}}

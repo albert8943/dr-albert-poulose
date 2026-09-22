@@ -2,19 +2,29 @@
 <section class="page-header">
   <div class="container">
     <h1>{{ .Title }}</h1>
-    <p class="page-lead">Academic appointments and education. Earlier roles and schooling are under one collapsed section.</p>
+    <p class="page-lead">{{ site.Params.aboutLead }}</p>
   </div>
 </section>
 
 <section class="page-content">
   <div class="container content-narrow">
-    <h2 class="timeline-tier-title">Appointments</h2>
+    <div class="about-intro">
+      <p>{{ site.Params.aboutIntro }}</p>
+      {{ with site.Params.aboutIntroContinued }}
+      <p>{{ . }}</p>
+      {{ end }}
+    </div>
+
+    <h2 class="timeline-tier-title">Positions</h2>
     <div class="timeline">
       {{ range hugo.Data.timeline.appointments }}
       <article class="timeline-card">
         <time class="timeline-period">{{ .period }}</time>
         <h3>{{ .role }}</h3>
         <p class="timeline-institution">{{ .institution }}</p>
+        {{ with .summary }}
+        <p class="timeline-summary">{{ . }}</p>
+        {{ end }}
         {{ if .highlights }}
         <ul>
           {{ range .highlights }}<li>{{ . }}</li>{{ end }}
@@ -36,6 +46,17 @@
           {{ range .highlights }}<li>{{ . }}</li>{{ end }}
         </ul>
         {{ end }}
+      </article>
+      {{ end }}
+    </div>
+
+    <h2 class="timeline-tier-title">Awards and recognition</h2>
+    <div class="awards-list">
+      {{ range hugo.Data.awards }}
+      <article class="award-card">
+        <time class="timeline-period">{{ .year }}</time>
+        <h3>{{ .title }}</h3>
+        <p>{{ .detail }}</p>
       </article>
       {{ end }}
     </div>

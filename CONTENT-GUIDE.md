@@ -26,11 +26,11 @@ After edits, confirm the pages in that preview, then push `main` to deploy.
 | Website page | Primary files to edit |
 |--------------|------------------------|
 | Home | `config/_default/hugo.toml`, `data/publications.yaml` (`selected`), `data/software.yaml`, `data/news.yaml`, `data/metrics.yaml` |
-| Research | `config/_default/hugo.toml`, `data/research_pillars.yaml` |
+| Research | `config/_default/hugo.toml`, `data/research_pillars.yaml`, `data/publications.yaml` (`selected`), `data/software.yaml` |
 | Research Notes | `config/_default/hugo.toml` (assessment params), `layouts/research/single.html`, `layouts/partials/research-*.html` |
 | Publications | `data/publications.yaml`, `data/metrics.yaml` |
 | Teaching | `config/_default/hugo.toml`, `data/teaching.yaml`, `static/files/teaching/`, `static/images/teaching/` |
-| Experience | `data/timeline.yaml` |
+| About | `config/_default/hugo.toml` (`aboutLead`, `aboutIntro`), `data/timeline.yaml`, `data/awards.yaml` |
 | Software | `data/software.yaml` |
 | CV | `config/_default/hugo.toml` (`cvUpdated`, `cvPdf`), `static/files/cv/`, `layouts/cv/list.html` (structure) |
 | Contact | `config/_default/hugo.toml` (email, address, links) |
@@ -105,15 +105,25 @@ Newest dates appear first if you keep the list ordered by date descending.
 **Layout:** `layouts/research/list.html`  
 **Pillars partial:** `layouts/partials/research-pillars-inner.html`
 
-### Vision and horizons
+### Hub (top of page)
 
-File: [`config/_default/hugo.toml`](config/_default/hugo.toml)
+Short scanning layer before the deep programme:
+
+| Piece | Source |
+|-------|--------|
+| Lead line | `researchHubLead` in `hugo.toml` |
+| One-paragraph vision | `researchVision` |
+| Interest cards | `title`, `tags`, `description` from `data/research_pillars.yaml` (link to pillar anchors) |
+| Selected publications | `selected: true` in `data/publications.yaml`; full list at `/publications/` |
+| Software teasers | `data/software.yaml`; full list at `/software/` |
+
+### Full research programme (below)
 
 | Param | What it controls |
 |-------|------------------|
-| `researchVisionTitle` | Section heading |
-| `researchVision` | First vision paragraph |
-| `researchVisionContinued` | Second vision paragraph |
+| `researchFullProgrammeTitle` | Section heading for the deep dive |
+| `researchVisionTitle` | Vision heading inside the programme block |
+| `researchVision` / `researchVisionContinued` | Vision paragraphs |
 | `researchProgramsTitle` | “Three research programs” heading |
 | `researchCurrentTitle` / `currentResearch` | **Current research** list |
 | `researchBuildingTitle` / `futureResearch` | **Building toward** list |
@@ -127,7 +137,7 @@ Each pillar has:
 | Field | Role |
 |-------|------|
 | `number`, `id`, `title` | Heading and anchor (`#scientific-ai`, etc.) |
-| `description`, `tags` | Tagline and keyword line |
+| `description`, `tags` | Tagline and keyword line (also used on hub interest cards) |
 | `problem`, `approach`, `currentDirection` | Main prose blocks (order on page: Problem → Approach → Selected work → Current direction) |
 | `pipeline` | Short step labels in the pipeline figure |
 | `overlaps` | Cross-links to other pillars |
@@ -192,7 +202,7 @@ File: [`config/_default/hugo.toml`](config/_default/hugo.toml)
 |-------|--------|
 | `type` | `journal`, `conference`, `thesis`, etc. |
 | `pillars` | `["01"]`, `["02"]`, `["01","02"]`, … Be conservative: tag **03 Digital Twins** only when the paper truly supports it |
-| `selected` | `true` → also on Home |
+| `selected` | `true` → also on Home and Research hub |
 | `authors`, `title`, `venue` | Required display fields |
 | `doi`, `url`, `code` | Links (DOI preferred for IEEE) |
 | `abstract`, `keywords` | Collapsible abstract on Publications |
@@ -267,31 +277,42 @@ Grouped by `year`, each course:
 
 ---
 
-## 6. Experience (`/experience/`)
+## 6. About (`/about/`)
 
-**Layout:** `layouts/experience/list.html`  
-**Data:** [`data/timeline.yaml`](data/timeline.yaml)
+**Layout:** `layouts/about/list.html`  
+**Data:** [`data/timeline.yaml`](data/timeline.yaml), [`data/awards.yaml`](data/awards.yaml)  
+**Params:** `aboutLead`, `aboutIntro`, `aboutIntroContinued` in `hugo.toml`
 
 | YAML key | Page section |
 |----------|----------------|
-| `appointments` | Appointments |
+| `appointments` | Positions (use optional `summary` for a one-line focus) |
 | `education` | Education |
+| `awards` (`data/awards.yaml`) | Awards and recognition |
 | `early_career` | Earlier appointments |
 | `school` | Earlier education (collapsed) |
 
-Each item typically has:
+Each appointment typically has:
 
 ```yaml
 - period: "YYYY.MM – YYYY.MM"
   role: "Title"
   institution: "…"
+  summary: "One-sentence research or teaching focus."  # optional
   highlights:   # optional list
     - "…"
 ```
 
+Each award:
+
+```yaml
+- year: "YYYY"
+  title: "Award name"
+  detail: "Short description."
+```
+
 **Do not** attach appointment letters or degree certificates here. Formal docs belong in applications / the Academic CV PDF.
 
-`/education/` redirects to Experience (keep that unless you intentionally change redirects).
+Aliases: `/experience/` and `/education/` resolve to About (keep those unless you intentionally change redirects).
 
 ---
 

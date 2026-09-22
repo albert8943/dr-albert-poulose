@@ -2,17 +2,20 @@ appointments:
   - period: "2025.03 – Present"
     role: "Postdoctoral Researcher"
     institution: "Microgrid Research Center, Kyungpook National University, Daegu, South Korea"
+    summary: "Working on physics-informed TSA and CCT surrogates for converter-dominated grid stability."
     highlights: []
 
   - period: "2025.03 – 2026.02"
     role: "Lecturer"
     institution: "Department of Electrical Engineering, Kyungpook National University, Daegu, South Korea"
+    summary: "Taught undergraduate Logic Circuits and Numerical Analysis while continuing research at the Microgrid Research Center."
     highlights:
       - "Taught Logic Circuits (69 students) and Numerical Analysis (26 students)"
 
   - period: "2019.07 – 2020.01"
     role: "Assistant Professor"
     institution: "Department of Electrical & Electronics Engineering, Cochin College of Engineering & Technology, Valanchery, Kerala, India"
+    summary: "Taught Linear Control Systems and Electric Hybrid Vehicles in an undergraduate EEE programme."
     highlights:
       - "Taught Linear Control Systems and Electric Hybrid Vehicles"
 

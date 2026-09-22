@@ -2,59 +2,128 @@
 <section class="page-header">
   <div class="container">
     <h1>{{ .Title }}</h1>
+    <p class="page-lead">{{ site.Params.researchHubLead }}</p>
   </div>
 </section>
 
 <section class="page-content research-page">
   <div class="container content-narrow">
-    <div class="research-story">
-      <h2>{{ site.Params.researchVisionTitle }}</h2>
+    <div class="research-hub-intro">
       <p>{{ site.Params.researchVision }}</p>
-      {{ with site.Params.researchVisionContinued }}
-      <p>{{ . }}</p>
-      {{ end }}
     </div>
 
-    <div class="research-programs" aria-labelledby="research-programs-heading">
-      <h2 id="research-programs-heading">{{ site.Params.researchProgramsTitle }}</h2>
-      <div class="research-program-grid">
+    <div class="research-interests-hub" aria-labelledby="research-interests-hub-heading">
+      <h2 id="research-interests-hub-heading">Research interests</h2>
+      <div class="research-interest-grid">
         {{ range hugo.Data.research_pillars }}
-        <a class="research-program-card" href="#{{ .id }}">
-          <span class="research-program-num">{{ .number }}</span>
+        <a class="research-interest-card" href="#{{ .id }}">
           <h3>{{ .title }}</h3>
-          <p>{{ .tags }}</p>
+          <p class="research-interest-tags">{{ .tags }}</p>
+          <p>{{ .description }}</p>
         </a>
         {{ end }}
       </div>
     </div>
 
-    {{ partial "research-overlap.html" . }}
-
-    <div class="horizon-grid">
-      <div class="horizon-col">
-        <h2>{{ site.Params.researchCurrentTitle }}</h2>
-        <ul>
-          {{ range site.Params.currentResearch }}
-          <li>{{ . }}</li>
-          {{ end }}
-        </ul>
+    <div class="research-hub-section" id="publications">
+      <div class="section-heading">
+        <h2>Publications</h2>
+        <a class="section-link" href="{{ "publications/" | relURL }}">All publications &rarr;</a>
       </div>
-      <div class="horizon-col">
-        <h2>{{ site.Params.researchBuildingTitle }}</h2>
-        <ul>
-          {{ range site.Params.futureResearch }}
-          <li>{{ . }}</li>
+      <div class="selected-list">
+        {{ range hugo.Data.publications }}
+          {{ range .items }}
+            {{ if .selected }}
+            <article class="selected-item">
+              <h3>{{ .title }}</h3>
+              <p>{{ .authors }}</p>
+              <p class="selected-venue"><em>{{ .venue }}</em></p>
+              <div class="pub-links">
+                {{ if .doi }}
+                <a class="btn btn-sm" href="https://doi.org/{{ .doi }}" target="_blank" rel="noopener noreferrer">DOI</a>
+                {{ else if .url }}
+                <a class="btn btn-sm" href="{{ .url }}" target="_blank" rel="noopener noreferrer">Link</a>
+                {{ end }}
+                {{ if .code }}
+                <a class="btn btn-sm btn-outline" href="{{ .code }}" target="_blank" rel="noopener noreferrer">Code</a>
+                {{ end }}
+              </div>
+            </article>
+            {{ end }}
           {{ end }}
-        </ul>
+        {{ end }}
       </div>
     </div>
 
-    {{ partial "research-pillars-inner.html" . }}
+    <div class="research-hub-section" id="software">
+      <div class="section-heading">
+        <h2>Software</h2>
+        <a class="section-link" href="{{ "software/" | relURL }}">All software &rarr;</a>
+      </div>
+      <div class="software-grid software-grid-home">
+        {{ range hugo.Data.software }}
+        <a class="software-card software-card-{{ .status }}" href="{{ "software/" | relURL }}">
+          <span class="project-status-badge project-status-{{ .status }}">{{ if eq .status "available" }}Available{{ else if eq .status "in_progress" }}In progress{{ else }}Planned{{ end }}</span>
+          <h3>{{ .title }}</h3>
+          <p>{{ .short }}</p>
+          <p class="software-stack">{{ .stack }}</p>
+        </a>
+        {{ end }}
+      </div>
+    </div>
 
-    <p class="research-notes-link">
-      Technical background: IEEE/CIGRE placement, TSA, and CCT
-      <a href="{{ "research/notes/" | relURL }}">Research Notes &rarr;</a>
-    </p>
+    <div class="research-full-programme" id="programme">
+      <h2 class="research-full-programme-title">{{ site.Params.researchFullProgrammeTitle }}</h2>
+
+      <div class="research-story">
+        <h3>{{ site.Params.researchVisionTitle }}</h3>
+        <p>{{ site.Params.researchVision }}</p>
+        {{ with site.Params.researchVisionContinued }}
+        <p>{{ . }}</p>
+        {{ end }}
+      </div>
+
+      <div class="research-programs" aria-labelledby="research-programs-heading">
+        <h3 id="research-programs-heading">{{ site.Params.researchProgramsTitle }}</h3>
+        <div class="research-program-grid">
+          {{ range hugo.Data.research_pillars }}
+          <a class="research-program-card" href="#{{ .id }}">
+            <span class="research-program-num">{{ .number }}</span>
+            <h3>{{ .title }}</h3>
+            <p>{{ .tags }}</p>
+          </a>
+          {{ end }}
+        </div>
+      </div>
+
+      {{ partial "research-overlap.html" . }}
+
+      <div class="horizon-grid">
+        <div class="horizon-col">
+          <h3>{{ site.Params.researchCurrentTitle }}</h3>
+          <ul>
+            {{ range site.Params.currentResearch }}
+            <li>{{ . }}</li>
+            {{ end }}
+          </ul>
+        </div>
+        <div class="horizon-col">
+          <h3>{{ site.Params.researchBuildingTitle }}</h3>
+          <ul>
+            {{ range site.Params.futureResearch }}
+            <li>{{ . }}</li>
+            {{ end }}
+          </ul>
+        </div>
+      </div>
+
+      {{ partial "research-pillars-inner.html" . }}
+
+      <p class="research-notes-link">
+        Technical background: IEEE/CIGRE placement, TSA, and CCT
+        <a href="{{ "research/notes/" | relURL }}">Research Notes &rarr;</a>
+      </p>
+    </div>
   </div>
 </section>
 {{ end }}

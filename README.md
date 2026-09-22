@@ -23,12 +23,12 @@ Hugo-based academic site for **albertpoulose.com**. Research-programme focused: 
 ## Features
 
 - **Home:** research identity, two-paragraph bio, research interests, current focus, featured PINN paper, selected publications (full titles), software, recent news
-- **Research:** two-paragraph vision; three programmes; overlap figure; current / building-toward; pillar sections (Problem → Approach → Selected work → Current direction); link to Research Notes
+- **Research:** short interest briefs plus selected publications and software; full three-programme deep dive below; link to Research Notes
 - **Research Notes:** IEEE/CIGRE / TSA / CCT background and programme figures (footer of Research only; not main nav)
-- **Publications:** grouped by year; collapsible abstracts; Scholar/ORCID/Scopus; filter by research pillar (`01` Stability · `02` Scientific AI · `03` Digital Twins)
+- **Publications:** grouped by year; collapsible abstracts; Scholar/ORCID/Scopus; filter by research pillar (`01` Stability · `02` Scientific AI · `03` Digital Twins); linked from Research hub (not main nav)
 - **Teaching:** interests, multi-paragraph philosophy, courses with **Syllabus (PDF)** and optional class photo
-- **Experience:** appointments and education (`/education/` redirects here); no certificate PDFs on this page
-- **Software:** PINN-TSA (evidence block) plus in-progress / planned prototypes
+- **About:** narrative bio, positions with focus summaries, education, awards; `/experience/` and `/education/` alias here; no certificate PDFs on this page
+- **Software:** PINN-TSA (evidence block) plus in-progress / planned prototypes; linked from Research hub (not main nav)
 - **CV:** web summary plus clear **Academic CV — PDF** download
 - **Contact** and **Gallery:** footer only (institutional email first; no home address or phone). Gallery is optional secondary content
 
@@ -104,12 +104,14 @@ If `hugo` is not recognized, Hugo is still installed. Your terminal may not have
 | Research Notes | `/research/notes/` | http://localhost:1313/research/notes/ | https://albertpoulose.com/research/notes/ |
 | Publications | `/publications/` | http://localhost:1313/publications/ | https://albertpoulose.com/publications/ |
 | Teaching | `/teaching/` | http://localhost:1313/teaching/ | https://albertpoulose.com/teaching/ |
-| Experience | `/experience/` | http://localhost:1313/experience/ | https://albertpoulose.com/experience/ |
+| About | `/about/` | http://localhost:1313/about/ | https://albertpoulose.com/about/ |
 | Software | `/software/` | http://localhost:1313/software/ | https://albertpoulose.com/software/ |
 | CV | `/cv/` | http://localhost:1313/cv/ | https://albertpoulose.com/cv/ |
 | Contact | `/contact/` | http://localhost:1313/contact/ | https://albertpoulose.com/contact/ |
 | Gallery | `/gallery/` | http://localhost:1313/gallery/ | https://albertpoulose.com/gallery/ |
 | Search | `/search/` | http://localhost:1313/search/ | https://albertpoulose.com/search/ |
+
+Aliases: `/experience/` and `/education/` resolve to About.
 
 ### Install Hugo (other machines)
 
@@ -207,7 +209,8 @@ Page bodies are mostly driven by `data/*.yaml` and `config/_default/hugo.toml` p
 | `data/publications.yaml` | Papers and theses by year; pillar tags (`01`/`02`/`03`) for filters |
 | `data/research_pillars.yaml` | Three pillars and project cards (`done` / `in_progress` / `planned`) |
 | `data/teaching.yaml` | Courses, focus bullets, optional `photo` / `syllabus` paths |
-| `data/timeline.yaml` | Appointments, education, earlier roles |
+| `data/timeline.yaml` | Appointments (with optional `summary`), education, earlier roles |
+| `data/awards.yaml` | Awards and recognition on About |
 | `data/news.yaml` | Home page news (recent professional items only) |
 | `data/software.yaml` | Research software cards (optional evidence fields for mature tools) |
 | `data/metrics.yaml` | OpenAlex citation metrics (citations, h-index, i10-index); refreshed weekly |
@@ -230,7 +233,7 @@ Files under `static/` are copied to the site root (e.g. `static/images/teaching/
 7. **Thesis and slides PDFs** → `static/files/publications/` as needed for publication links
 8. **Google Analytics:** GA4 ID in `[services.googleAnalytics]` in `hugo.toml` (live site only)
 
-Contact does **not** list a home address or phone numbers. Institutional email is shown first. Experience does **not** host appointment letters or degree certificates.
+Contact does **not** list a home address or phone numbers. Institutional email is shown first. About does **not** host appointment letters or degree certificates.
 
 ## Custom domain
 
