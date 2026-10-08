@@ -25,7 +25,7 @@ Hugo-based academic site for **albertpoulose.com**. Research-programme focused: 
 - **Home:** current title and affiliation, large circular photo, About/Contact CTAs, recent news with titles
 - **Research:** sub-nav for Interests, Publications, and Software; short interest cards; filterable full publication list; software; full programme below
 - **Research Notes:** IEEE/CIGRE / TSA / CCT background and programme figures (footer of Research only; not main nav)
-- **Publications:** grouped by year; type and pillar filters; sort by year; collapsible abstracts; Scholar/ORCID/Scopus; also embedded on Research
+- **Publications:** grouped by year; type and pillar filters; sort by year; collapsible abstracts; Scholar/ORCID/Scopus/Web of Science; also embedded on Research
 - **Teaching:** interests, multi-paragraph philosophy, courses with **Syllabus (PDF)** and optional class photo
 - **About:** small circular photo, short bio, Positions | Education columns, awards; `/experience/` and `/education/` alias here
 - **Software:** PINN-TSA (evidence block) plus in-progress / planned prototypes; also on Research hub

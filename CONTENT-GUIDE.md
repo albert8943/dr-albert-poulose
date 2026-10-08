@@ -328,7 +328,7 @@ Button label: **Academic CV — PDF · Updated …** (appears when the PDF file 
 
 - `email`, `emailPersonal`
 - `currentAddress`
-- `scholar`, `orcid`, `scopus`, `linkedin`, `github`
+- `scholar`, `orcid`, `scopus`, `webofscience`, `linkedin`, `github`
 
 Keep residential address and phone off the site.
 

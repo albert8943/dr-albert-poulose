@@ -17,6 +17,7 @@ disableKinds = ['taxonomy', 'term']
   scholar = 'https://scholar.google.com/citations?user=OXkq2SUAAAAJ&hl=en'
   orcid = 'https://orcid.org/0000-0002-6138-7857'
   scopus = 'https://www.scopus.com/authid/detail.uri?authorId=57216694893'
+  webofscience = 'https://www.webofscience.com/wos/author/record/HOF-5035-2023'
   linkedin = 'https://www.linkedin.com/in/albert-poulose'
   github = 'https://github.com/albert8943'
   githubPinn = 'https://github.com/albert8943/unified-physics-informed-neural-surrogate-smib-tsa-cct-benchmark'
