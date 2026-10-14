@@ -116,7 +116,7 @@ Each pillar has:
 | `note` | Optional HTML note under a pillar (e.g. GitHub link) |
 | `figure` | Partial name for notes page figures (e.g. `research-fig-01.html`) |
 
-**Do not** put long tutorial text back into pillars; keep that on Research Notes.
+**Do not** put long tutorial text into pillars or Research Notes. Teaching depth (IEEE/CIGRE tree, TSA cases, CCT labs) lives in **SciML for PS** (`https://sciml4ps.albertpoulose.com`).
 
 ### Overlap / flow figures
 
@@ -132,30 +132,32 @@ Notes page itself: see [§3](#3-research-notes-researchnotes).
 
 ## 3. Research Notes (`/research/notes/`)
 
+**Role:** Short **research framing** + programme figures + links to SciML for PS.  
+**Not** a second textbook. Do not re-add classification trees, three TSA case walkthroughs, or CCT teaching diagrams here.
+
 **Content stub:** [`content/research/notes.md`](content/research/notes.md) (title / description)  
 **Layout:** `layouts/research/single.html`
 
-### Assessment / TSA / CCT copy
+### Assessment / TSA / CCT copy (teaser only)
 
 File: [`config/_default/hugo.toml`](config/_default/hugo.toml)
 
 | Param | Section |
 |-------|---------|
-| `researchAssessmentTitle`, `researchAssessmentIntro` | Intro |
+| `researchAssessmentTitle`, `researchAssessmentIntro` | Short intro |
 | `researchDefinitionTitle`, `researchDefinition` | Dynamic security definition |
-| `researchStabilityTitle`, `researchStabilityIntro` | IEEE/CIGRE placement |
-| `researchTsaTitle`, `researchTsaNote` | Transient stability note |
-| `researchMarginTitle`, `researchMarginIntro` | CCT margin |
+| `researchStabilityIntro` | One-paragraph IEEE/CIGRE placement |
+| `researchMarginIntro` | One-sentence CCT margin |
 
 ### Partials and images
 
 | Partial / asset | Purpose |
 |-----------------|--------|
-| `layouts/partials/research-assessment-concepts.html` | Assembles assessment block |
-| `layouts/partials/research-stability-context.html` | Classification + TSA cases |
-| `layouts/partials/research-fig-dsa.html` | CCT margin figure |
-| `layouts/partials/research-fig-01.html` … `03` | Programme figures |
+| `layouts/partials/research-assessment-concepts.html` | Definition + short prose + SciML for PS link box |
+| `layouts/partials/research-fig-01.html` … `03` | Programme figures (research narrative) |
 | `static/images/research/` | Raster figures if used |
+
+Unused legacy partials (keep on disk; do not wire back without a deliberate decision): `research-stability-context.html`, `research-fig-dsa.html`.
 
 ---
 
@@ -403,7 +405,7 @@ Keep Soft claims: use **building toward** / **in progress** / **planned** until 
 
 1. Edit the pillar in `data/research_pillars.yaml`
 2. Align Home `researchInterests` / `currentResearch` and Research vision in `hugo.toml` if the public story changed
-3. Keep tutorial depth on `/research/notes/`, not on `/research/`
+3. Keep tutorial depth in **SciML for PS**, not on `/research/` or `/research/notes/`
 
 ---
 

@@ -1,4 +1,4 @@
 ---
 title: Research Notes
-description: "Technical background for dynamic security assessment: IEEE/CIGRE stability classification, transient stability assessment (TSA), and critical clearing time (CCT)."
+description: "Short research framing for dynamic security, TSA, and CCT, with links to SciML for PS for teaching depth."
 ---

@@ -11,7 +11,7 @@ Hugo-based academic site for **albertpoulose.com**. Research-programme focused: 
 | Citation metrics | Built (OpenAlex); **hidden** via `showCitationMetrics = false` until re-enabled |
 | CV | Hosted PDF at `static/files/cv/albert-poulose-cv.pdf`; web summary at `/cv/` |
 | Teaching | Interests, philosophy, courses with optional syllabus PDF and group photo per course |
-| Research Notes | Technical background at `/research/notes/` (not in main nav) |
+| Research Notes | Short research framing + programme figures at `/research/notes/`; teaching depth in SciML for PS (not in main nav) |
 | Google Analytics | GA4 configured (live site only; skipped on `hugo server`) |
 | Site search | Client-side search at `/search/` (footer link; not in main nav) |
 | GitHub Pages deploy | Live via GitHub Actions |
@@ -24,7 +24,7 @@ Hugo-based academic site for **albertpoulose.com**. Research-programme focused: 
 
 - **Home:** current title and affiliation, large circular photo, About/Contact CTAs, recent news with titles
 - **Research:** sub-nav for Interests, Publications, and Software; short interest cards; filterable full publication list; software; full programme below
-- **Research Notes:** IEEE/CIGRE / TSA / CCT background and programme figures (footer of Research only; not main nav)
+- **Research Notes:** Short TSA/CCT research framing, programme figures, and links to SciML for PS (footer of Research only; not main nav)
 - **Publications:** grouped by year; type and pillar filters; sort by year; collapsible abstracts; Scholar/ORCID/Scopus/Web of Science; also embedded on Research
 - **Teaching:** interests, multi-paragraph philosophy, courses with **Syllabus (PDF)** and optional class photo
 - **About:** small circular photo, short bio, Positions | Education columns, awards; `/experience/` and `/education/` alias here
@@ -295,7 +295,7 @@ For a **detailed page-by-page editing guide** (which files and fields to change)
 
 - Pillar copy and project cards: `data/research_pillars.yaml`
 - Bio, interests, current focus, vision, teaching copy: `config/_default/hugo.toml` under `[params]`
-- Assessment / tutorial material: Research Notes (`layouts/research/single.html`, related partials)
+- Short assessment framing on Research Notes; tutorial depth in SciML for PS (`layouts/research/single.html`, related partials)
 - Layout and figures: `layouts/research/`, `layouts/partials/research-*.html`
 
 **Teaching course assets**

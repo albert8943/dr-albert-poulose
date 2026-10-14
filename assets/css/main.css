@@ -1598,6 +1598,17 @@ iconify-icon {
   border-color: var(--color-accent-dark);
 }
 
+.research-book-links {
+  margin-top: 1.25rem;
+  padding-top: 0.25rem;
+}
+
+.research-book-links .teaching-syllabus-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
 .teaching-interests h2,
 .teaching-philosophy h2 {
   font-family: var(--font-serif);

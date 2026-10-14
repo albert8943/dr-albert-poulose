@@ -71,13 +71,13 @@ disableKinds = ['taxonomy', 'term']
   researchDefinitionTitle = 'Dynamic security'
   researchDefinition = 'In power systems, dynamic security is the ability of the grid, in its present operating condition, to remain stable after credible disturbances such as short circuits. It is assessed by checking whether generators and converters keep synchronism and whether a stability margin (for example CCT) remains adequate.'
   researchAssessmentTitle = 'Assessment concepts'
-  researchAssessmentIntro = 'For readers who want the technical background: how dynamic security maps to IEEE/CIGRE stability classification, TSA, and operational margins such as CCT.'
+  researchAssessmentIntro = 'In my research, dynamic security is the operational question after a disturbance: does the grid stay stable, and is a margin such as CCT still adequate? TSA and CCT are the assessment tools I use most for that question.'
   researchStabilityTitle = 'Where this sits in power system stability'
-  researchStabilityIntro = 'In the IEEE/CIGRE framework, transient rotor-angle behaviour after a fault belongs under rotor-angle stability. The 2020 revision adds converter-driven and resonance stability. These categories help place TSA and CCT, the main assessment tools in my current work, within the wider stability picture.'
+  researchStabilityIntro = 'In the IEEE/CIGRE framework, the transient rotor-angle branch is where my TSA/CCT focus sits; converter-driven stability matters increasingly in renewables-rich grids. Teaching detail (classification tree, SMIB cases, CCT diagrams) is in SciML for PS, not duplicated here.'
   researchTsaTitle = 'Transient stability and margins (current focus)'
   researchTsaNote = 'The study period is usually about 3 to 5 seconds in classical multimachine TSA, although it may extend to about 10 seconds for very large systems with dominant interarea modes. With converters, the critical post-fault interval is often shorter, and assessment may need to include converter-driven phenomena (Hatziargyri et al., 2021) as well as rotor-angle behaviour.'
   researchMarginTitle = 'CCT as a security margin'
-  researchMarginIntro = 'TSA asks whether synchronism is kept after a disturbance. In operations, we also need a margin: how long can a fault remain before stability is lost? CCT is one such measure.'
+  researchMarginIntro = 'TSA asks whether synchronism is kept after a disturbance. CCT is one operational margin: how long can a fault remain before stability is lost.'
   teachingInterests = [
     'Power System Analysis',
     'Power System Stability and Dynamics',
