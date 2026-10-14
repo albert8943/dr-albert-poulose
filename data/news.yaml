@@ -1,3 +1,8 @@
+- date: 2026-10-14
+  tag: Teaching
+  title: "SciML for PS notes — public preview"
+  text: 'Opened <a href="https://sciml4ps.albertpoulose.com">SciML for PS</a> as a living teaching book (v0.x, under development) on scientific machine learning for power-system dynamics, stability, and identification. Collaborators welcome — see <a href="https://sciml4ps.albertpoulose.com/contribute">Contribute</a>.'
+
 - date: 2026-07-31
   tag: Paper
   title: "IEEE Access paper on PINN TSA and CCT"

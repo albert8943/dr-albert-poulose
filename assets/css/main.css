@@ -1565,8 +1565,37 @@ iconify-icon {
 }
 
 .teaching-interests,
-.teaching-philosophy {
+.teaching-philosophy,
+.open-resources {
   margin: 0 0 1.75rem;
+}
+
+.open-resources-lead {
+  margin: 0 0 1rem;
+  max-width: 48rem;
+  line-height: 1.65;
+  color: var(--color-muted);
+}
+
+.open-resource-card {
+  margin-bottom: 1rem;
+}
+
+.open-resource-status {
+  margin: 0.35rem 0 0.5rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-accent-dark);
+}
+
+.open-resources .btn-ghost {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-accent-dark);
+}
+
+.open-resources .btn-ghost:hover {
+  border-color: var(--color-accent-dark);
 }
 
 .teaching-interests h2,

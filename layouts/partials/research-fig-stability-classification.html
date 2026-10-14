@@ -1,0 +1,100 @@
+{{/*
+  Site-owned redraw of the IEEE/CIGRE power-system stability categories
+  (idea-cited; not a copy of publisher figures). Definitions:
+  Kundur et al. 2004; Hatziargyriou et al. 2021.
+*/}}
+<figure class="research-figure" aria-labelledby="fig-classification-caption">
+  <svg class="research-figure-svg" viewBox="0 0 960 420" role="img" aria-label="Power system stability split into rotor-angle, voltage, and frequency categories from 2004, plus converter-driven and resonance stability from the 2020 revision. Transient stability under rotor-angle is highlighted.">
+    <defs>
+      <style>
+        .sc-title { font-family: Georgia, "Times New Roman", serif; font-size: 16px; font-weight: 700; fill: #1a2332; text-anchor: middle; }
+        .sc-h { font-family: system-ui, sans-serif; font-size: 12px; font-weight: 700; fill: #1a2332; text-anchor: middle; }
+        .sc-s { font-family: system-ui, sans-serif; font-size: 11px; fill: #5a6578; text-anchor: middle; }
+        .sc-box { fill: #f8fafc; stroke: #1a2332; stroke-width: 1.4; }
+        .sc-box-focus { fill: #fff5f5; stroke: #c00; stroke-width: 2.4; }
+        .sc-box-ext { fill: #f0f9ff; stroke: #2a6f97; stroke-width: 1.4; }
+        .sc-line { stroke: #1a2332; stroke-width: 1.4; fill: none; }
+        .sc-band { fill: none; stroke: #94a3b8; stroke-width: 1.2; stroke-dasharray: 4 3; }
+      </style>
+    </defs>
+
+    <text class="sc-title" x="480" y="28">Power system stability (IEEE/CIGRE categories, redrawn)</text>
+
+    <rect class="sc-box" x="360" y="48" width="240" height="36" rx="6"/>
+    <text class="sc-h" x="480" y="71">Power system stability</text>
+
+    <!-- Classical band -->
+    <rect class="sc-band" x="24" y="108" width="600" height="280" rx="10"/>
+    <text class="sc-s" x="324" y="128">Classical categories (2004)</text>
+
+    <!-- Rotor-angle -->
+    <rect class="sc-box" x="48" y="148" width="168" height="36" rx="6"/>
+    <text class="sc-h" x="132" y="171">Rotor-angle</text>
+    <line class="sc-line" x1="480" y1="84" x2="132" y2="148"/>
+    <rect class="sc-box" x="48" y="210" width="168" height="32" rx="5"/>
+    <text class="sc-s" x="132" y="230">Small-disturbance</text>
+    <rect class="sc-box-focus" x="48" y="256" width="168" height="36" rx="5"/>
+    <text class="sc-h" x="132" y="279">Transient (TSA)</text>
+    <line class="sc-line" x1="132" y1="184" x2="132" y2="210"/>
+    <line class="sc-line" x1="132" y1="242" x2="132" y2="256"/>
+
+    <!-- Voltage -->
+    <rect class="sc-box" x="248" y="148" width="168" height="36" rx="6"/>
+    <text class="sc-h" x="332" y="171">Voltage</text>
+    <line class="sc-line" x1="480" y1="84" x2="332" y2="148"/>
+    <rect class="sc-box" x="248" y="210" width="168" height="32" rx="5"/>
+    <text class="sc-s" x="332" y="230">Small-disturbance</text>
+    <rect class="sc-box" x="248" y="256" width="168" height="32" rx="5"/>
+    <text class="sc-s" x="332" y="276">Large-disturbance</text>
+    <line class="sc-line" x1="332" y1="184" x2="332" y2="210"/>
+    <line class="sc-line" x1="332" y1="242" x2="332" y2="256"/>
+
+    <!-- Frequency -->
+    <rect class="sc-box" x="448" y="148" width="152" height="36" rx="6"/>
+    <text class="sc-h" x="524" y="171">Frequency</text>
+    <line class="sc-line" x1="480" y1="84" x2="524" y2="148"/>
+    <rect class="sc-box" x="448" y="210" width="152" height="32" rx="5"/>
+    <text class="sc-s" x="524" y="230">Short-term</text>
+    <rect class="sc-box" x="448" y="256" width="152" height="32" rx="5"/>
+    <text class="sc-s" x="524" y="276">Long-term</text>
+    <line class="sc-line" x1="524" y1="184" x2="524" y2="210"/>
+    <line class="sc-line" x1="524" y1="242" x2="524" y2="256"/>
+
+    <!-- Extended band -->
+    <rect class="sc-band" x="648" y="108" width="288" height="280" rx="10"/>
+    <text class="sc-s" x="792" y="128">Added 2020/2021 revision</text>
+
+    <!-- Hub from root into extended column -->
+    <line class="sc-line" x1="600" y1="66" x2="680" y2="66"/>
+    <line class="sc-line" x1="680" y1="66" x2="680" y2="312"/>
+
+    <rect class="sc-box-ext" x="672" y="148" width="240" height="36" rx="6"/>
+    <text class="sc-h" x="792" y="171">Converter-driven</text>
+    <line class="sc-line" x1="680" y1="166" x2="672" y2="166"/>
+    <rect class="sc-box-ext" x="672" y="210" width="240" height="32" rx="5"/>
+    <text class="sc-s" x="792" y="230">Slow interaction</text>
+    <rect class="sc-box-ext" x="672" y="256" width="240" height="32" rx="5"/>
+    <text class="sc-s" x="792" y="276">Fast interaction</text>
+    <line class="sc-line" x1="792" y1="184" x2="792" y2="210"/>
+    <line class="sc-line" x1="792" y1="242" x2="792" y2="256"/>
+
+    <rect class="sc-box-ext" x="672" y="312" width="240" height="36" rx="6"/>
+    <text class="sc-h" x="792" y="335">Resonance</text>
+    <line class="sc-line" x1="680" y1="330" x2="672" y2="330"/>
+    <rect class="sc-box-ext" x="672" y="364" width="112" height="28" rx="5"/>
+    <text class="sc-s" x="728" y="382">Electrical</text>
+    <rect class="sc-box-ext" x="800" y="364" width="112" height="28" rx="5"/>
+    <text class="sc-s" x="856" y="382">Torsional</text>
+    <line class="sc-line" x1="792" y1="348" x2="728" y2="364"/>
+    <line class="sc-line" x1="792" y1="348" x2="856" y2="364"/>
+
+    <text class="sc-s" x="132" y="318" fill="#c00" font-weight="700">Teaching / research focus</text>
+  </svg>
+  <figcaption id="fig-classification-caption" class="research-figure-caption">
+    Power system stability classification, <strong>redrawn</strong> for this site after the IEEE/CIGRE task-force definitions (not a reproduction of publisher artwork). Dynamic security in my work maps mainly to <strong>rotor-angle stability</strong> and its <strong>transient</strong> branch, extended in converter-dominated grids by <strong>converter-driven stability</strong>.
+    Source:
+    <a href="https://doi.org/10.1109/TPWRS.2020.3041774" target="_blank" rel="noopener noreferrer">Hatziargyriou et al., IEEE Trans. Power Syst., 2021</a>
+    (revision of the 2004 framework:
+    <a href="https://doi.org/10.1109/TPWRS.2004.825981" target="_blank" rel="noopener noreferrer">Kundur et al., IEEE Trans. Power Syst., 2004</a>).
+  </figcaption>
+</figure>

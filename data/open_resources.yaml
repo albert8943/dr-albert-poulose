@@ -1,0 +1,9 @@
+- id: sciml-for-ps
+  title: "Scientific Machine Learning (SciML) for Power Systems (PS)"
+  short_title: "SciML for PS"
+  url: "https://sciml4ps.albertpoulose.com"
+  status: "Under development (v0.x public preview)"
+  description: "Living teaching notes on SciML for power-system dynamics, stability assessment, and system identification. Classical baselines beside neural methods; assessed labs beside the prose."
+  contribute_url: "https://sciml4ps.albertpoulose.com/contribute"
+  github: "https://github.com/albert8943/SciML_PS"
+  doi: ""

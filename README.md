@@ -229,7 +229,7 @@ Files under `static/` are copied to the site root (e.g. `static/images/teaching/
 3. **Teaching syllabi** → `static/files/teaching/` (one PDF per course; see that folder’s README)
 4. **Academic CV PDF** → `static/files/cv/albert-poulose-cv.pdf` (button on `/cv/` shows when present)
 5. **Gallery photos** (optional) → `static/images/gallery/` + entries in `data/gallery.yaml`
-6. **Research figures** → `static/images/research/` (also SVG partials under `layouts/partials/research-fig-*.html`)
+6. **Research figures** → prefer SVG partials under `layouts/partials/research-fig-*.html`; rasters only if original (e.g. `static/images/research/smib-transient-cases.png`). Do not host publisher IEEE/CIGRE artwork.
 7. **Thesis and slides PDFs** → `static/files/publications/` as needed for publication links
 8. **Google Analytics:** GA4 ID in `[services.googleAnalytics]` in `hugo.toml` (live site only)
 

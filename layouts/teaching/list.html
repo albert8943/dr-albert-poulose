@@ -2,7 +2,7 @@
 <section class="page-header">
   <div class="container">
     <h1>{{ .Title }}</h1>
-    <p class="page-lead">Undergraduate lecture courses, listed by year, with teaching interests for future faculty applications.</p>
+    <p class="page-lead">Open educational resources, teaching interests, and undergraduate lecture courses listed by year.</p>
   </div>
 </section>
 
@@ -36,6 +36,35 @@
       <h2>Teaching philosophy</h2>
       {{ range . }}
       <p>{{ . }}</p>
+      {{ end }}
+    </div>
+    {{ end }}
+
+    {{ with site.Data.open_resources }}
+    <div class="open-resources" id="open-resources">
+      <h2 class="timeline-tier-title">Open educational resources</h2>
+      <p class="open-resources-lead">Living notes and books linked from this site. Status labels are intentional while materials grow.</p>
+      {{ range . }}
+      <article class="pub-card open-resource-card">
+        <p class="pub-authors">{{ .short_title | default .title }}</p>
+        <h3 class="pub-title">
+          <a href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .title }}</a>
+        </h3>
+        {{ with .status }}<p class="open-resource-status">{{ . }}</p>{{ end }}
+        {{ with .description }}<p class="pub-venue">{{ . }}</p>{{ end }}
+        <div class="pub-links teaching-syllabus-links">
+          <a class="btn btn-sm" href="{{ .url }}" target="_blank" rel="noopener noreferrer">Open notes</a>
+          {{ with .contribute_url }}
+          <a class="btn btn-sm btn-ghost" href="{{ . }}" target="_blank" rel="noopener noreferrer">Contribute</a>
+          {{ end }}
+          {{ with .github }}
+          <a class="btn btn-sm btn-ghost" href="{{ . }}" target="_blank" rel="noopener noreferrer">GitHub</a>
+          {{ end }}
+          {{ with .doi }}
+          <a class="btn btn-sm btn-ghost" href="https://doi.org/{{ . }}" target="_blank" rel="noopener noreferrer">DOI</a>
+          {{ end }}
+        </div>
+      </article>
       {{ end }}
     </div>
     {{ end }}

@@ -7,16 +7,7 @@
   {{- end -}}
   <p>{{ site.Params.researchStabilityIntro }}</p>
 
-  <figure class="research-figure" aria-labelledby="fig-classification-caption">
-    <img class="research-figure-img" src="{{ "images/research/stability-classification.png" | relURL }}" width="960" height="540" alt="IEEE/CIGRE classification of power system stability: rotor-angle, voltage, and frequency stability from 2004, extended in 2020 with converter-driven and resonance stability. Transient stability under rotor-angle stability is highlighted.">
-    <figcaption id="fig-classification-caption" class="research-figure-caption">
-      Power system stability classification (IEEE/CIGRE Task Force). Dynamic security in my work maps mainly to <strong>rotor-angle stability</strong> and its <strong>transient</strong> branch, extended in converter-dominated grids by <strong>converter-driven stability</strong>.
-      Source:
-      <a href="https://doi.org/10.1109/TPWRS.2020.3041774" target="_blank" rel="noopener noreferrer">Hatziargyriou et al., IEEE Trans. Power Syst., 2021</a>
-      (revision of the 2004 framework:
-      <a href="https://doi.org/10.1109/TPWRS.2004.825981" target="_blank" rel="noopener noreferrer">Kundur et al., IEEE Trans. Power Syst., 2004</a>).
-    </figcaption>
-  </figure>
+  {{ partial "research-fig-stability-classification.html" . }}
 </div>
 
 <div class="research-story">
@@ -31,9 +22,9 @@
 
   <div class="research-tsa-grid">
     <figure class="research-figure research-tsa-figure" aria-labelledby="fig-tsa-cases-caption">
-      <img class="research-figure-img" src="{{ "images/research/transient-stability-cases.png" | relURL }}" width="640" height="480" alt="Rotor angle versus time for three transient stability cases: damped oscillation to a new steady state, first-swing loss of synchronism, and growing oscillations leading to instability.">
+      <img class="research-figure-img" src="{{ "images/research/smib-transient-cases.png" | relURL }}" width="640" height="480" alt="Rotor angle versus time for three classical SMIB cases: damped oscillation to a new steady state, first-swing loss of synchronism, and growing oscillations leading to instability.">
       <figcaption id="fig-tsa-cases-caption" class="research-figure-caption">
-        Rotor-angle response to a transient disturbance.
+        Rotor-angle response to a three-phase fault on a classical SMIB model (author’s original teaching simulation; not a publisher figure).
       </figcaption>
     </figure>
 
@@ -46,9 +37,13 @@
 
   <p class="research-callout-note">{{ site.Params.researchTsaNote }}</p>
   <p class="research-definition-source">
-  Source:
-  <a href="https://doi.org/10.1109/TPWRS.2004.825981" target="_blank" rel="noopener noreferrer">Kundur et al., IEEE Trans. Power Syst., 2004</a>;
+  Definitions follow
+  <a href="https://doi.org/10.1109/TPWRS.2004.825981" target="_blank" rel="noopener noreferrer">Kundur et al., IEEE Trans. Power Syst., 2004</a>
+  and
   <a href="https://doi.org/10.1109/TPWRS.2020.3041774" target="_blank" rel="noopener noreferrer">Hatziargyriou et al., IEEE Trans. Power Syst., 2021</a>;
+  case trajectories are original teaching plots (same family as
+  <a href="https://sciml4ps.albertpoulose.com/" target="_blank" rel="noopener noreferrer">SciML for PS</a>).
+  Textbook context:
   <a href="https://www.taylorfrancis.com/chapters/edit/10.4324/b12113-10/power-system-stability-prabha-kundur" target="_blank" rel="noopener noreferrer">Kundur, <em>Power System Stability and Control</em></a>.
   </p>
 </div>
