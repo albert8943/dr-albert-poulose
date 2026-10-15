@@ -36,7 +36,7 @@
       <a class="section-link" href="{{ "about/" | relURL }}">About &rarr;</a>
     </div>
     <div class="news-list news-list-cards">
-      {{ range first 5 hugo.Data.news }}
+      {{ range first 8 hugo.Data.news }}
       <article class="news-card">
         <time class="news-card-date" datetime="{{ .date }}">{{ time .date | time.Format "Jan 2006" }}</time>
         <div class="news-card-body">
