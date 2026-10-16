@@ -56,16 +56,46 @@ Antonio-style landing: current title, short affiliation line, large circular pho
 
 Longer bio (`bioIntro`, `bioCurrent`, `researchInterests`) is used on CV / search / About, not on Home.
 
-### Recent news
+### Recent news (`data/news.yaml`)
+
+**Role:** milestone announcements for Home visitors.  
+**Not** a second publications list. The full record lives on [`/publications/`](https://albertpoulose.com/publications/) via `data/publications.yaml`.
+
+#### Format
 
 ```yaml
 - date: YYYY-MM-DD
-  tag: Paper   # Paper | Position | Talk | Achievement
+  tag: Paper   # Paper | Position | Talk | Achievement | Teaching
   title: "Short milestone headline"
   text: "Plain text or HTML (links with <a href=...>)"
 ```
 
-Keep newest first. Home shows the first five entries.
+- Keep **newest first**.
+- Home shows the first **8** entries (`layouts/index.html`). Older items may remain in the YAML for history but will not appear on Home until newer cards drop off.
+
+#### Include in Recent News
+
+| Tag | When |
+|-----|------|
+| **Paper** | Journal or major conference paper **published** (one card per paper) |
+| **Position** | Role start or end (postdoc, lecturer, etc.) |
+| **Achievement** | Degree milestones (e.g. viva voce, degree award) |
+| **Teaching** | Open teaching product launch (e.g. SciML for PS) |
+| **Talk** | Highlighted invited / conference talk (optional; skip routine seminar slides) |
+
+#### Do **not** put in Recent News
+
+- Every thesis, preprint, abstract-only, or minor update
+- Duplicating the full Publications bibliography
+- Old papers added only to “fill” Home
+- Content that belongs only on Research Notes or Teaching (use those pages + a single news card if it is a true launch)
+
+#### Housekeeping
+
+1. Add the full paper to `publications.yaml` **first**.
+2. Add a news card **only** if it matches the table above.
+3. Prefer DOI / book URL in `text`; leave abstracts and bib details on Publications.
+4. Ph.D. and appointment dates: prefer canonical records in `Albert_Personal_Repository` (e.g. `cv/data/phd_knu.md`) over memory.
 
 ---
 
@@ -181,7 +211,7 @@ Unused legacy partials (keep on disk; do not wire back without a deliberate deci
 | `abstract`, `keywords` | Collapsible abstract on Publications |
 | `pdf` / slide paths | If linked from YAML and files exist under `static/files/publications/` |
 
-3. Optionally add a news item in `data/news.yaml`.
+3. Add a Recent News card in `data/news.yaml` **only** if it meets [Recent news policy](#recent-news-datanewsyaml) (published journal / major conference → yes; not every output).
 4. Optionally update a related project in `data/research_pillars.yaml` or `data/software.yaml`.
 
 ### Local PDFs / slides
@@ -384,8 +414,8 @@ Keep Soft claims: use **building toward** / **in progress** / **planned** until 
 ### New journal / conference paper
 
 1. `data/publications.yaml` — full entry + `pillars`
-2. Optionally `selected: true` for Home
-3. `data/news.yaml` — short announcement
+2. Optionally `selected: true` for Home / Research hub cards
+3. `data/news.yaml` — short announcement **only** for published journal / major conference papers ([policy](#recent-news-datanewsyaml))
 4. Update Software / Research projects if relevant
 5. Preview → commit → push `main`
 
