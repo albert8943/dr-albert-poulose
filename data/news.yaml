@@ -37,8 +37,3 @@
   tag: Paper
   title: "IEEE Access paper on VSC energy functions"
   text: 'Paper published in <em>IEEE Access</em>: <a href="https://doi.org/10.1109/ACCESS.2024.3450316">Direct Transient Stability Assessment of Grid-Connected Voltage Source Converters: A Transient Energy Functions Perspective</a>.'
-
-- date: 2023-03-06
-  tag: Paper
-  title: "Energies review on renewable-rich grid stability"
-  text: 'Review paper published in <em>Energies</em>: <a href="https://www.mdpi.com/1996-1073/16/5/2495">Transient Stability Analysis and Enhancement Techniques of Renewable-Rich Power Grids</a>.'

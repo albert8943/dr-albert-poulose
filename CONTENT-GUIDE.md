@@ -97,6 +97,21 @@ Longer bio (`bioIntro`, `bioCurrent`, `researchInterests`) is used on CV / searc
 3. Prefer DOI / book URL in `text`; leave abstracts and bib details on Publications.
 4. Ph.D. and appointment dates: prefer canonical records in `Albert_Personal_Repository` (e.g. `cv/data/phd_knu.md`) over memory.
 
+#### Pruning (keep Home useful)
+
+Revisit `news.yaml` when Home feels like a second publications list or when new milestones push important career cards off the first 8.
+
+| Keep on Home (typical) | Prune from news (or leave below the Home cut) |
+|------------------------|-----------------------------------------------|
+| Latest teaching launch | Older journal cards added only to fill space |
+| Latest major journal / highlighted talk | Preprints, theses, routine seminars |
+| Current / recent position start or end | Duplicate career facts already clear on About / CV |
+| Ph.D. viva and degree award (canonical dates) | Third+ older `Paper` cards once newer pubs exist |
+
+**Practice:** at most **one** older journal highlight besides the newest major paper. Full history stays on `/publications/`. Combining concurrent roles into **one** Position card is preferred (e.g. postdoc + lecturer start).
+
+**2026-10 review applied:** kept SciML launch, Access 2026, lecturer end, ADINTECH, postdoc+lecturer start, Ph.D. award, Ph.D. viva, Access 2024; **removed** Energies 2023 from news (still on Publications).
+
 ---
 
 ## 2. Research (`/research/`)
